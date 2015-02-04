@@ -1,0 +1,65 @@
+RewriteEngine  on
+
+RewriteRule ^addUniversity$ addUniversity.php
+RewriteRule ^editUniversity$ editUniversity.php
+RewriteRule ^universities$ universities.php
+RewriteRule ^register$ register.php
+RewriteRule ^login$ login.php
+
+RewriteRule ^ajax$ ajax.php
+RewriteRule ^addLocation$ addLocation.php
+RewriteRule ^viewLocation$ viewLocation.php
+RewriteRule ^editLocation$ editLocation.php
+RewriteRule ^addGym$ addGym.php
+RewriteRule ^viewGym$ viewGym.php
+RewriteRule ^editGym$ editGym.php
+
+RewriteRule ^addRoom$ addRoom.php
+RewriteRule ^viewRooms$ viewRooms.php
+RewriteRule ^editRoom$ editRoom.php
+RewriteRule ^addEquipments$ addEquipments.php
+RewriteRule ^viewEquipments$ viewEquipments.php
+RewriteRule ^editEquipments$ editEquipments.php
+
+RewriteRule ^users$ users.php
+
+RewriteRule ^addSlot$ addSlot.php
+RewriteRule ^editSlot$ editSlot.php
+RewriteRule ^viewSlot$ viewSlot.php
+
+RewriteRule ^occupancy$ occupancy.php
+RewriteRule ^viewOccupancy$ viewOccupancy.php
+RewriteRule ^editOccupancy$ editOccupancy.php
+
+RewriteRule ^index$ index.php
+
+RewriteRule ^staff$ staff.php
+RewriteRule ^addStaff$ addStaff.php
+RewriteRule ^viewStaff$ viewStaff.php
+
+RewriteRule ^addInstructor$ addInstructor.php
+RewriteRule ^viewInstructor$ viewInstructor.php
+RewriteRule ^instructor$ instructor.php
+
+RewriteRule ^gymClosingDate$ gymClosingDate.php
+RewriteRule ^addClosingDate$ addClosingDate.php
+RewriteRule ^listOccupancy$ listOccupancy.php
+RewriteRule ^feedback$ feedback.php
+RewriteRule ^viewFeedback$ viewFeedback.php
+RewriteRule ^addClass$ addClass.php
+RewriteRule ^viewClass$ viewClasses.php
+RewriteRule ^editClass$ editClass.php
+RewriteRule ^viewClassSlot$ viewClassSlot.php
+RewriteRule ^viewReservation$ viewReservation.php
+RewriteRule ^editClassSlot$ editClassSlot.php
+RewriteRule ^addClassReservation$ addClassReservation.php
+RewriteRule ^viewClassReservation$ viewClassReservation.php
+RewriteRule ^contactUs$ contactUs.php
+
+RewriteRule ^helpDashboard$ helpDashboard.php
+RewriteRule ^helpSettings$ helpSettings.php
+RewriteRule ^helpUsers$ helpUsers.php
+RewriteRule ^helpFacility$ helpFacility.php
+RewriteRule ^helpStaff$ helpStaff.php
+RewriteRule ^helpClasses$ helpClasses.php
+RewriteRule ^helpEquipment$ helpEquipment.php

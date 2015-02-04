@@ -1,0 +1,1233 @@
+body {
+    width: 100%;
+    height: 100%;
+    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #fff;
+    background-color: #000;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0 0 35px;
+    /*text-transform: uppercase;*/
+    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-align: left;
+}
+
+.questrial {
+    font-family: 'Questrial', sans-serif;
+}
+
+p {
+    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 1.25em;
+}
+
+hr {
+    width: 100%;
+    opacity: .5;
+}
+
+a {
+    color: #FFF;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+a:hover,
+a:focus {
+    text-decoration: none;
+    color: #fdd400;
+}
+
+.clean {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* Radio */
+
+#radioformset label {
+    border-radius: 0;
+    margin-bottom: 10px;
+    border: none;
+    width: 100%;
+    height: 54px;
+    padding: 6px 12px;
+    font-size: 16pt;
+    line-height: 1.42857143;
+    font-weight: normal;
+}
+
+#radioformset label span {
+    text-align: left;
+    display: block;
+    line-height: 2;
+}
+
+#radioformset label input {
+    position: absolute;
+    z-index: -1;
+}
+
+#radioformset input:checked + span {
+
+    color: #fff;
+}
+
+#radioformset .radioform {
+    background-color: #333;
+    color: #999;
+}
+
+.radioform {
+    cursor: pointer;
+}
+
+/* Radio */
+
+.upace-reserve-pick {
+    background: #d4f2fa;
+    height: auto;
+    width: 100%;
+    padding-bottom: 4%;
+}
+
+.navbar {
+    margin-bottom: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, .3);
+    text-transform: uppercase;
+    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: rgba(0, 0, 0, .3);
+    font-size: 1.5em;
+}
+
+.navbar-brand {
+    font-weight: 400;
+}
+
+.navbar-brand:focus {
+    outline: 0;
+}
+
+.navbar-custom a {
+    color: #fff;
+}
+
+.navbar-custom .nav li a {
+    -webkit-transition: background .3s ease-in-out;
+    -moz-transition: background .3s ease-in-out;
+    transition: background .3s ease-in-out;
+}
+
+.navbar-custom .nav li a:hover,
+.navbar-custom .nav li a:focus,
+.navbar-custom .nav li.active {
+    outline: 0;
+    background-color: rgba(255, 255, 255, .3);
+}
+
+.navbar-toggle {
+    font-size: 22px;
+    color: #fff;
+}
+
+.navbar-toggle:focus,
+.navbar-toggle:active {
+    outline: 0;
+}
+
+.reserve-modal, .nav-chev, .navfabar {
+    cursor: pointer;
+}
+
+.modal {
+    background: rgba(0, 0, 0, .8);
+}
+
+.modal-header {
+    border: none;
+}
+
+.modal-dialog {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+}
+
+.modal-content {
+    border-radius: 0;
+    background: none;
+
+}
+
+.upace-reserve-pick {
+    background: #d4f2fa;
+    height: auto;
+    width: 100%;
+    padding-bottom: 4%;
+}
+
+.container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+button, .btn, .btn-danger, .btn-block, .btn-lg {
+    border-radius: 0;
+    height: 2em;
+    font-size: 1.7em;
+    text-transform: uppercase;
+}
+
+.modal-reserve-button {
+    font-size: 1.5em;
+
+}
+
+.modal-title {
+    font-size: 3em;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: 54px;
+    padding: 6px 12px;
+    font-size: 1.5em;
+    line-height: 1.42857143;
+    color: #fff;
+    margin-bottom: .5em;
+    background-color: #333;
+    background-image: none;
+    border: none;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+form {
+    margin-bottom: .5em;
+}
+
+.form-group {
+    margin-bottom: 0;
+}
+
+.panel-group .panel {
+    margin-bottom: 0;
+    border-radius: 0;
+    font-size: 1em;
+    margin-bottom: .5em;
+}
+
+.panel-default > a .panel-heading {
+    color: #fff;
+    background-color: rgba(255, 255, 255, .5);
+    border: none;
+    border-radius: 0;
+    height: 3em;
+    line-height: 1.8em;
+    text-align: left;
+}
+
+.panel-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 16px;
+    color: inherit;
+    text-align: left;
+}
+
+.panel {
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 0;
+}
+
+.panel-body {
+    padding: 15px;
+    background: rgba(0, 0, 0, 0);
+}
+
+.panel-group .panel-heading + .panel-collapse > .panel-body, .panel-group .panel-heading + .panel-collapse > .list-group {
+    border-top: none;
+}
+
+.panel-bg {
+    background: rgba(0, 0, 0, 0);
+}
+
+.form-settings {
+    border-bottom: 1px dashed #fff;
+}
+
+.notification {
+    margin-top: .75em;
+    margin-bottom: .75em;
+    font-size: 1.5em;
+
+}
+
+@media (max-width:480px) {
+    .navchev {
+        border-radius: 50%;
+        width: 1.5em;
+        height: 1.5em;
+        padding-right: .05em;
+        border: 1px #fff solid;
+        margin: 10px 0 0 0;
+        box-shadow: none;
+    }
+
+    .navfabar {
+        border-radius: 50%;
+        width: 1.5em;
+        height: 1.5em;
+        float: right;
+        padding-top: .04em;
+        border: 2px #fff solid;
+        margin: 10px 0 0 0;
+    }
+
+    .navbar-reserve, .navbar-date {
+        text-transform: uppercase;
+        font-size: 6.0125pt;
+        line-height: 7em;
+
+    }
+
+    .modal-title {
+        font-size: 2em;
+    }
+
+    .date-cal-frame {
+        margin-top: 1em;
+    }
+
+    .date-cal {
+        font-size: 1.5em;
+        line-height: 1.25em;
+
+    }
+
+    .date-day {
+        font-size: .75em;
+
+    }
+
+    .date-placeholder {
+        line-height: 0em;
+        height: 5em;
+        overflow: auto;
+        transition: .75s;
+        -webkit-transition: .75s;
+
+    }
+
+    .date-placeholder.date-active {
+        background: rgba(255, 0, 0, .8);
+        overflow: auto;
+    }
+
+    .date-placeholder:hover {
+        background: rgba(255, 0, 0, .8);
+        overflow: auto;
+        cursor: pointer;
+    }
+
+    .location-gyms {
+        border-top: 1px solid #fff;
+        border-bottom: 1px solid #fff;
+        padding-top: 2em;
+        padding-bottom: 2em;
+        transition: .75s;
+        -webkit-transition: .75s;
+    }
+
+    .location-gyms:hover {
+        background: rgba(0, 212, 255, .5);
+        color: #fff;
+    }
+
+    .upace-form {
+        margin-bottom: 5px;
+    }
+
+    .upace-title, h1, h4 {
+        margin-bottom: -28px;
+        margin-top: 1em;
+    }
+
+    .upace-title-main {
+        padding-top: 1em;
+        padding-left: 0;
+        font-size: .5em;
+    }
+
+    .upace-title-sub {
+        padding-top: 1.7em;
+        padding-right: 0;
+        color: #299eb6;
+        font-size: .5em;
+
+    }
+
+    .formcol-height {
+        height: 3em;
+        line-height: 2.9em;
+        background: #e9f9fd;
+    }
+
+    .formcol-1 {
+        color: #299eb6;
+        font-size: .6em;
+    }
+
+    .formcol-2ab {
+        line-height: .8em;
+        padding-top: .6em;
+
+    }
+
+    .formcol-2a {
+        color: #299eb6;
+        font-size: .5em;
+    }
+
+    .formcol-2b {
+        color: #299eb6;
+        font-size: .5em;
+    }
+
+    .formcol-room {
+        color: #000;
+        font-size: .5em;
+
+    }
+
+    .formcol-gym {
+        color: #000;
+        font-size: .5em;
+
+    }
+
+    .formcol-3 {
+        color: #000;
+        font-size: .275em;
+
+    }
+
+    .footer-margin {
+        height: 8em;
+    }
+
+    button, .btn, .btn-danger, .btn-block, .btn-lg {
+        border-radius: 0;
+        height: 2.5em;
+        font-size: 1.5em;
+        text-transform: uppercase;
+    }
+
+    .searchtitle {
+        font-size: 1.25em;
+
+    }
+
+    .searchtext {
+        font-size: .75em;
+
+    }
+
+    .form-control {
+        display: block;
+        width: 100%;
+        height: 54px;
+        padding: 6px 12px;
+        font-size: 1.5em;
+        line-height: 1.42857143;
+        color: #fff;
+        margin-bottom: .5em;
+        background-color: #333;
+        background-image: none;
+        border: none;
+        border-radius: 0;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+
+    .searchtitle {
+        font-size: 1.25em;
+
+    }
+
+    .searchtext {
+        font-size: .75em;
+
+    }
+
+    .form-control {
+        display: block;
+        width: 100%;
+        height: 54px;
+        padding: 6px 12px;
+        font-size: 1.5em;
+        line-height: 1.42857143;
+        color: #fff;
+        margin-bottom: .5em;
+        background-color: #333;
+        background-image: none;
+        border: none;
+        border-radius: 0;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+}
+
+/* MD */
+@media (min-width:481px) {
+
+    .navchev {
+        border-radius: 50%;
+        width: 1.5em;
+        height: 1.5em;
+
+        padding-right: .05em;
+        border: 1px #fff solid;
+        margin: 10px 0 0 0;
+    }
+
+    .navfabar {
+        border-radius: 50%;
+        width: 1.5em;
+        height: 1.5em;
+        float: right;
+        padding-top: .04em;
+        border: 2px #fff solid;
+        margin: 10px 0 0 0;
+    }
+
+    .navbar-reserve, .navbar-date {
+        text-transform: uppercase;
+        font-size: .5em;
+        line-height: 4.5em;
+
+    }
+
+    .modal-title {
+        font-size: 2em;
+    }
+
+    .date-cal-frame {
+        margin-top: 1em;
+    }
+
+    .date-cal {
+        font-size: 1.85em;
+        line-height: 1.25em;
+
+    }
+
+    .date-day {
+        font-size: .85em;
+
+    }
+
+    .date-placeholder {
+        line-height: 0em;
+        height: 5em;
+        overflow: auto;
+        transition: .75s;
+        -webkit-transition: .75s;
+
+    }
+
+    .date-placeholder.date-active {
+        background: rgba(255, 0, 0, .8);
+        height: 5.5em;
+        overflow: auto;
+    }
+
+    .date-placeholder:hover {
+        background: rgba(255, 0, 0, .8);
+        height: 5em;
+        overflow: auto;
+    }
+
+    .location-gyms {
+        border-top: 1px solid #fff;
+        border-bottom: 1px solid #fff;
+        padding-top: 2em;
+        padding-bottom: 2em;
+        transition: .75s;
+        -webkit-transition: .75s;
+    }
+
+    .location-gyms:hover {
+        background: rgba(0, 212, 255, .5);
+        color: #fff;
+    }
+
+    .upace-form {
+        margin-bottom: 5px;
+    }
+
+    .upace-title, h1, h4 {
+        margin-bottom: -28px;
+        margin-top: 1em;
+    }
+
+    .upace-title-main {
+        padding-top: 1em;
+        padding-left: 0;
+    }
+
+    .upace-title-sub {
+        padding-top: 1.7em;
+        padding-right: 0;
+        color: #299eb6;
+    }
+
+    .formcol-height {
+        height: 4em;
+        line-height: 3.9em;
+        background: #e9f9fd;
+    }
+
+    .formcol-1 {
+        color: #299eb6;
+        font-size: 1em;
+    }
+
+    .formcol-2ab {
+        line-height: 1em;
+        padding-top: 1em;
+    }
+
+    .formcol-2a {
+        color: #299eb6;
+        font-size: 1em;
+
+    }
+
+    .formcol-2b {
+        color: #299eb6;
+        font-size: 1em;
+
+    }
+
+    .formcol-room {
+        color: #299eb6;
+        font-size: .75em;
+
+    }
+
+    .formcol-gym {
+        color: #299eb6;
+        font-size: .75em;
+
+    }
+
+    .formcol-3 {
+        color: #000;
+        font-size: .75em;
+
+    }
+
+    .footer-margin {
+        height: 8em;
+    }
+
+    .navbar-fixed-bottom {
+
+        background: #000;
+        font-size: 2.5em;
+        color: #fff;
+    }
+
+    .searchtitle {
+        font-size: 2.5em;
+
+    }
+
+    .searchtext {
+        font-size: 1.5em;
+
+    }
+
+    button, .btn-search {
+        font-size: .85;
+    }
+
+    button, .btn, .btn-danger, .btn-block, .btn-lg {
+        border-radius: 0;
+        height: 2.5em;
+        font-size: 1.5em;
+        text-transform: uppercase;
+    }
+
+    .searchtitle {
+        font-size: 1.25em;
+    }
+
+    .searchtext {
+        font-size: .75em;
+    }
+
+    .form-control {
+        display: block;
+        width: 100%;
+        height: 54px;
+        padding: 6px 12px;
+        font-size: 1.5em;
+        line-height: 1.42857143;
+        color: #fff;
+        margin-bottom: .5em;
+        background-color: #333;
+        background-image: none;
+        border: none;
+        border-radius: 0;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+}
+
+@media (min-width:768px) {
+
+    .navchev {
+        border-radius: 50%;
+        width: 1.5em;
+        height: 1.5em;
+
+        padding-right: .05em;
+        border: 1px #fff solid;
+        margin: 10px 0 0 0;
+    }
+
+    .navfabar {
+        border-radius: 50%;
+        width: 1.5em;
+        height: 1.5em;
+        float: right;
+        padding-top: .04em;
+        border: 2px #fff solid;
+        margin: 10px 0 0 0;
+    }
+
+    .navbar-reserve, .navbar-date {
+        text-transform: uppercase;
+        font-size: .61em;
+        line-height: 4.5em;
+
+    }
+
+    .date-cal-frame {
+        margin-top: 1em;
+    }
+
+    .date-cal {
+        font-size: 1.85em;
+        line-height: 1.25em;
+
+    }
+
+    .date-day {
+        font-size: .85em;
+
+    }
+
+    .date-placeholder {
+        line-height: 0em;
+        height: 5em;
+        overflow: auto;
+        transition: .75s;
+        -webkit-transition: .75s;
+
+    }
+
+    .date-placeholder.date-active {
+        background: rgba(255, 0, 0, .8);
+        height: 5.5em;
+        overflow: auto;
+    }
+
+    .date-placeholder:hover {
+        background: rgba(255, 0, 0, .8);
+        height: 5em;
+        overflow: auto;
+        cursor: pointer;
+    }
+
+    .location-gyms {
+        border-top: 1px solid #fff;
+        border-bottom: 1px solid #fff;
+        padding-top: 2em;
+        padding-bottom: 2em;
+        transition: .75s;
+        -webkit-transition: .75s;
+    }
+
+    .location-gyms:hover {
+        background: rgba(0, 212, 255, .5);
+        color: #fff;
+    }
+
+    .upace-form {
+        margin-bottom: 5px;
+    }
+
+    .upace-title, h1, h4 {
+        margin-bottom: -28px;
+        margin-top: 1em;
+    }
+
+    .upace-title-main {
+        padding-top: 1em;
+        padding-left: 0;
+    }
+
+    .upace-title-sub {
+        padding-top: 1.7em;
+        padding-right: 0;
+        color: #299eb6;
+    }
+
+    .formcol-height {
+        height: 5em;
+        line-height: 4.9em;
+        background: #e9f9fd;
+    }
+
+    .formcol-1 {
+        color: #299eb6;
+        font-size: 1em;
+    }
+
+    .formcol-2ab {
+        line-height: 1em;
+        padding-top: 1.5em;
+    }
+
+    .formcol-2a {
+        color: #299eb6;
+        font-size: 1em;
+
+    }
+
+    .formcol-2b {
+        color: #299eb6;
+        font-size: 1em;
+
+    }
+
+    .formcol-3 {
+        color: #000;
+        font-size: 1em;
+
+    }
+
+    .footer-margin {
+        height: 8em;
+    }
+
+    .navbar-fixed-bottom {
+        background: #000;
+        font-size: 2.5em;
+        color: #fff;
+    }
+
+    .navbar-text {
+        float: none;
+    }
+
+    .modal-reserve-button {
+        font-size: 2.5em;
+    }
+
+    button, .btn, .btn-danger, .btn-primary, .btn-block, .btn-lg {
+        border-radius: 0;
+        height: 3em;
+        font-size: 1.7em;
+        text-transform: uppercase;
+    }
+
+    .btn-search {
+        height: 2.2em;
+        font-size: .75em;
+    }
+
+    .searchtitle {
+        font-size: 2.5em;
+
+    }
+
+    .searchtext {
+        font-size: 1.5em;
+
+    }
+
+    button, .btn-search {
+        font-size: 0.85em;
+    }
+
+    button, .btn, .btn-danger, .btn-block, .btn-lg {
+        border-radius: 0;
+        height: 2.5em;
+        font-size: 1.5em;
+        text-transform: uppercase;
+    }
+}
+
+@media (min-width:992px) {
+    .navchev {
+        border-radius: 50%;
+        width: 1.5em;
+        height: 1.5em;
+
+        padding-right: .05em;
+        border: 1px #fff solid;
+        margin: 10px 0 0 0;
+    }
+
+    .navfabar {
+        border-radius: 50%;
+        width: 1.5em;
+        height: 1.5em;
+        float: right;
+        padding-top: .04em;
+        border: 2px #fff solid;
+        margin: 10px 0 0 0;
+    }
+
+    .navbar-reserve, .navbar-date {
+        text-transform: uppercase;
+        font-size: 1em;
+        line-height: 2.5em;
+
+    }
+
+    .modal-title {
+        font-size: 3em;
+    }
+
+    .date-cal-frame {
+        margin-top: 1em;
+    }
+
+    .date-cal {
+        font-size: 1.85em;
+        line-height: 1.25em;
+
+    }
+
+    .date-day {
+        font-size: .85em;
+
+    }
+
+    .date-placeholder {
+        line-height: 0em;
+        height: 5em;
+        overflow: auto;
+        transition: .75s;
+        -webkit-transition: .75s;
+
+    }
+
+    .date-placeholder.date-active {
+        background: rgba(255, 0, 0, .8);
+        height: 5.5em;
+        overflow: auto;
+    }
+
+    .date-placeholder:hover {
+        background: rgba(255, 0, 0, .8);
+        height: 5em;
+        overflow: auto;
+        cursor: pointer;
+    }
+
+    .location-gyms {
+        border-top: 1px solid #fff;
+        border-bottom: 1px solid #fff;
+        padding-top: 2em;
+        padding-bottom: 2em;
+        transition: .75s;
+        -webkit-transition: .75s;
+    }
+
+    .location-gyms:hover {
+        background: rgba(0, 212, 255, .5);
+        color: #fff;
+    }
+
+    .upace-form {
+        margin-bottom: 5px;
+    }
+
+    .upace-title, h1, h4 {
+        margin-bottom: -28px;
+        margin-top: 1em;
+    }
+
+    .upace-title-main {
+        padding-top: 1em;
+        padding-left: 0;
+    }
+
+    .upace-title-sub {
+        padding-top: 1.7em;
+        padding-right: 0;
+        color: #299eb6;
+    }
+
+    .formcol-height {
+        height: 6em;
+        line-height: 5.9em;
+        background: #e9f9fd;
+    }
+
+    .formcol-1 {
+        color: #299eb6;
+        font-size: 1.6em;
+    }
+
+    .formcol-2ab {
+        line-height: 1.5em;
+        padding-top: 1.5em;
+    }
+
+    .formcol-2a {
+        color: #299eb6;
+        font-size: 1.6em;
+
+    }
+
+    .formcol-2b {
+        color: #299eb6;
+        font-size: 1.6em;
+
+    }
+
+    .formcol-3 {
+        color: #000;
+        font-size: 1.6em;
+
+    }
+
+    .footer-margin {
+        height: 8em;
+    }
+
+    .navbar-fixed-bottom {
+        background: #000;
+        font-size: 2.5em;
+        color: #fff;
+    }
+
+    .navbar-text {
+        float: none;
+    }
+
+    .modal-title-body {
+        font-size: 1.5em
+    }
+
+    .searchtitle {
+        font-size: 3.5em;
+
+    }
+
+    .searchtext {
+        font-size: 2.5em;
+    }
+
+    .btn-search {
+        height: 2.2em;
+        font-size: 1.25em;
+    }
+
+    .modal-title-body {
+        font-size: 1.5em
+    }
+
+    .searchtitle {
+        font-size: 3.5em;
+
+    }
+
+    .searchtext {
+        font-size: 2.5em;
+    }
+
+    .btn-search {
+        height: 2.2em;
+        font-size: 1.25em;
+    }
+}
+
+@media (min-width:1200px) {
+    .navchev {
+        border-radius: 50%;
+        width: 1.5em;
+        height: 1.5em;
+        padding-right: .05em;
+        border: 1px #fff solid;
+        margin: 10px 0 0 0;
+    }
+
+    .navfabar {
+        border-radius: 50%;
+        width: 1.5em;
+        height: 1.5em;
+        float: right;
+        padding-top: .04em;
+        border: 2px #fff solid;
+        margin: 10px 0 0 0;
+    }
+
+    .navbar-reserve, .navbar-date {
+        text-transform: uppercase;
+        font-size: 1em;
+        line-height: 2.5em;
+
+    }
+
+    .date-cal-frame {
+        margin-top: 1em;
+    }
+
+    .date-cal {
+        font-size: 1.85em;
+        line-height: 1.25em;
+
+    }
+
+    .date-day {
+        font-size: .85em;
+    }
+
+    .date-placeholder {
+        line-height: 0em;
+        height: 10em;
+        overflow: auto;
+        transition: .75s;
+        -webkit-transition: .75s;
+    }
+
+    .date-placeholder.date-active {
+        background: rgba(255, 0, 0, .8);
+        height: 5.5em;
+        overflow: auto;
+    }
+
+    .date-placeholder:hover {
+        background: rgba(255, 0, 0, .8);
+        height: 5em;
+        overflow: auto;
+        cursor: pointer;
+    }
+
+    .location-gyms {
+        border-top: 1px solid #fff;
+        border-bottom: 1px solid #fff;
+        padding-top: 2em;
+        padding-bottom: 2em;
+        transition: .75s;
+        -webkit-transition: .75s;
+    }
+
+    .location-gyms:hover {
+        background: rgba(0, 212, 255, .5);
+        color: #fff;
+    }
+
+    .upace-form {
+        margin-bottom: 5px;
+    }
+
+    .upace-title, h1, h4 {
+        margin-bottom: -28px;
+        margin-top: 1em;
+    }
+
+    .upace-title-main {
+        padding-top: 1em;
+        padding-left: 0;
+    }
+
+    .upace-title-sub {
+        padding-top: 1.7em;
+        padding-right: 0;
+        color: #299eb6;
+    }
+
+    .formcol-height {
+        height: 6em;
+        line-height: 5.9em;
+        background: #e9f9fd;
+    }
+
+    .formcol-1 {
+        color: #299eb6;
+        font-size: 1.6em;
+    }
+
+    .formcol-2ab {
+        line-height: 1.5em;
+        padding-top: 1.5em;
+    }
+
+    .formcol-2a {
+        color: #299eb6;
+        font-size: 1.6em;
+
+    }
+
+    .formcol-2b {
+        color: #299eb6;
+        font-size: 1.6em;
+
+    }
+
+    .formcol-3 {
+        color: #000;
+        font-size: 1.6em;
+
+    }
+
+    .footer-margin {
+        height: 8em;
+    }
+
+    .navbar-fixed-bottom {
+
+        background: #000;
+        font-size: 2.5em;
+        color: #fff;
+    }
+
+    .navbar-text {
+        float: none;
+    }
+
+    .modal-title-body {
+        font-size: 2em
+    }
+}

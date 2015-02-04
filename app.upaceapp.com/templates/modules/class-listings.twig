@@ -1,0 +1,35 @@
+<div class="listings-wrap">
+    <section class="upace-title content slide" style="margin-bottom:.5em">
+        <div class="container">
+            <div class="col-xs-6 upace-title-main">
+                <span style="color:#000; font-size:2em; bottom:0">Classes</span>
+            </div>
+            <div class="col-xs-6 upace-title-sub" style="bottom:0; text-align:right;">
+                <a data-toggle="modal" class="reserve-modal" data-target="#location-modal">
+                    <span style="color:#299eb6;">ALL GYMS</span>
+                </a>
+            </div>
+        </div>
+    </section>
+    <section class="upace-form content slide collapse" id="collapse-add-time">
+        <div class="container listing-enter-time">
+            <div class="col-xs-6 col-sm-7 formcol-height">
+                <center><span class="formcol-1">Enter a Start Time</span></center>
+            </div>
+            <div class="col-xs-6 col-sm-5 formcol-height formcol-2ab">
+                <form class="listing-enter-time-form" action="#">
+                    <div class="col-xs-12">
+                        <input type="text" class="form-add-time listing-enter-time-form-input" maxlength="8" placeholder="00:00 AM" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <section class="upace-form content slide" id="class-listings">
+    <!-- class listing items populated via js -->
+    </section>
+</div>
+
+<script id="class-listings-item" type="text/x-twig-template">
+    {{ source('./partials/class-listings-item.twig') }}
+</script>

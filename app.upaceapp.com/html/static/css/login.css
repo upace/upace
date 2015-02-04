@@ -1,0 +1,355 @@
+body {
+    width: 100%;
+    height: 100%;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: #fff;
+    background: url(../images/login-bg.jpg) no-repeat 50% 50% fixed;
+    background-color: #000;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0 0 35px;
+    /*text-transform: uppercase;*/
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-align:center;
+}
+
+/* Radio */
+
+
+#radioformset label {
+border-radius:none;
+margin-bottom:10px;
+border:none;
+width: 100%;
+height: 54px;
+padding: 6px 12px;
+font-size: 16pt;
+line-height: 1.42857143;
+font-weight:normal;
+}
+
+#radioformset label span {
+    text-align:center;
+    display:block;
+    line-height:2;
+}
+
+#radioformset label input {
+    position:absolute;
+    z-index:-1;    
+}
+
+#radioformset input:checked + span {
+    
+    color:#fff;
+}
+
+#radioformset .radioform {
+    background-color:#333;
+    color:#999;
+}
+
+.radioform{
+     cursor: pointer;
+}
+
+/* Radio */
+
+.questrial {
+    font-family: 'Questrial', sans-serif;
+}
+
+p {
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height:1.25em;
+}
+
+
+hr{
+    width:100%;
+    opacity:.5;
+}
+
+a {
+    color: #FFF;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+a:hover,
+a:focus {
+    text-decoration: none;
+    color: #fdd400;
+}
+
+
+
+.clean {
+    padding-left:0;
+    padding-right:0;    
+    margin-left:0;
+    margin-right:0;
+}
+
+
+
+.navbar {
+    margin-bottom: 0;
+    border-bottom: 1px solid rgba(255,255,255,.3);
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    background:rgba(255,255,255,.3);
+    font-size: 1.5em;
+}
+
+.navbar-brand {
+    font-weight: 400;
+}
+
+.navbar-brand:focus {
+    outline: 0;
+}
+
+.navbar-custom a {
+    color: #fff;
+}
+
+.navbar-custom .nav li a {
+    -webkit-transition: background .3s ease-in-out;
+    -moz-transition: background .3s ease-in-out;
+    transition: background .3s ease-in-out;
+}
+
+.navbar-custom .nav li a:hover,
+.navbar-custom .nav li a:focus,
+.navbar-custom .nav li.active {
+    outline: 0;
+    background-color: rgba(255,255,255,.3);
+}
+
+.navbar-toggle {
+    font-size: 22px;
+    color: #fff;
+}
+
+.navbar-toggle:focus,
+.navbar-toggle:active {
+    outline: 0;
+}
+
+    .login {
+        vertical-align: middle;
+        margin-top:2em;
+    }
+
+    .login-body{
+        margin-top:2em;
+
+    }
+
+    button,.btn,.btn-danger,.btn-block,.btn-lg{
+    border-radius: 0; 
+    height:2.5em;
+    font-size: 1.7em;
+    text-transform: uppercase;
+    margin-bottom:.5em;
+    }
+    
+    #signup-input,input{
+        text-align: center;
+
+    }
+    .facebook{
+        padding-right:2px;
+    }
+
+    .twitter{
+        padding-left:2px;
+    }
+
+    .form-control{
+        display: block;
+        width: 100%;
+        height: 54px;
+        padding: 6px 12px;
+        font-size: 1.5em;
+        line-height: 1.42857143;
+        color: #fff;
+        margin-bottom:.5em;
+        background-color: #333;
+        background-image: none;
+        border: none;
+        border-radius: 0;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+
+    form{
+        margin-bottom:.5em;
+    }
+
+    
+    .form-group{
+        margin-bottom:0;
+    }
+
+    .signup-modal{
+      cursor: pointer;
+    }
+
+    .modal{
+      background:rgba(0,0,0,.8);
+    }
+
+    .modal-dialog {
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      margin:0;
+      overflow-y:auto;
+    }
+
+    .modal-content {
+      border-radius: 0;
+      background: none;
+      margin-top:2em;
+
+    }
+
+    .upace-reserve-pick{
+        background:#d4f2fa;
+        height:auto; 
+        width:100%;
+        padding-bottom:4%;
+    }
+
+    .container-fluid{
+        padding-left:0;
+        padding-right:0;
+    }
+
+    .modal-signup-button{
+    font-size:2em;
+
+    }
+
+@media(max-width:480px) {
+    button,.btn,.btn-danger,.btn-block,.btn-lg{
+    border-radius: 0; 
+    height:3em;
+    font-size: 1em;
+    text-transform: uppercase;
+    margin-bottom:.5em;
+    }
+    .signup{
+        margin-top:2em;
+
+    }
+    .login{
+        margin-top:0;
+
+    }
+    .forgot{
+    font-size: .75em;
+    line-height: 2em;
+    }
+    .form-control {
+        display: block;
+        width: 100%;
+        height: 54px;
+        padding: 6px 12px;
+        font-size: 1em;
+        line-height: 1.42857143;
+        color: #fff;
+        margin-bottom: .5em;
+        background-color: #333;
+        background-image: none;
+        border: none;
+        border-radius: 0;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+    .formframe{
+        font-size:1em;
+    }
+    #radioformset label span{
+        line-height:3;
+        font-size:.7em;
+        cursor: pointer;
+    }
+    #buttonoutput{
+        font-size: .7em;
+    }
+    #buttonoutput2{
+        font-size: .7em;
+    }   
+}
+
+/* MD */
+@media(min-width:481px) {
+    .signup{
+        margin-top:2em;
+    }
+    .login{
+        margin-top:0;
+
+    }
+
+
+}
+
+@media(min-width:768px) {
+        .login{
+        margin-top:0;
+
+    }
+
+}
+
+@media(min-width:992px) {
+    .signup{
+        margin-top:0;
+        padding-left:2px;
+        margin-left: 0;
+    }
+
+    .login{
+        padding-right:2px;
+        margin-top:0;
+    }
+
+
+}
+
+@media(min-width:1200px) {
+    .signup{
+        margin-top:0;
+        padding-left:2px;
+        margin-left: 0;
+    }
+
+    .login{
+        padding-right:2px;
+        margin-top:0;
+
+    }
+
+}

@@ -1,0 +1,2760 @@
+body {
+    width: 100%;
+    height: 100%;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: #fff;
+    background-color: #000;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0 0 35px;
+    /*text-transform: uppercase;*/
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-align:left;
+}
+
+.infobg{
+    background:rgba(0,0,0,.5);
+}
+
+.questrial {
+    font-family: 'Questrial', sans-serif;
+}
+
+p {
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    line-height:1.25em;
+}
+
+
+hr{
+    width:100%;
+    opacity:.5;
+}
+
+a {
+    color: #FFF;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+a:hover,
+a:focus {
+    text-decoration: none;
+    color: #fdd400;
+}
+
+
+
+.clean {
+    padding-left:0;
+    padding-right:0;    
+    margin-left:0;
+    margin-right:0;
+}
+
+
+
+.navbar {
+    margin-bottom: 0;
+    border-bottom: 1px solid rgba(255,255,255,.3);
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    background:rgba(255,255,255,.3);
+    font-size: 1.5em;
+}
+
+.navbar-brand {
+    font-weight: 400;
+    height:100px;
+}
+
+.navbar-brand:focus {
+    outline: 0;
+}
+
+.navbar-custom a {
+    color: #fff;
+}
+
+.navbar-custom .nav li a {
+    -webkit-transition: background .3s ease-in-out;
+    -moz-transition: background .3s ease-in-out;
+    transition: background .3s ease-in-out;
+}
+
+.navbar-custom .nav li a:hover,
+.navbar-custom .nav li a:focus,
+.navbar-custom .nav li.active {
+    outline: 0;
+    background-color: rgba(255,255,255,.3);
+}
+
+.navbar-toggle {
+    padding: 4px 6px;
+    font-size: 22px;
+    color: #fff;
+}
+
+.navbar-toggle:focus,
+.navbar-toggle:active {
+    outline: 0;
+}
+.navbarm{
+    margin-top:2.5%;
+}
+
+.intro {
+    display: table;
+    width: 100%;
+    height: auto;
+    padding: 100px 0;
+    text-align: left;
+    color: #fff;
+    background: url(../img/intro-bg.jpg) no-repeat bottom center scroll;
+    background-color: #000;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.introadmin {
+    display: table;
+    width: 100%;
+    height: auto;
+    padding: 100px 0;
+    text-align: left;
+    color: #fff;
+    background: url(../img/intro-admin-bg.jpg) no-repeat top center scroll;
+    background-color: #000;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.features {
+    display: table;
+    width: 100%;
+    height: auto;
+    padding: 100px 0;
+    text-align: left;
+    color: #fff;
+    background: url(../img/features-bg.jpg) no-repeat center center scroll;
+    background-color: #000;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+
+
+.custom {
+    background: url(../img/custom-bg.jpg) no-repeat center center scroll;
+    background-color: #000;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.pricing {
+    display: table;
+    width: 100%;
+    height: auto;
+    padding: 100px 0;
+    text-align: left;
+    color: #fff;
+    background: url(../img/pricing-bg.jpg) no-repeat top center scroll;
+    background-color: #000;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.about {
+    display: table;
+    width: 100%;
+    height: auto;
+    padding: 100px 0;
+    text-align: left;
+    color: #fff;
+    background: url(../img/about-bg.jpg) no-repeat center center scroll;
+    background-color: #000;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.clients {
+    background: url(../img/clients-bg.jpg) no-repeat center center scroll;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.contact {
+    display: table;
+    width: 100%;
+    height: auto;
+    padding: 0;
+    text-align: left;
+    color: #fff;
+    background: url(../img/contact-bg.jpg) no-repeat center center scroll;
+    background-color: #000;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.intro-body {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.brand-heading {
+    font-size: 115px;
+    font-weight: 400;
+    text-align: center;
+    letter-spacing:-5px;
+}
+
+
+.brand-detail {
+    font-size: 36px;
+    font-weight: 100;
+    text-align: center;
+    letter-spacing: -2px;
+    margin-top:-35px;
+}
+
+
+.section-heading{
+
+    line-height:.5em;
+
+}
+
+.section-heading-depth{
+    line-height:.5em;
+}
+
+.abouts{
+
+    line-height:1.35em;
+}
+
+.section-heading-clients{
+   line-height:2.65em;
+}
+
+.contact-section-heading{
+    line-height:.9em;
+}
+
+.featuresetf{
+    padding:20pt 0pt 10pt 0pt;
+    margin-bottom:10pt;
+    font-size:.715em;
+    margin-top:5.25%;
+}
+
+.form-control{
+    border:none;
+}
+
+
+@media(max-width:374px) {
+    
+    .navbar {
+        margin-bottom: 0;
+        border-bottom: 1px solid rgba(255,255,255,.3);
+        text-transform: uppercase;
+        font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+        background:url(../img/navbg.png) repeat top;
+        font-size: 1.5em;
+    }
+    .navbar-collapse{
+        background:#000;
+
+    }
+
+    .navbar-brand {
+        font-weight: 400;
+        height:80px;
+        margin-top:-10px;
+    }
+
+    .navbar-brand:focus {
+        outline: 0;
+    }
+
+    .navbar-custom a {
+        color: #fff;
+    }
+
+    .navbar-custom .nav li a {
+        -webkit-transition: background .3s ease-in-out;
+        -moz-transition: background .3s ease-in-out;
+        transition: background .3s ease-in-out;
+    }
+
+    .navbar-custom .nav li a:hover,
+    .navbar-custom .nav li a:focus,
+    .navbar-custom .nav li.active {
+        outline: 0;
+        background-color: rgba(255,255,255,.3);
+    }
+
+    .navbar-toggle {
+        padding: 14px 6px 0px 6px;
+        font-size: 22px;
+        color: #fff;
+    }
+
+    .navbar-toggle:focus,
+    .navbar-toggle:active {
+        outline: 0;
+    }
+    .navbarm{
+    margin-top:2%;
+    }
+
+
+
+
+
+    .section-heading{
+        font-size: 3.8em;
+        text-align: center;
+        padding-top:6%;
+        letter-spacing:-1px;
+        line-height:.5em;
+
+    }
+    .section-heading-depth{
+        font-size: 2.5em;
+        color:#fdd400;
+        padding-top:6%;
+        letter-spacing:-1px;
+        line-height:.75em;
+    }
+    .section-detail {
+        font-size:17px;
+        text-align: center;
+        margin-top:-40px;
+        padding:10px;
+    }
+
+
+
+
+
+    /* -- NAVBAR -- */
+    /* -- INTRO max-width:439px -- */
+    .brand-heading {
+        font-size: 2.95em;
+        line-height: 1.5em;
+        letter-spacing:-3.5px;
+        margin-top:20%;
+    }
+
+    .brand-detail {
+        font-size: 1.5em;
+        font-weight: 400;
+        line-height:1.5em;
+        text-align: center;
+        letter-spacing: -.5px;
+        margin-top:-35px;
+    }
+
+    .intro {
+        display: table;
+        width: 100%;
+        height: 100%;
+        padding: 100px 0;
+        text-align: left;
+        color: #fff;
+        background: url(../img/intro-bg.jpg) no-repeat bottom center scroll;
+        background-color: #000;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+    }
+
+    .introadmin {
+        display: table;
+        width: 100%;
+        height: 100%;
+        padding: 100px 0;
+        text-align: left;
+        color: #fff;
+        background: url(../img/intro-admin-bg.jpg) no-repeat top center scroll;
+        background-color: #000;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+    }
+
+    /* -- BUTTON max-width:439px -- */
+
+    .btn-custom-d {
+
+        font-size: .9em;
+        margin: 2% auto;
+        padding: 2.7%;
+        width: 85%;
+        margin-top:-2em;
+    }
+
+    .btn-custom-a {
+        font-size: .9em;
+        margin: 2% auto;
+        padding: 2.7%;
+        width: 85%;
+        margin-top:-2em;
+    }
+
+
+
+    /* -- FEATURES max-width:439px -- */
+
+    .features {
+        display: table;
+        width: 100%;
+        height: auto;
+        padding: 100px 0;
+        text-align: left;
+        color: #fff;
+        background: url(../img/features-bg-mobile.jpg) no-repeat bottom center scroll;
+        background-color: #000;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+    }
+
+    .info-heading{
+        font-size:1.18em;
+        padding-top:20px;
+
+    }
+
+
+    .featureset{
+        font-size:.75em;
+    }
+
+    .featuresetf{
+        font-size:1.75em;
+        padding:40px 20px;
+        margin:0;
+
+    }
+
+    .icon {
+        margin:7% auto;
+        width:33%;
+        
+    }
+
+    .infobg{
+        border-bottom: 1px solid rgba(255,255,255,.35);
+    }
+
+
+
+    /* -- CUSTOMIZE max-width:439px -- */
+
+    .c-section-heading-mobile{
+        font-size:1.25em;
+        font-weight:400;
+        text-align: center; 
+
+
+    }
+
+    .c-section-heading{
+        font-size: 35px;
+        text-align: center;
+    }
+
+    .c-section-heading-depth{
+        font-family: Montserrat;
+        font-size: 95pt;
+        text-align: center;
+        color: #84e4f1;
+        line-height: .9em;
+        font-weight: 700;
+        letter-spacing: -15px;
+        margin-top: -35pt;
+        margin-bottom: -5pt;
+    }
+    .c-a{
+        font-family:montserrat;
+        font-size: 2.5em;
+        color:#84e4f1;
+        line-height: 1.25em;
+        text-align: center;
+    }
+    .c-b{
+        font-family:montserrat;
+        font-size: 2.5em;
+        color:#84e4f1;
+        line-height: 1.25em;
+        text-align: center;
+    }
+
+    .c-1{
+        font-family:montserrat;
+        font-size: 2em;
+        text-align: center;
+
+    }
+
+    .appp{
+        margin:1em 10% 1.5em 10%;
+        text-align: center;
+        font-size:1.25em;
+    }
+    /* -- PRICING max-width:439px -- */
+
+
+    .clean-xs{
+        padding-left:0;
+        padding-right:0;    
+        margin-left:0;
+        margin-right:0;
+    }
+
+
+
+    .pricinglogo{ 
+float:left; margin-right:.25em; margin-top:-.125em; height:23px; vertical-align:middle;
+
+    }
+
+
+    .pricingframe {
+        border-top:15px solid #fff; 
+        padding:20pt 5%; 
+        background: maprgba(34,41,50,.6);
+        height:75%;
+        font-size:13pt;
+    }
+    
+    .pricinglt{
+        margin-bottom:-0.25em;
+    }
+    .pricingfs{
+        padding-top: 0;
+        color: #fdd400;
+        margin-left: -0.15em;
+
+    }
+
+
+    .pricing-section-heading{
+
+        font-size:3.125em;
+        text-align: left;
+        padding-left:5%; 
+    }
+
+    .pricingta{border:none; border-radius: 0; width:100%; resize:none; font-size: .75em
+
+    }
+
+
+
+    /* -- ABOUT max-width:439px -- */
+
+    .about {
+        display: table;
+        width: 100%;
+        height: auto;
+        padding: 100px 0;
+        text-align: left;
+        color: #fff;
+        background: url(../img/about-bg.jpg) no-repeat center center scroll;
+        background-color: #000;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+    }
+    
+    .about{
+        padding:0;
+    }
+
+    .about-xs{
+        background: rgba(0,0,0,.5);
+
+
+        padding: 8% 20pt;
+
+    }
+
+    .section-heading-about{
+        font-size: 3.085em;
+
+
+    }
+
+    .section-heading-about2{
+        font-size: 2em;
+        text-align: left;
+        margin-bottom:0;
+    }
+    .abouts{
+        text-align:left; 
+        padding-top:0; 
+        font-size:2.05em;
+        line-height:1.35em;
+    }
+    .aboutframe{
+        padding-left:0;
+        padding-right:0;
+        margin-left:0;
+        margin-right:0;
+        font-weight: 400;
+        font-size:.9em;
+    }
+
+    .socialicon{
+        float:left;
+        width:25%;
+        padding: 10px 5px 5px 0;
+        margin: 5px 0px;
+        margin-bottom: 50px;
+    }
+
+    /* -- CLIENTS max-width:439px -- */
+
+
+    
+    .section-heading-clients{
+        font-size:2.125em;
+        line-height:1.95em;
+
+    }
+    
+    .img-clients{
+        margin:auto;
+
+    }
+
+    .univ{
+        font-family:questrial;
+        font-size: 3.125em;
+        text-align: center;
+        margin-bottom:0;
+
+
+    }
+    .c-univ{
+        font-family:montserrat;
+        font-size: 3.5em;
+        text-align: center;
+        font-weight:bold;
+        color:#84e4f1;
+        letter-spacing: -3px;
+    }
+
+    /* -- CONTACT max-width:439px -- */
+
+    .contact-section-heading{
+        font-size: 1.594em;
+        text-align: center;
+        letter-spacing:-1px;
+        line-height:.8em;
+    }
+
+    .contact-section-heading-depth{
+        font-size: 1.125em;
+        text-align: center;
+        margin-bottom:5px;
+
+
+    }
+
+
+    .contacticon{
+        height:1em;
+    }
+
+
+    .contactp{
+        font-size:1em;
+        text-align: center;
+    }
+
+    .formcontact{
+        font-size:1em; 
+        height:3.25em; 
+        float:left;
+        width:46%;
+        text-align:center; 
+        border-radius:0;
+        margin-left:1%;
+        margin-right:1%;
+    }
+
+    .formframe{
+        margin:1% auto; 
+        width:94.25%; 
+        height:50px;
+
+    }
+
+    .formbutton{
+
+        height:2.5em; 
+        padding-top:2.2%; 
+
+        
+    }
+
+
+    .formbuttont{
+        text-align:center; 
+        font-weight:400; 
+        font-size:1.25em; 
+
+    }
+
+    .formstudent{
+        padding:1%;
+        padding-top:3.5%;
+        margin: 1% 0; 
+        width:49.5%; 
+        margin-right:.25%;
+        height:3em;
+    }
+
+    .formadmin{
+        padding:1%;
+        padding-top:3.5%;
+        margin: 1% 0; 
+        width:49.5%;
+        height:3em;
+    }
+
+
+
+    /* -- FOOTER max-width:439px -- */
+
+
+    .footerp{
+        padding:0px 20px;
+    }
+
+    .footert,h3{
+        font-size:1.5em;
+        text-align: center;
+        padding-top:0;
+
+
+    }
+    .footersym{
+        font-size:1.5em;
+
+    }
+    
+    .footerbrand{
+        height:4.75em;
+        padding-top:.15em;
+        margin:auto;
+        vertical-align: center;
+    }
+
+
+
+
+
+
+}
+
+
+/* ----------- XS ----------- */
+
+@media(min-width:375px) {
+    .navbar {
+        margin-bottom: 0;
+        border-bottom: 1px solid rgba(255,255,255,.3);
+        text-transform: uppercase;
+        font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+        background:url(../img/navbg.png) repeat top;
+        font-size: 1.5em;
+    }
+
+
+    .navbar-collapse{
+        background:#000;
+
+    }
+
+    .navbar-brand {
+        font-weight: 400;
+        height:80px;
+        margin-top:-10px;
+    }
+
+
+    .navbar-brand:focus {
+        outline: 0;
+    }
+
+    .navbar-custom a {
+        color: #fff;
+    }
+
+    .navbar-custom .nav li a {
+        -webkit-transition: background .3s ease-in-out;
+        -moz-transition: background .3s ease-in-out;
+        transition: background .3s ease-in-out;
+    }
+
+    .navbar-custom .nav li a:hover,
+    .navbar-custom .nav li a:focus,
+    .navbar-custom .nav li.active {
+        outline: 0;
+        background-color: rgba(255,255,255,.3);
+    }
+
+    .navbar-toggle {
+        padding: 14px 6px 0px 6px;
+        font-size: 22px;
+        color: #fff;
+    }
+
+    .navbar-toggle:focus,
+    .navbar-toggle:active {
+        outline: 0;
+    }
+    .navbarm{
+    margin-top:2%;
+    }
+
+
+
+    .section-heading{
+        font-size: 35px;
+        text-align: center;
+        padding-top:2%;
+        letter-spacing:-1px;
+
+    }
+    .section-heading-depth{
+        font-size: 35px;
+        color:#fdd400;
+        padding-top:6%;
+        line-height:.75em;
+    }
+    .section-detail {
+        font-size:18px;
+        text-align: center;
+        margin-top:-40px;
+        padding:10px;
+    }
+
+    .c-section-heading{
+        font-size: 35px;
+        text-align: center;
+    }
+
+    .c-section-heading-depth{
+        font-family:montserrat;
+        font-size: 100pt;
+        text-align: center;
+        color:#84e4f1;
+        font-weight:700;
+        letter-spacing: -15px;
+        margin-top:-35pt;
+        margin-bottom:-5pt;
+    }
+
+    .appp{
+        margin:1em 10% 1.5em 10%;
+        text-align: center;
+        font-size: 1.25em;
+    }
+    /* -- NAVBAR min-width:440px -- */
+    /* -- INTRO min-width:440px -- */
+    .brand-heading {
+        font-size: 3.75em;
+        line-height: .85em;
+        letter-spacing:-3.5px;
+        margin-top:0;
+    }
+    .brand-detail {
+        font-size: .9em;
+        font-weight: 400;
+        line-height:1.5em;
+        text-align: center;
+        letter-spacing: -.5px;
+        margin-top:-35px;
+    }
+    .intro {
+        display: table;
+        width: 100%;
+        height: 100%;
+        padding: 100px 0;
+        text-align: left;
+        color: #fff;
+        background: url(../img/intro-bg.jpg) no-repeat bottom center scroll;
+        background-color: #000;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+    }
+
+    .introadmin {
+        display: table;
+        width: 100%;
+        height: 100%;
+        padding: 100px 0;
+        text-align: left;
+        color: #fff;
+        background: url(../img/intro-admin-bg.jpg) no-repeat top center scroll;
+        background-color: #000;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+    }
+
+
+
+
+    /* -- FEATURES min-width:440px -- */
+
+        .features {
+        display: table;
+        width: 100%;
+        height: auto;
+        padding: 100px 0;
+        text-align: left;
+        color: #fff;
+        background: url(../img/features-bg-mobile2.jpg) no-repeat bottom center scroll;
+        background-color: #000;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+    }
+
+    .info-heading{
+        font-size:1.18em;
+        padding-top:20px;
+
+    }
+
+
+    .featureset{
+        font-size:.75em;
+    }
+
+    .featuresetf{
+        font-size:1.75em;
+        padding:40px 20px;
+        margin:0;
+
+    }
+
+    .icon {
+        margin:7% auto;
+        width:25%;
+        
+    }
+
+    .infobg{
+        border-bottom: 1px solid rgba(255,255,255,.35);
+    }
+
+
+
+
+    /* -- CUSTOMIZE min-width:440px -- */
+
+
+    .c-section-heading-mobile{
+        font-size:1.25em;
+        font-weight:400;
+        text-align: center; 
+    }
+
+
+    /* -- PRICING min-width:440px -- */
+    .clean-xs{
+        padding-left:0;
+        padding-right:0;    
+        margin-left:0;
+        margin-right:0;
+    }
+
+    .c-a{
+        font-family:montserrat;
+        font-size: 2.5em;
+        color:#84e4f1;
+        line-height: 1.25em;
+        text-align: center;
+    }
+    .c-b{
+        font-family:montserrat;
+        font-size: 2.5em;
+        color:#84e4f1;
+        line-height: 1.25em;
+        text-align: center;
+    }
+
+
+
+    .c-1{
+        font-family:montserrat;
+        font-size: 2em;
+        text-align: center;
+
+    }
+    
+
+    .pricinglogo{ 
+float:left; margin-right:.25em; margin-top:-.125em; height:23px; vertical-align:middle;
+
+    }
+
+
+
+    .pricingframe {
+        border-top:15px solid #fff; 
+        padding:20pt 5%; 
+        background: rgba(34,41,50,.6);
+        height:75%;
+        font-size:13pt;
+    }
+    
+    .pricinglt{
+        margin-bottom:-0.2em;
+    }
+    .pricingfs{
+        padding-top: 0;
+        color: #fdd400;
+        margin-left: -0.15em;
+
+    }
+    
+
+
+
+
+    .pricing-section-heading{
+
+        font-size:3.125em;
+        text-align: center;
+                padding-left:5%;
+    }
+
+
+
+    .pricing {
+        display: table;
+        border-top: 1px solid rgba(255,255,255,.3);
+        width: 100%;
+        height: 75%;
+        padding: 0;
+        text-align: left;
+        color: #fff;
+        background: url(../img/pricing-bg.jpg) no-repeat top center scroll;
+        background-color: #000;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+
+    }
+    .pricingta{border:none; border-radius: 0; width:100%; resize:none; height:100px; font-size:.75em
+
+    }
+
+    /* -- ABOUT min-width:440px -- */
+
+    
+    .about{
+        padding:0;
+    }
+
+    .section-heading-about{
+        font-size: 2.5em;
+
+    }
+
+    .section-heading-about2{
+        font-size: 2em;
+        text-align: left;
+        margin-bottom:0;
+
+    }
+    .abouts{
+        text-align:left; 
+        padding-top:0; 
+        font-size:2.05em;
+    }
+
+    .about-xs{
+        background: rgba(0,0,0,.5);
+
+
+        padding: 2% 20pt;
+
+    }
+    .aboutframe{
+        padding-left:0;
+        padding-right:0;
+        margin-left:0;
+        margin-right:0;
+        font-weight: 400;
+        font-size:.9em;
+    }
+
+    .socialicon{
+        float: left;
+        width: 25%;
+        padding: 10px 2em 50px 0;
+        margin: 5px 0px;
+        margin-bottom: 50px;
+    }
+
+    /* -- CLIENTS min-width:440px -- */
+
+    .univ{
+        font-family:questrial;
+        font-size: 3.125em;
+        text-align: center;
+        margin-bottom:0;
+
+
+    }
+    .c-univ{
+        font-family:montserrat;
+        font-size: 3.5em;
+        text-align: center;
+        font-weight:bold;
+        color:#84e4f1;
+        letter-spacing: -3px;
+    }
+
+    .section-heading-client1{
+        text-align:center;
+        padding-top:.5em;
+        letter-spacing:-2px;
+    }
+
+    .section-heading-clients{
+        font-size:1.85em;
+        line-height:.75em;
+
+    }
+        .img-clients{
+        margin:auto;
+
+    }
+
+
+    /* -- CONTACT min-width:440px -- */
+
+    .contact-section-heading{
+        font-size: 225%;
+        text-align: center;
+        letter-spacing: -2px;
+
+    }
+
+    .contact-section-heading-depth{
+        font-size: 150%;
+        text-align: center;
+        margin-bottom:5px;
+
+    }
+    .formcontact{
+        font-size:1.5em; 
+        height:2.1em; 
+        float:left;
+        width:46%;
+        text-align:center; 
+        border-radius:0;
+        margin-left:1%;
+        margin-right:1%
+        ;
+    }
+
+    .formframe{
+        margin:1% auto; 
+        width:94.25%; 
+        height:50px;
+
+    }
+
+    .formbutton{
+
+        height:2.5em; 
+        padding-top:2.2%; 
+
+        
+    }
+
+
+    .formbuttont{
+        text-align:center; 
+        font-weight:400; 
+        font-size:1.25em; 
+
+    }
+    .formstudent{
+
+        margin: 1% 0; 
+        width:49.5%; 
+        margin-right:.25%;
+        height:3em;
+    }
+
+    .formadmin{
+
+        margin: 1% 0; 
+        width:49.5%;
+        height:3em;
+    }
+
+    .contacticon{
+        height:1em;
+    }
+
+
+    .contactp{
+        font-size:1.25em;
+        text-align: center;
+    }
+
+    /* -- BUTTON min-width:440px -- */
+
+        .btn-custom-d {
+        margin-right:.125em;
+        font-size:.95em;
+        padding:3.5%;
+        width:85%;
+        margin-top:-2em;
+    }
+
+    .btn-custom-a {
+        margin-right:.125em;
+        font-size:.95em;
+        padding:3.5%;
+        width:85%;
+        margin-top:-2em;
+    }
+
+    /* -- FOOTER min-width:440px -- */
+
+
+/*    .footerp{
+        padding:10px;
+        padding-bottom:0;
+    }
+
+    .footert,h3{
+        font-size:8pt;
+        text-align: right;
+                text-align:center;
+
+    }
+    .footersym{
+        font-size:1.5em;
+
+    }
+    
+    .footerbrand{
+        height:60px;
+        padding-left: auto;
+        padding-right:auto;
+        vertical-align: center;
+
+    }*/
+
+    .footerp{
+        padding:0px 20px;
+    }
+
+    .footert,h3{
+        font-size:1em;
+        text-align: center;
+        padding-top:0;
+
+
+    }
+    .footersym{
+        font-size:1.5em;
+
+    }
+    
+    .footerbrand{
+        height:4.75em;
+        padding-top:.15em;
+        margin:auto;
+        vertical-align: center;
+    }
+
+
+
+
+}
+
+@media(min-width:440px) {
+        .btn-custom-d {
+        margin-right:.125em;
+        font-size:.95em;
+        padding:2.5%;
+        width:55%;
+        margin-top:-2em;
+    }
+
+    .btn-custom-a {
+        margin-right:.125em;
+        font-size:.95em;
+        padding:2.5%;
+        width:55%;
+        margin-top:-2em;
+    }
+
+}
+
+/* ----------- SM ----------- */
+
+@media(min-width:736px) {
+    .navbar {
+    margin-bottom: 0;
+    border-bottom: 1px solid rgba(255,255,255,.3);
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    background:url(../img/navbg.png) repeat top;   
+    font-size: .8em;
+    margin-bottom:-12px;
+    }
+
+    .navbar-brand {
+        font-weight: 400;
+        height:80px;
+        margin-top:-10px;
+            margin-right:-.9em;
+
+    }
+
+    .navbar-collapse{
+        background:none;
+    }
+    .navbar-brand:focus {
+        outline: 0;
+    }
+
+    .navbar-custom a {
+        color: #fff;
+    }
+
+    .navbar-custom .nav li a {
+        -webkit-transition: background .3s ease-in-out;
+        -moz-transition: background .3s ease-in-out;
+        transition: background .3s ease-in-out;
+    }
+
+    .navbar-custom .nav li a:hover,
+    .navbar-custom .nav li a:focus,
+    .navbar-custom .nav li.active {
+        outline: 0;
+        background-color: rgba(255,255,255,.3);
+    }
+
+    .navbar-toggle {
+        padding: 4px 6px;
+        font-size: 22px;
+        color: #fff;
+    }
+
+    .navbar-toggle:focus,
+    .navbar-toggle:active {
+        outline: 0;
+    }
+    
+    .navbarm{
+        margin-top:2%;
+    }
+
+
+    .intro {
+        height: 100%;
+        padding: 0;
+    }
+
+
+    .brand-heading {
+        font-size: 5.125em;
+        line-height: .85em;
+
+    }
+
+    .brand-detail {
+        font-size: 1.33em;
+        font-weight: 400;
+        text-align: center;
+        letter-spacing: -1px;
+        margin-top:-35px;
+    }
+
+    .section-heading{
+        font-size: 45px;
+        text-align: center;
+        padding-top:6%;
+        letter-spacing:-2px;
+
+    }
+    .section-heading-depth{
+        font-size: 3.5em;
+
+        color:#fdd400;
+        padding-top:6%;
+    }
+
+    .section-detail {
+        font-size:30px;
+        text-align: center;
+        margin-top:-40px;
+        padding:10px;
+    }
+
+    .c-section-heading{
+        font-size: 45px;
+        text-align: center;
+    }
+
+
+
+
+    .info-heading{
+        font-size:1.125em;
+        padding-top:20px;
+
+    }
+
+
+    .content-section {
+        padding-top: 0;
+
+    }
+
+
+
+    .intro {
+        display: table;
+        width: 100%;
+        height: 100%;
+        padding: 100px 0;
+        text-align: left;
+        color: #fff;
+        background: url(../img/intro-bg.jpg) no-repeat bottom center scroll;
+        background-color: #000;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+    }
+
+        .introadmin {
+        display: table;
+        width: 100%;
+        height: 100%;
+        padding: 100px 0;
+        text-align: left;
+        color: #fff;
+        background: url(../img/intro-admin-bg.jpg) no-repeat top center scroll;
+        background-color: #000;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        -o-background-size: cover;
+    }
+
+    /* -- FEATURES min-width:737px -- */
+    .info-heading{
+        font-size:1.18em;
+        padding-top:20px;
+
+    }
+
+
+    .featureset{
+        font-size:.75em;
+        height:20px;
+    }
+
+    .featuresetf{
+        font-size:1.5em;
+        padding:40px 15px;
+        margin:0;
+        height:100px
+
+    }
+
+    .icon {
+        margin:7% auto;
+        width:25%;
+        
+    }
+
+    .infobg{
+        border-bottom: none;
+    }
+    .features {
+    display: table;
+    width: 100%;
+    height: auto;
+    padding: 100px 0;
+    text-align: left;
+    color: #fff;
+    background: url(../img/features-bg.jpg) no-repeat center center scroll;
+    background-color: #000;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+
+    .btn-custom-d {
+        margin-right:.125em;
+        font-size:1em;
+        padding:2%;
+        width:55%;
+        margin-top:-.9em;
+    }
+
+    .btn-custom-a {
+        margin-right:.125em;
+        font-size:1em;
+        padding:2%;
+        width:55%;
+        margin-top:-.9em;
+    }
+
+    /* -- CUSTOM min-width:737px -- */
+    .appp{
+        margin:1.5em auto auto 10px;
+    }
+
+    .appp{
+        margin-left:10px;
+        margin-right:auto;
+        font-size:1em;
+        text-align: center;
+    }
+    .customs{
+        font-size:39px;
+
+    }
+
+    .c-section-heading-depth{
+        font-family:montserrat;
+        font-size: 110pt;
+        text-align: center;
+        color:#84e4f1;
+        font-weight:700;
+        letter-spacing: -15px;
+        margin-top:-47pt;
+        margin-bottom:-15pt;
+    }
+
+    /* -- Pricing min-width:737px -- */
+
+    .clean-xs{
+   
+        margin-left:41.66666667%;
+        margin-right:0;
+    }
+
+
+
+    .pricinglogo{ 
+    float:left; margin-right:.25em; margin-top:-.125em; height:26px; vertical-align:middle;
+
+    }
+
+
+    .c-a{
+        font-family:montserrat;
+        font-size: 3.5em;
+        color:#84e4f1;
+        line-height: 1.25em;
+        text-align: left;
+    }
+    .c-b{
+        font-family:montserrat;
+        font-size: 3.5em;
+        color:#84e4f1;
+        line-height: 1.25em;
+        text-align: left;
+    }
+
+
+
+    .c-1{
+        font-family:montserrat;
+        font-size: 2.5em;
+        text-align: left;
+
+    }
+
+
+    .pricingframe {
+        border-top:15px solid #fff; 
+        padding:20pt 5%; 
+        background: rgba(34,41,50,.6);
+        height:75%;
+        font-size:15pt;
+    }
+    
+    .pricinglt{
+        margin-bottom:-0.29em;
+    }
+    .pricingfs{
+        padding-top: 0;
+        color: #fdd400;
+        margin-left: -0.15em;
+
+    }
+    .pricingta{border:none; border-radius: 0; width:100%; resize:none; height:100px;
+
+    }    
+
+    .pricing-section-heading{    
+
+        padding-top:10%;
+        padding-left:5%;
+    }
+
+    /* -- ABOUT min-width:737px -- */
+    .about-xs{
+        background: rgba(0,0,0,.5);
+        padding:5%;
+    }
+    
+    .section-heading-about{
+        font-size: 2.5em;
+        letter-spacing:-2px;
+    }
+
+    .section-heading-about2{
+        font-size: 2em;
+        text-align: left;
+                margin-bottom:0;
+
+    }
+
+    .abouts{
+        text-align:left; 
+        padding-top:0; 
+        font-size:1.75em
+    }
+
+    .about-xs{
+        background: rgba(0,0,0,.5);
+
+
+        padding: 2% 20pt;
+
+    }
+
+    .aboutframe{
+        padding-left:0;
+        padding-right:0;
+        margin-left:0;
+        margin-right:0;
+        font-weight: 400;
+        font-size:1em;
+    }
+
+    .socialicon{
+        float:left;
+        width:25%;
+        padding:10px 20px 20px 0;
+    }
+
+    /* -- CLIENTS min-width:737px -- */
+
+
+    .section-heading-client1{
+        text-align:center;
+        padding-top:.5em;
+        letter-spacing:-2px;
+    }
+
+    .section-heading-clients{
+        font-size:2.5em;
+        line-height:.75em;
+        margin-bottom:.5em;
+    }
+
+    .univ{
+        font-family:questrial;
+        font-size: 2.75em;
+        text-align: left;
+        margin-bottom:0;
+
+
+    }
+
+        .img-clients{
+        padding:11% 0 25% 40%
+
+    }
+
+    .c-univ{
+        font-family:montserrat;
+        font-size: 2.725em;
+        text-align: left;
+        font-weight:bold;
+        color:#84e4f1;
+        letter-spacing: -3px;
+    }
+
+
+    /* -- CONTACT min-width:737px -- */
+
+    .contact-section-heading{
+        font-size: 1.8em;
+        text-align: center;
+        letter-spacing:-2px;
+
+    }
+
+    .contact-section-heading-depth{
+        font-size: 1.125em;
+        text-align: center;
+        line-height:1.5em;
+
+    }
+
+
+    .formframe{
+        margin:1% auto; 
+        width:100%; 
+        height:50px;
+
+    }
+
+    .formbutton{
+
+        height:2.5em; 
+        padding-top:2.2%; 
+
+        
+    }
+
+
+    .formbuttont{
+        text-align:center; 
+        font-weight:400; 
+        font-size:1.5em; 
+
+    }
+
+    .formcontact{
+        font-size:1.5em; 
+        height:2.1em; 
+        text-align:center; 
+        border-radius:0;
+    }
+
+
+
+    .formstudent{
+        padding:2%;
+        padding-top:3%;
+        margin: 1% 0; 
+        width:49.5%; 
+        margin-right:.25%;
+        height:3em;
+    }
+
+    .formadmin{
+        padding:2%;
+        padding-top:3%;
+        margin: 1% 0; 
+        width:49.5%;
+        height:3em;
+    }
+
+    /* -- FOOTER min-width:737px -- */
+
+    .footerp{
+        padding:28px;
+        padding-bottom:0;
+    }
+
+    .footert,h3{
+        font-size:8pt;
+        text-align: right;
+
+    }
+    .footersym{
+        font-size:1.5em;
+
+    }
+    
+    .footerbrand{
+        font-weight: 400;
+        height:70px;
+
+    }
+
+}
+
+
+/* ----------- MD ----------- */
+
+@media(min-width:1024px) {
+    .navbar {
+    margin-bottom: 0;
+    border-bottom: 1px solid rgba(255,255,255,.3);
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    background:url(../img/navbg.png) repeat top;   
+    font-size: 1em;
+    margin-bottom:-12px;
+    margin-right:-6px;
+    }
+
+    .navbar-brand {
+        font-weight: 400;
+        height:80px;
+        margin-top:-10px;
+
+    }
+
+    .navbar-collapse{
+        background:none;
+    }
+    .navbar-brand:focus {
+        outline: 0;
+    }
+
+    .navbar-custom a {
+        color: #fff;
+    }
+
+    .navbar-custom .nav li a {
+        -webkit-transition: background .3s ease-in-out;
+        -moz-transition: background .3s ease-in-out;
+        transition: background .3s ease-in-out;
+    }
+
+    .navbar-custom .nav li a:hover,
+    .navbar-custom .nav li a:focus,
+    .navbar-custom .nav li.active {
+        outline: 0;
+        background-color: rgba(255,255,255,.3);
+    }
+
+    .navbar-toggle {
+        padding: 4px 6px;
+        font-size: 22px;
+        color: #fff;
+    }
+
+    .navbar-toggle:focus,
+    .navbar-toggle:active {
+        outline: 0;
+    }
+    
+    .navbarm{
+        margin-top:2%;
+    }
+
+    .intro {
+        height: 100%;
+        padding: 0;
+    }
+
+
+
+
+    .info-heading{
+        font-size:18px;
+        padding-top:20px;
+        
+
+    }
+
+    .brand-heading {
+        font-size: 6em;
+        line-height: .85em;
+    }
+
+    .brand-detail {
+        font-size: 1.5em;
+        font-weight: 100;
+        text-align: center;
+        letter-spacing: -1px;
+        margin-top:-40px;
+    }
+
+    .section-heading{
+        font-size: 48.75px;
+        text-align: center;
+
+    }
+    .section-heading-depth{
+        font-size: 45px;
+
+        color:#fdd400;
+    }
+    .section-detail {
+        font-size:30px;
+        text-align: center;
+        margin-top:-40px;
+        padding:10px;
+    }
+
+
+
+    .content-section {
+        padding-top: 0;
+    }
+
+
+
+    /* -- NAVBAR min-width:1024px -- */
+    /* -- INTRO min-width:1024px -- */
+
+
+    /* -- FEATURES min-width:1024px -- */
+
+    .featureset{
+        padding:0;
+
+    }
+    .featureset{
+        font-size:1.6em;
+    }
+    .featuresetf{
+        font-size:.85em;
+        padding:40px 20px;
+        margin:0;
+
+    }
+
+    /* -- CUSTOMIZE min-width:1024px -- */
+    .appp{
+        margin:0.5em 10% .5em 10%;
+    }
+
+    .appp{
+        margin-left:20px;
+        margin-right:20px;
+        font-size:1.6em;
+        line-height: normal;
+        text-align: center;
+
+
+    }
+    .customs{
+        font-size:46px;
+    }
+
+
+    .c-section-heading-depth{
+        font-family:montserrat;
+        font-size: 134pt;
+        text-align: center;
+        line-height:.85em;
+        color:#84e4f1;
+        font-weight:700;
+        letter-spacing: -15px;
+        margin-top:-35pt;
+        margin-bottom:-5pt;
+    }
+    .c-a{
+        font-family:montserrat;
+        font-size: 4.5em;
+        color:#84e4f1;
+        line-height:.75em;
+    }
+    .c-b{
+        font-family:montserrat;
+        font-size: 4.5em;
+        color:#84e4f1;
+
+    }
+
+
+    .c-1{
+        font-family:montserrat;
+        font-size: 1.75em;
+        
+
+    }
+
+
+    /* -- PRICING min-width:1024px -- */
+    
+
+
+
+    .pricinglogo{ 
+float:left; margin-right:.25em; margin-top:-.125em; height:40px; vertical-align:middle;
+
+    }
+
+
+
+    .pricingframe {
+        border-top:15px solid #fff; 
+        padding:20pt 5%; 
+        background: rgba(34,41,50,.6);
+        height:75%;
+        font-size:21pt;
+    }
+    
+    .pricinglt{
+        margin-bottom:-0.25em;
+    }
+    .pricingfs{
+        padding-top: 0;
+        color: #fdd400;
+        margin-left: -3.9em;
+
+    }
+    .pricingta {border:none; border-radius: 0; width:100%; resize:none; height:100px;
+
+    }
+
+    .pricing-section-heading{ 
+        text-align:left;
+        padding-top:10%;
+        padding-left:5%;
+    }
+
+    /* -- ABOUT min-width:1024px -- */
+    .abouts{
+        text-align:left; 
+        padding-top:0; 
+        font-size:2.9em;
+    }
+    .aboutframe{
+        padding-left:0;
+        padding-right:0;
+        margin-left:0;
+        margin-right:0;
+        font-weight: 400;
+        font-size:1.4em;
+    }
+
+    .socialicon{
+        float:left;
+        width:25%;
+        padding:20px 40px 20px 0;
+    }
+
+
+    /* -- CLIENTS min-width:1024px -- */
+    .univ{
+        font-family:questrial;
+        font-size: 3.125em;
+        text-align: left;
+        margin-bottom:0;
+
+
+    }
+    .c-univ{
+        font-family:montserrat;
+        font-size: 3.5em;
+        text-align: left;
+        font-weight:bold;
+        color:#84e4f1;
+        letter-spacing: -3px;
+    }
+
+    .section-heading-clients{
+        font-size:2.5em;
+    }
+
+
+    /* -- CONTACT min-width:1024px -- */
+
+    .contact-section-heading{
+        font-size: 2.3125em;
+        text-align: center;
+
+    }
+
+    .contact-section-heading-depth{
+        font-size: 1.5em;
+        text-align: center;
+
+    }
+
+
+    .formstudent{
+        padding:2%;
+        padding-top:2%;
+        margin: 1% 0; 
+        width:49.5%; 
+        margin-right:.25%;
+        height:3em;
+    }
+
+    .formadmin{
+        padding:2%;
+        padding-top:2%;
+        margin: 1% 0; 
+        width:49.5%;
+        height:3em;
+    }
+
+    /* -- BUTTON min-width:1024px -- */
+
+    .btn-custom-d {
+        margin-right:.125em;
+        font-size:1.4em;
+        padding:1.5%;
+        width:55%;
+        margin-top:-.9em;
+    }
+
+    .btn-custom-a {
+        margin-right:.125em;
+        font-size:1.4em;
+        padding:1.5%;
+        width:55%;
+        margin-top:-.9em;
+    }
+
+}
+
+/* ----------- LG ----------- */
+
+
+@media(min-width:1280px) {
+
+    .navbar {
+    margin-bottom: 0;
+    border-bottom: 1px solid rgba(255,255,255,.3);
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    background:url(../img/navbg.png) repeat top;
+    font-size: 1.5em;
+    }
+
+    .navbar-brand {
+        font-weight: 400;
+        height:6em;
+        margin-bottom:4px 
+    }
+
+    .navbar-brand:focus {
+        outline: 0;
+    }
+
+    .navbar-collapse{
+        background:none;
+    }
+
+    .navbar-custom a {
+        color: #fff;
+    }
+
+    .navbar-custom .nav li a {
+        -webkit-transition: background .3s ease-in-out;
+        -moz-transition: background .3s ease-in-out;
+        transition: background .3s ease-in-out;
+    }
+
+    .navbar-custom .nav li a:hover,
+    .navbar-custom .nav li a:focus,
+    .navbar-custom .nav li.active {
+        outline: 0;
+        background-color: rgba(255,255,255,.3);
+    }
+
+    .navbar-toggle {
+        padding: 4px 6px;
+        font-size: 22px;
+        color: #fff;
+    }
+
+    .navbar-toggle:focus,
+    .navbar-toggle:active {
+        outline: 0;
+    }
+    .brand-heading {
+        font-size: 8.125em;
+        letter-spacing:-7px;
+    }
+
+    .brand-detail {
+        font-size: 2.125em;
+        font-weight: 100;
+        text-align: center;
+        letter-spacing: -2px;
+        margin-top:-35px;
+        
+    }
+
+    .section-heading{
+        font-size: 65px;
+        text-align: center;
+        padding-top:6%;
+
+    }
+    .section-heading-depth{
+        font-size: 65px;
+        color:#fdd400;
+        padding-top:6%;
+    }
+    .section-detail {
+        font-size:40px;
+        text-align: center;
+        margin-top:-40px;
+        padding:10px;
+    }
+
+    .info-heading{
+        font-size:26px;
+        
+
+    }
+
+
+
+
+    .content-section {
+        padding-top: 0;
+    }
+
+    /* -- NAVBAR min-width:1280px -- */
+    /* -- INTRO min-width:1280px -- */
+
+
+    /* -- FEATURES min-width:1280px -- */
+    /* -- CUSTOMIZE min-width:1280px -- */
+
+    .appp{
+        margin:1.5em 30px 1em 30px;
+    }
+
+    .appp{
+
+        font-size:2em;
+        line-height:1.125em;
+        text-align: center;
+
+    }
+    .customs{
+        font-size:69px;
+
+    }
+
+    .c-section-heading-depth{
+        font-family:montserrat;
+        font-size: 16em;
+        text-align: center;
+        color:#84e4f1;
+        font-weight:700;
+        letter-spacing: -15px;
+        margin-top:-35pt;
+        margin-bottom:-5pt;
+    }
+    .c-a{
+        font-family:montserrat;
+        font-size: 6.5em;
+        color:#84e4f1;
+        line-height:1em;
+    }
+    .c-b{
+        font-family:montserrat;
+        font-size: 6.5em;
+        color:#84e4f1;
+
+    }
+
+
+
+    .c-1{
+        font-family:montserrat;
+        font-size: 4.5em;
+        
+
+    }
+    
+    
+    /* -- PRICING min-width:1280px -- */
+
+
+
+    .pricinglogo{ 
+float:left; margin-right:.25em; margin-top:-.125em; height:56px; vertical-align:middle;
+
+    }
+
+
+    .pricingframe {
+        border-top:15px solid #fff; 
+        padding:20pt 5%; 
+        background: rgba(34,41,50,.6);
+        height:75%;
+        font-size:29pt;
+    }
+    
+    .pricinglt{
+        margin-bottom:-0.25em;
+    }
+    .pricingfs{
+        padding-top: 0;
+        color: #fdd400;
+        margin-left: -3.9em;
+
+    }
+    .pricing-section-heading{    
+        text-align:left;
+        padding-top:10%;
+        padding-left:5%;
+    }
+
+    .pricingta{border:none; border-radius: 0; width:100%; resize:none; font-size: .65em
+
+    }
+    /* -- ABOUT min-width:1280px -- */
+    .about-section{
+        height:auto;
+    }
+
+    .about-xs{
+        background: rgba(0,0,0,.5);
+
+
+        padding: 2% 20pt;
+
+    }
+
+    .abouts{
+        text-align:left; 
+        padding-top:0; 
+        font-size:2.9em;
+    }
+    .aboutframe{
+        padding-left:0;
+        padding-right:0;
+        margin-left:0;
+        margin-right:0;
+        font-weight: 400;
+
+    }
+
+    .socialicon{
+        float:left;
+        width:16%;
+        padding:.2em .1em 50px 0;
+        margin-right:3em;
+    }
+    /* -- CLIENTS min-width:1280px -- */
+
+    .univ{
+        font-family:questrial;
+        font-size: 3.125em;
+        text-align: left;
+        margin-bottom:0;
+
+
+    }
+    .c-univ{
+        font-family:montserrat;
+        font-size: 3.5em;
+        text-align: left;
+        font-weight:bold;
+        color:#84e4f1;
+        letter-spacing: -3px;
+    }
+
+    .img-clients{
+        padding:11% 0 25% 40%
+
+    }
+
+        .section-heading-clients{
+        font-size:2.6em;
+    }
+
+
+    /* -- CONTACT min-width:1280px -- */
+
+    .contact-section-heading{
+        font-size: 2.9em;
+        text-align: center;
+
+    }
+
+    .contact-section-heading-depth{
+        font-size: 2em;
+        text-align: center;
+
+    }
+    /* -- BUTTON min-width:1280px -- */
+
+    .btn-custom-d {
+        margin-right:.125em;
+        font-size:1.8em;
+        padding:1.4%;
+        width:55%;
+        margin-top:-.9em;
+    }
+
+    .btn-custom-a {
+        margin-right:.125em;
+        font-size:1.8em;
+        padding:1.4%;
+        width:55%;
+        margin-top:-.9em;
+    }
+
+}
+
+
+
+.btn-circle {
+    width: 70px;
+    height: 70px;
+    margin-top: 15px;
+    padding: 7px 16px;
+    border: 2px solid #fff;
+    border-radius: 100%;
+    font-size: 40px;
+    color: #fff;
+    background: 0 0;
+    -webkit-transition: background .3s ease-in-out;
+    -moz-transition: background .3s ease-in-out;
+    transition: background .3s ease-in-out;
+}
+
+.btn-circle:hover,
+.btn-circle:focus {
+    outline: 0;
+    color: #fff;
+    background: rgba(255,255,255,.1);
+}
+
+.page-scroll .btn-circle i.animated {
+    -webkit-transition-property: -webkit-transform;
+    -webkit-transition-duration: 1s;
+    -moz-transition-property: -moz-transform;
+    -moz-transition-duration: 1s;
+}
+
+.page-scroll .btn-circle:hover i.animated {
+    -webkit-animation-name: pulse;
+    -moz-animation-name: pulse;
+    -webkit-animation-duration: 1.5s;
+    -moz-animation-duration: 1.5s;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-timing-function: linear;
+}
+
+@-webkit-keyframes pulse {    
+    0 {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+
+    50% {
+        -webkit-transform: scale(1.2);
+        transform: scale(1.2);
+    }
+
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+@-moz-keyframes pulse {    
+    0 {
+        -moz-transform: scale(1);
+        transform: scale(1);
+    }
+
+    50% {
+        -moz-transform: scale(1.2);
+        transform: scale(1.2);
+    }
+
+    100% {
+        -moz-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+.content-section {
+
+}
+
+@media(min-width:1460px){
+
+
+    .navbar-collapse{
+        background:none;
+    }
+
+}
+
+
+
+@media(min-width:738px) {
+ 
+}
+
+
+
+.btn {
+    text-transform: uppercase;
+    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 400;
+    border-radius:0;
+    border:none;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+}
+
+.btn-default {
+    
+    color: #fff;
+    background-color: #5abbcb;
+
+}
+
+
+
+.btn-default:hover,
+.btn-default:focus {
+    color: #000;
+    background-color: #28c3ab;
+}
+
+.btn-huge {
+    padding: 25px;
+    font-size: 26px;
+}
+
+.banner-social-buttons {
+    margin-top: 0;
+}
+
+@media(max-width:1199px) {
+    ul.banner-social-buttons {
+        margin-top: 15px;
+    }
+
+}
+
+@media(max-width:736px) {
+    ul.banner-social-buttons>li {
+        display: block;
+        margin-bottom: 20px;
+        padding: 0;
+    }
+
+    ul.banner-social-buttons>li:last-child {
+        margin-bottom: 0;
+    }
+}
+
+::-moz-selection {
+    text-shadow: none;
+    background: #fcfcfc;
+    background: rgba(255,255,255,.2);
+}
+
+::selection {
+    text-shadow: none;
+    background: #fcfcfc;
+    background: rgba(255,255,255,.2);
+}
+
+img::selection {
+    background: 0 0;
+}
+
+img::-moz-selection {
+    background: 0 0;
+}
+
+body {
+    webkit-tap-highlight-color: rgba(255,255,255,.2);
+}
+
+.btn-admin{
+    color:#fff;
+    background-color:#d83b34;
+    border-color:none;
+    }
+
+.btn-admin:hover,.btn-admin:focus,.btn-admin:active,.btn-admin.active,.open .dropdown-toggle.btn-admin{
+        color:#fff;
+        background-color:#3276b1;
+        border-color:#285e8e
+    }
+
+.btn-admin:active,.btn-admin.active,.open .dropdown-toggle.btn-admin{
+    background-image:none
+    }
+
+
+.btn-admin.disabled,.btn-admin[disabled],fieldset[disabled] .btn-admin,.btn-admin.disabled:hover,.btn-admin[disabled]:hover,fieldset[disabled] .btn-admin:hover,.btn-admin.disabled:focus,.btn-admin[disabled]:focus,fieldset[disabled] .btn-admin:focus,.btn-admin.disabled:active,.btn-admin[disabled]:active,fieldset[disabled] .btn-admin:active,.btn-admin.disabled.active,.btn-admin[disabled].active,fieldset[disabled] .btn-admin.active{
+        background-color:#d83b34;
+        border-color:none
+    }
+
+.btn-admin .badge{
+        color:#428bca;
+        background-color:#fff
+    }
+
+.btn-admin{
+    color:#fff;
+    background-color:#d83b34;
+    border-color:none;
+    }
+
+.btn-admin:hover,.btn-admin:focus,.btn-admin:active,.btn-admin.active,.open .dropdown-toggle.btn-admin{
+        color:#fff;
+        background-color:#3276b1;
+        border-color:#285e8e
+    }
+
+.btn-admin:active,.btn-admin.active,.open .dropdown-toggle.btn-admin{
+    background-image:none
+    }
+
+
+.btn-admin.disabled,.btn-admin[disabled],fieldset[disabled] .btn-admin,.btn-admin.disabled:hover,.btn-admin[disabled]:hover,fieldset[disabled] .btn-admin:hover,.btn-admin.disabled:focus,.btn-admin[disabled]:focus,fieldset[disabled] .btn-admin:focus,.btn-admin.disabled:active,.btn-admin[disabled]:active,fieldset[disabled] .btn-admin:active,.btn-admin.disabled.active,.btn-admin[disabled].active,fieldset[disabled] .btn-admin.active{
+        background-color:#d83b34;
+        border-color:none
+    }
+
+.btn-admin .badge{
+        color:#428bca;
+        background-color:#fff
+    }
+
+.btn-contact {
+    
+    color: #696969;
+    background-color: #dbdbdb;
+}
+
+
+.btn-contact:hover,.btn-contact:focus,.btn-contact:active,.btn-contact.active,.open .dropdown-toggle.btn-contact{
+        color:#fff;
+        background-color:#3276b1;
+        border-color:#285e8e
+    }
+
+.btn-contact:active,.btn-contact.active,.open .dropdown-toggle.btn-contact{
+    background-image:none
+    }
+
+
+.btn-contact.disabled,.btn-contact[disabled],fieldset[disabled] .btn-contact,.btn-contact.disabled:hover,.btn-contact[disabled]:contact,fieldset[disabled] .btn-contact:hover,.btn-contact.disabled:focus,.btn-contact[disabled]:focus,fieldset[disabled] .btn-contact:focus,.btn-contact.disabled:active,.btn-contact[disabled]:active,fieldset[disabled] .btn-contact:active,.btn-contact.disabled.active,.btn-contact[disabled].active,fieldset[disabled] .btn-contact.active{
+        background-color:#d83b34;
+        border-color:none
+    }
+
+.btn-contact .badge{
+        color:#428bca;
+        background-color:#fff
+    }
+
+.btn-name{
+    color:#fff;
+    background-color:#5abbcb;
+    border-color:none;
+    }
+
+.btn-name:hover,.btn-name:focus,.btn-name:active,.btn-name.active,.open .dropdown-toggle.btn-name{
+        color:#fff;
+        background-color:#3276b1;
+        border-color:#285e8e
+    }
+
+.btn-name:active,.btn-name.active,.open .dropdown-toggle.btn-name{
+    background-image:none
+    }
+
+
+.btn-name.disabled,.btn-name[disabled],fieldset[disabled] .btn-name,.btn-name.disabled:hover,.btn-name[disabled]:hover,fieldset[disabled] .btn-name:hover,.btn-name.disabled:focus,.btn-name[disabled]:focus,fieldset[disabled] .btn-name:focus,.btn-name.disabled:active,.btn-name[disabled]:active,fieldset[disabled] .btn-name:active,.btn-name.disabled.active,.btn-name[disabled].active,fieldset[disabled] .btn-name.active{
+        background-color:#d83b34;
+        border-color:none
+    }
+
+.btn-name .badge{
+        color:#5abbcb;
+        background-color:#fff
+    }
+
+.btn-name{
+    color:#fff;
+    background-color:#5abbcb;
+    border-color:none;
+    }
+
+.btn-name:hover,.btn-name:focus,.btn-name:active,.btn-name.active,.open .dropdown-toggle.btn-name{
+        color:#fff;
+        background-color:#3276b1;
+        border-color:#285e8e
+    }
+
+.btn-name:active,.btn-name.active,.open .dropdown-toggle.btn-name{
+    background-image:none
+    }
+
+
+.btn-name.disabled,.btn-name[disabled],fieldset[disabled] .btn-name,.btn-name.disabled:hover,.btn-name[disabled]:hover,fieldset[disabled] .btn-name:hover,.btn-name.disabled:focus,.btn-name[disabled]:focus,fieldset[disabled] .btn-name:focus,.btn-name.disabled:active,.btn-name[disabled]:active,fieldset[disabled] .btn-name:active,.btn-name.disabled.active,.btn-name[disabled].active,fieldset[disabled] .btn-name.active{
+        background-color:#d83b34;
+        border-color:none
+    }
+
+.btn-name .badge{
+        color:#5abbcb;
+        background-color:#fff
+    }
+

@@ -1,0 +1,16 @@
+<a id="{{ slotId }}" data-class-id="{{ classId }}" data-slot-id="{{ slotId }}"
+            class="container listing-item {% if myReservation %}listing-item-reserved{% endif %}">
+    <div class="col-xs-3 formcol-height formcol-1ab">
+        <span class="formcol-1a">{{ className }}</span><br/>
+        <span class="formcol-1b">{{ spotsRemaining }} Spots</span>
+    </div>
+    <div class="listing-item-room-gym col-xs-6 formcol-height formcol-2ab">
+        <span class="formcol-2a">{{ roomName }}</span><br/>
+        <span class="formcol-2b">{{ gymName }}</span>
+    </div>
+    <div class="col-xs-3 formcol-height">
+        <div class="listing-item-time-range">
+            <span class="formcol-3">{{ timeRange }}</span>
+        </div>
+    </div>
+</a>

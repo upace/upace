@@ -1,0 +1,830 @@
+body {
+    background: url('../images/landing-bg.png') no-repeat 50% 50% #000;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.land {
+    display: table;
+    width: 100%;
+    height: 45%;
+    text-align: left;
+    color: #fff;
+    margin: 4.5em 0 2.5em;
+    line-height: 1.8em;
+}
+
+.land-data {
+    border: 1.3em rgba(255, 255, 255, 0.8) solid;
+    border-radius: 50%;
+    display: none;
+    margin: auto;
+}
+
+.land-data-g {
+    background-color: rgb(0, 225, 30);
+    background-color: rgba(0, 225, 30, 0.7);
+}
+
+.land-data-y {
+    background-color: rgb(220, 198, 0);
+    background-color: rgba(220, 198, 0, 0.7);
+}
+
+.land-data-r {
+    background-color: rgb(242, 62, 46);
+    background-color: rgba(242, 62, 46, 0.7);
+}
+
+.land-data-key-g,
+.occupancy-key-circle-g,
+.closeg {
+    background-color: rgb(0, 225, 30);
+}
+
+.land-data-key-y,
+.occupancy-key-circle-y,
+.midy {
+    background-color: rgb(220, 198, 0);
+}
+
+.land-data-key-r,
+.occupancy-key-circle-r,
+.farr {
+    background-color: rgb(242, 62, 46);
+}
+
+.land-current {
+    background: none;
+    height: auto;
+    padding: 0.9em 0;
+    border-bottom: 1px solid rgba(255, 255, 255, .3);
+    border-top: 1px solid rgba(255, 255, 255, .3);
+}
+
+.land-ondeck {
+    background: none;
+    border-bottom: 1px solid rgba(255, 255, 255, .3);
+}
+
+.ondeckdeck {
+    color: #dcc600;
+}
+
+.gymname {
+    font-weight: bold;
+    line-height: 1;
+    margin-top: 0.5em;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.land-other-gyms {
+    text-align: center;
+}
+
+.land-other-average {
+    font-weight: bold;
+}
+
+.land-other > h2 {
+    display: table;
+    width: 100%;
+    height: 30%;
+    text-align: center;
+    padding: 0;
+    margin: 0.8em 0;
+}
+
+.closeg,
+.midy,
+.farr {
+    height: 3.5em;
+}
+
+.occupancy-key-toggle {
+    text-align: center;
+    background: rgb(33,33,33);
+    background: rgba(255,255,255,0.2);
+    border-radius: 2em;
+    float: right;
+    margin: 0.9em 0 0;
+    padding: 0;
+    width: 7.3em;
+}
+
+.occupancy-key-circle {
+    border: 0.15em solid white;
+    border-radius: 50%;
+    display: inline-block;
+    height: 1.8em;
+    margin: 0.4em 0;
+    width: 1.8em;
+}
+
+@media (max-width:480px) {
+
+    .occupancy-key-toggle {
+        width: 5.3em;
+    }
+
+    .occupancy-key-circle {
+        height: 1.3em;
+        width: 1.3em;
+    }
+
+    .land {
+        height: 30%;
+        line-height: 1.2em;
+    }
+
+    .land-brand {
+        display: table;
+        width: 100%;
+        height: 10%;
+        color: #fff;
+    }
+
+    .land-other-name {
+        margin-top: 5px;
+    }
+
+    .land-room-label {
+        font-size: .5em;
+    }
+
+    .land-body {
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    .land-data {
+        height: 20em;
+        width: 20em;
+    }
+
+    .land-data-key {
+        margin: auto;
+        margin-top: 10em;
+        margin-bottom: -8em;
+        height: 15em;
+        width: 15em;
+        border-radius: 50%;
+        border: .5em rgba(255, 255, 255, 1) solid;
+    }
+
+    .land-data-average {
+        font-size: 6.5em;
+        font-family: montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-weight: 700;
+        line-height: 2.15em;
+        letter-spacing: -.08em;
+    }
+
+    .land-data-members, .land-data-occupancy, .land-data-gym {
+        font-size: 1.125em;
+    }
+
+    .land-data-members {
+        margin-top: -70px;
+    }
+
+    .land-data-occupancy {
+        margin-top: -17px;
+    }
+
+    .land-data-gym {
+        margin-top: -17px;
+    }
+
+    .land-data-key-figure {
+        font-size: 3em;
+        font-family: montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-weight: 700;
+        line-height: 4.8em;
+    }
+
+    .gymname {
+        font-size: .75em;
+        letter-spacing: -0.1em;
+    }
+
+    .brand-heading {
+        font-size: 115px;
+        font-weight: 400;
+        text-align: center;
+        letter-spacing: -5px;
+    }
+
+    .brand-detail {
+        font-size: 36px;
+        font-weight: 100;
+        text-align: center;
+        letter-spacing: -2px;
+        margin-top: -35px;
+    }
+
+    .land-other-gyms {
+        height: 10em;
+        padding: 1.5px;
+    }
+
+    .land-other-average {
+        font-size: 1.3em;
+        line-height: 2.7em;
+        letter-spacing: -0.1em;
+    }
+
+    .land-other > h2 {
+        font-size: 1.2em;
+    }
+
+    .land-other-name {
+        margin-top: 5px;
+        font-size: .5em;
+    }
+
+    .land-ondeck {
+        height: 89px;
+    }
+
+    .ondeck, .ondecksequence {
+        text-align: center;
+        padding: 1em 0;
+    }
+
+    .ondeck {
+        line-height: 0.9;
+    }
+
+    .ondecksequence {
+        line-height: .8
+    }
+
+    .ondeckon {
+        font-size: 2.5em;
+    }
+
+    .ondeckdeck {
+        font-size: 1.45em;
+    }
+
+    .ondecktime {
+        font-size: 1.5em;
+    }
+
+    .ondeckdate {
+        font-size: .35em;
+    }
+
+    .ondeckgear {
+        font-size: 6pt;
+    }
+
+    .ondeckroom {
+        font-size: 6pt;
+    }
+}
+
+@media (min-width:481px) {
+
+    .land {
+        line-height: 1.4em;
+    }
+
+    .land-brand {
+        display: table;
+        width: 100%;
+        color: #fff;
+    }
+
+    .brand-heading {
+        font-size: 115px;
+        font-weight: 400;
+        text-align: center;
+        letter-spacing: -5px;
+    }
+
+    .brand-detail {
+        font-size: 36px;
+        font-weight: 100;
+        text-align: center;
+        letter-spacing: -2px;
+        margin-top: -35px;
+    }
+
+    .land-current {
+        padding-top: 40px;
+        padding-bottom: 20px;
+        margin-top: 10px;
+    }
+
+    .land-body {
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    .land-data {
+        height: 25em;
+        width: 25em;
+    }
+
+    .land-data-average {
+        font-size: 8.5em;
+        font-family: montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-weight: 700;
+        line-height: 2.15em;
+        letter-spacing: -.08em;
+    }
+
+    .land-data-members, .land-data-occupancy, .land-data-gym {
+        font-size: 1.5em;
+    }
+
+    .land-data-members {
+        margin-top: -90px;
+    }
+
+    .land-data-occupancy {
+        margin-top: -20px;
+    }
+
+    .land-data-gym {
+        margin-top: -20px;
+    }
+
+    .land-data-key {
+        margin: auto;
+        margin-top: 6em;
+        margin-bottom: -4em;
+        height: 15em;
+        width: 15em;
+        border-radius: 50%;
+        border: .5em rgba(255, 255, 255, 1) solid;
+    }
+
+    .land-data-key-figure {
+        font-size: 3em;
+        font-family: montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-weight: 700;
+        line-height: 4.5em;
+    }
+
+    .gymname {
+        font-size: 1.45em;
+    }
+
+    .land-ondeck {
+        height: 112px;
+    }
+
+    .ondeck, .ondecksequence {
+        text-align: center;
+        padding: 1em 0;
+    }
+
+    .ondeck {
+        line-height: .91
+    }
+
+    .ondeckon {
+        font-size: 3.5em;
+    }
+
+    .ondeckdeck {
+        font-size: 2em;
+    }
+
+    .ondecktime {
+        font-size: 2em;
+    }
+
+    .ondeckdate {
+        font-size: .9em;
+    }
+
+    .ondeckgear {
+        font-size: .85em;
+    }
+
+    .ondeckroom {
+        font-size: 1em;
+    }
+
+    .land-other > h2 {
+        font-size: 1.6em;
+    }
+
+    .land-other-gyms {
+        height: 10em;
+        padding: 1.5px;
+    }
+
+    .land-other-average {
+        line-height: 2.25em;
+        font-size: 1.5em;
+    }
+
+    .land-other-name {
+        margin-top: 5px;
+        font-size: .75em;
+    }
+}
+
+@media (min-width:768px) {
+
+    .land {
+        line-height: 1.6em;
+    }
+
+    .land-brand {
+        display: table;
+        width: 100%;
+        color: #fff;
+    }
+
+    .brand-heading {
+        font-size: 115px;
+        font-weight: 400;
+        text-align: center;
+        letter-spacing: -5px;
+    }
+
+    .brand-detail {
+        font-size: 36px;
+        font-weight: 100;
+        text-align: center;
+        letter-spacing: -2px;
+        margin-top: -35px;
+    }
+
+    .land-current {
+        margin-top: 10px;
+        padding-top: 40px;
+        padding-bottom: 20px;
+    }
+
+    .land-body {
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    .land-data {
+        height: 30em;
+        width: 30em;
+    }
+
+    .land-data-average {
+        font-size: 10.5em;
+        font-family: montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-weight: 700;
+        line-height: 2.15em;
+        letter-spacing: -.08em;
+    }
+
+    .land-data-members, .land-data-occupancy, .land-data-gym {
+        font-size: 1.75em;
+    }
+
+    .land-data-members {
+        margin-top: -110px;
+    }
+
+    .land-data-occupancy {
+        margin-top: -20px;
+    }
+
+    .land-data-gym {
+        margin-top: -20px;
+
+    }
+
+    .land-data-key {
+        margin: auto;
+        height: 15em;
+        width: 15em;
+        border-radius: 50%;
+        border: 1em rgba(255, 255, 255, 1) solid;
+    }
+
+    .land-data-figure {
+        font-size: 7.5em;
+        font-family: montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-weight: 700;
+        line-height: 1.8em;
+    }
+
+    .gymname {
+        font-size: 1.95em;
+    }
+
+    .land-ondeck {
+        height: 159px;
+    }
+
+    .ondeck, .ondecksequence {
+        text-align: center;
+        padding: 1em 0;
+    }
+
+    .ondeck {
+        line-height: .81
+    }
+
+    .ondeckon {
+        font-size: 6.5em;
+    }
+
+    .ondeckdeck {
+        font-size: 3.375em;
+    }
+
+    .ondecktime {
+        font-size: 3.5em;
+    }
+
+    .ondeckdate {
+        font-size: 1.6em;
+    }
+
+    .ondeckgear {
+        font-size: 1.35em;
+    }
+
+    .ondeckroom {
+        font-size: 1.5em;
+    }
+
+    .land-other > h2 {
+        font-size: 2.3em;
+    }
+
+    .land-other-gyms {
+        height: 10em;
+        padding: 1.5px;
+
+    }
+
+    .land-other-average {
+        line-height: 2.25em;
+        font-size: 1.5em;
+    }
+}
+
+@media (min-width:992px) {
+
+    .land {
+        line-height: 1.8em;
+    }
+
+    .land-brand {
+        display: table;
+        width: 100%;
+        color: #fff;
+    }
+
+    .brand-heading {
+        font-size: 115px;
+        font-weight: 400;
+        text-align: center;
+        letter-spacing: -5px;
+    }
+
+    .brand-detail {
+        font-size: 36px;
+        font-weight: 100;
+        text-align: center;
+        letter-spacing: -2px;
+        margin-top: -35px;
+    }
+
+    .land-current {
+        padding-top: 40px;
+        padding-bottom: 20px;
+        margin-top: 10px;
+    }
+
+    .land-body {
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    .land-data {
+        height: 35em;
+        width: 35em;
+    }
+
+    .land-data-average {
+        font-size: 12.5em;
+        font-family: montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-weight: 700;
+        line-height: 2.15em;
+        letter-spacing: -.08em;
+    }
+
+    .land-data-members, .land-data-occupancy, .land-data-gym {
+        font-size: 2.25em;
+    }
+
+    .land-data-members {
+        margin-top: -140px;
+
+    }
+
+    .land-data-occupancy {
+        margin-top: -20px;
+
+    }
+
+    .land-data-gym {
+        margin-top: -20px;
+
+    }
+
+    .land-data-key {
+        margin: auto;
+        height: 15em;
+        width: 15em;
+        border-radius: 50%;
+        border: 1em rgba(255, 255, 255, 1) solid;
+    }
+
+    .gymname {
+        font-size: 1.95em;
+    }
+
+    .land-ondeck {
+        height: 159px;
+    }
+
+    .ondeck, .ondecksequence {
+        text-align: center;
+        padding: 1em 0;
+    }
+
+    .ondeckon {
+        font-size: 6.5em;
+    }
+
+    .ondeckdeck {
+        font-size: 3.375em;
+    }
+
+    .ondecktime {
+        font-size: 3.5em;
+    }
+
+    .ondeckdate {
+        font-size: 1.6em;
+    }
+
+    .ondeckgear {
+        font-size: 1.35em;
+    }
+
+    .ondeckroom {
+        font-size: 1.5em;
+    }
+
+    .land-other > h2 {
+        font-size: 2.8em;
+    }
+
+    .land-other-gyms {
+        height: 10em;
+        padding: 1.5px;
+
+    }
+
+    .land-other-average {
+        line-height: 2.25em;
+        font-size: 1.5em;
+    }
+}
+
+@media (min-width:1200px) {
+
+    .land-current {
+        padding-top: 40px;
+        padding-bottom: 20px;
+        margin-top: 10px;
+    }
+
+    .land-body {
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    .land-data {
+        height: 35em;
+        width: 35em;
+    }
+
+    .land-data-average {
+        font-size: 12.5em;
+        font-family: montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-weight: 700;
+        line-height: 2.15em;
+        letter-spacing: -.08em;
+    }
+
+    .land-data-members, .land-data-occupancy, .land-data-gym {
+        font-size: 2.25em;
+    }
+
+    .land-data-members {
+        margin-top: -140px;
+    }
+
+    .land-data-occupancy {
+        margin-top: -22px;
+    }
+
+    .land-data-gym {
+        margin-top: -21px;
+    }
+
+    .land-data-key {
+        margin: auto;
+        height: 15em;
+        width: 15em;
+        border-radius: 50%;
+        border: 1em rgba(255, 255, 255, 1) solid;
+    }
+
+    .gymname {
+        font-size: 1.95em;
+    }
+
+    .land-brand {
+        display: table;
+        width: 100%;
+        color: #fff;
+    }
+
+    .brand-heading {
+        font-size: 115px;
+        font-weight: 400;
+        text-align: center;
+        letter-spacing: -5px;
+    }
+
+    .brand-detail {
+        font-size: 36px;
+        font-weight: 100;
+        text-align: center;
+        letter-spacing: -2px;
+        margin-top: -35px;
+    }
+
+    .land-ondeck {
+        height: 159px;
+    }
+
+    .ondeck, .ondecksequence {
+        text-align: center;
+        padding: 1em 0;
+    }
+
+    .ondeckon {
+        font-size: 6.5em;
+    }
+
+    .ondeckdeck {
+        font-size: 3.375em;
+    }
+
+    .ondecktime {
+        font-size: 3.5em;
+    }
+
+    .ondeckdate {
+        font-size: 1.6em;
+    }
+
+    .ondeckgear {
+        font-size: 1.35em;
+    }
+
+    .ondeckroom {
+        font-size: 1.5em;
+    }
+
+    .land-other > h2 {
+        font-size: 3em;
+    }
+
+    .land-other-gyms {
+        height: 10em;
+        padding: 1.5px;
+
+    }
+
+    .land-other-average {
+        line-height: 2.25em;
+        font-size: 1.5em;
+    }
+
+}

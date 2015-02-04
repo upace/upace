@@ -1,0 +1,299 @@
+body {
+    background-color: #000;
+    font: 12px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+    color: #9aa6af;
+    text-rendering: optimizelegibility;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-text-size-adjust: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-tap-highlight-color: rgba(0, 0, 0, 0);
+    -moz-text-size-adjust: none;
+    -moz-font-smoothing: antialiased;
+    -ms-tap-highlight-color: rgba(0, 0, 0, 0);
+    -ms-text-size-adjust: none;
+    -ms-font-smoothing: antialiased;
+}
+
+a {
+    text-decoration: none;
+}
+
+nav {
+    position: absolute;
+    top: 0;
+    right: 5px;
+}
+
+nav li {
+    float: left;
+
+    display: inline-block;
+}
+
+nav li a {
+    font-size: 11px;
+    color: #9aa6af;
+    padding: 24px 15px;
+
+    display: block;
+}
+
+nav li a:hover {
+    color: #000;
+}
+
+@media only screen and (min-width: 5px) {
+
+    .burger {
+        display: block;
+    }
+
+    /*  Nav Drawer Layout  */
+    nav {
+        position: relative;
+    }
+
+    nav ul {
+        height: 100%;
+        overflow-y: auto;
+    }
+
+    nav li {
+        display: block;
+        float: none;
+    }
+
+    nav li a {
+        padding: 22px 25px;
+        letter-spacing: 3px;
+        font-size: 14px;
+    }
+
+    nav li a.logo {
+        display: none;
+    }
+
+    nav li a.active {
+        color: #fff;
+        background-color: #299eb6;
+    }
+
+    nav li a:hover {
+        color: #fff;
+        background-color: rgba(0, 212, 255, .5);
+    }
+
+    nav li:first-child a.active,
+    nav li:first-child a:hover {
+        border-radius: 0 0 0 0;
+    }
+
+    .header-section {
+        margin-top: 60px;
+    }
+
+    /* NAVIGATION ANNIMATION */
+    nav {
+        width: 240px;
+        height: 100%;
+        position: fixed;
+        right: 0;
+        top: 0;
+        margin: 0;
+        background: url('../images/trunk-bg.jpg') bottom;
+        border-radius: 0;
+
+        /* starting point */
+        opacity: 1;
+        -webkit-transform: translate3d(100%, 0, 0) scale(1);
+        -moz-transform: translate3d(100%, 0, 0) scale(1);
+        transform: translate3d(100%, 0, 0) scale(1);
+    }
+
+    /*Nav Expanding Open Effect*/
+    nav.open-effect {
+        opacity: 1;
+
+        -webkit-transform: translate3d(0, 0, 0) scale(1);
+        -webkit-animation: slideIn .35s ease-in-out;
+
+        -moz-transform: translate3d(0, 0, 0) scale(1);
+        -moz-animation: slideIn .35s ease-in-out;
+
+        transform: translate3d(0, 0, 0) scale(1);
+        animation: slideIn .35s ease-in-out;
+    }
+
+    @-webkit-keyframes slideIn {
+        0% {
+            opacity: 1;
+            -webkit-transform: translate3d(100%, 0, 0) scale(1);
+        }
+        100% {
+            opacity: 1;
+            -webkit-transform: translate3d(0, 0, 0) scale(1);
+        }
+    }
+    @-moz-keyframes slideIn {
+        0% {
+            opacity: 1;
+            -moz-transform: translate3d(100%, 0, 0) scale(1);
+        }
+        100% {
+            opacity: 1;
+            -moz-transform: translate3d(0, 0, 0) scale(1);
+        }
+    }
+    @keyframes slideIn {
+        0% {
+            opacity: 1;
+            transform: translate3d(100%, 0, 0) scale(1);
+        }
+        100% {
+            opacity: 1;
+            transform: translate3d(0, 0, 0) scale(1);
+        }
+    }
+
+    /*Nav Shrinking Closed Effect*/
+    nav.close-effect {
+        opacity: 0;
+
+        -webkit-transform: translate3d(100%, 0, 0) scale(1);
+        -webkit-animation: slideOut .3s ease-in-out;
+
+        -moz-transform: translate3d(100%, 0, 0) scale(1);
+        -moz-animation: slideOut .3s ease-in-out;
+
+        transform: translate3d(100%, 0, 0) scale(1);
+        animation: slideOut .3s ease-in-out;
+    }
+
+    @-webkit-keyframes slideOut {
+        0% {
+            opacity: 1;
+            -webkit-transform: translate3d(0, 0, 0) scale(1);
+        }
+        100% {
+            opacity: 1;
+            -webkit-transform: translate3d(100%, 0, 0) scale(1);
+        }
+    }
+    @-moz-keyframes slideOut {
+        0% {
+            opacity: 1;
+            -moz-transform: translate3d(0, 0, 0) scale(1);
+        }
+        100% {
+            opacity: 1;
+            -moz-transform: translate3d(100%, 0, 0) scale(1);
+        }
+    }
+    @keyframes slideOut {
+        0% {
+            opacity: 1;
+            transform: translate3d(0, 0, 0) scale(1);
+        }
+        100% {
+            opacity: 1;
+            transform: translate3d(100%, 0, 0) scale(1);
+        }
+    }
+
+
+
+    /* CONTENT ANNIMATION */
+    .content {
+        /* starting point */
+        -webkit-transform: translate3d(0, 0, 0);
+        -moz-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        z-index: 1;
+    }
+
+    /*Content Sliding Open Effect*/
+    header.open-effect,
+    .content.open-effect {
+        -webkit-transform: translate3d(-240px, 0, 0);
+        -webkit-animation: open-effect .5s ease-in-out;
+
+        -moz-transform: translate3d(-240px, 0, 0);
+        -moz-animation: open-effect .5s ease-in-out;
+
+        transform: translate3d(-240px, 0, 0);
+        animation: open-effect .5s ease-in-out;
+    }
+
+    @-webkit-keyframes open-effect {
+        0% {
+            -webkit-transform: translate3d(0, 0, 0);
+        }
+        70% {
+            -webkit-transform: translate3d(-240px, 0, 0);
+        }
+        100% {
+            -webkit-transform: translate3d(-240px, 0, 0);
+        }
+    }
+    @-moz-keyframes open-effect {
+        0% {
+            -moz-transform: translate3d(0, 0, 0);
+        }
+        70% {
+            -moz-transform: translate3d(-240px, 0, 0);
+        }
+        100% {
+            -moz-transform: translate3d(-240px, 0, 0);
+        }
+    }
+    @keyframes open-effect {
+        0% {
+            transform: translate3d(0, 0, 0);
+        }
+        70% {
+            transform: translate3d(-240px, 0, 0);
+        }
+        100% {
+            transform: translate3d(-240px, 0, 0);
+        }
+    }
+
+    /*Content Sliding Closed Effect*/
+    header.close-effect,
+    .content.close-effect {
+        -webkit-transform: translate3d(0, 0, 0);
+        -webkit-animation: close-effect .3s ease-in-out;
+
+        -moz-transform: translate3d(0, 0, 0);
+        -moz-animation: close-effect .3s ease-in-out;
+
+        transform: translate3d(0, 0, 0);
+        animation: close-effect .3s ease-in-out;
+    }
+
+    @-webkit-keyframes close-effect {
+        0% {
+            -webkit-transform: translate3d(-240px, 0, 0);
+        }
+        100% {
+            -webkit-transform: translate3d(0, 0, 0);
+        }
+    }
+    @-moz-keyframes close-effect {
+        0% {
+            -moz-transform: translate3d(-240px, 0, 0);
+        }
+        100% {
+            -moz-transform: translate3d(0, 0, 0);
+        }
+    }
+    @keyframes close-effect {
+        0% {
+            transform: translate3d(-240px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+}
