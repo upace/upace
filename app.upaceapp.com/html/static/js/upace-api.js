@@ -89,27 +89,33 @@ if (!window.api) {
             user.set('sex', params.sex);
             user.set('username', params.username);
             user.set('password', params.password);
-            user.set('universityId', params.universityId);
-			user.set('universityGymId', params.gymId);
+			user.set('universityGymId', params.universityGymId);
             user.set('memberType', params.memberType);
             user.set('gymFrequency', params.gymFrequency);
             user.set('userType', 'user');
-
-            return user.signUp().then(
-                // TODO: this can be parallel
-                function (user) {
-                    return $.ajax({
-                        url : '/include/ajax.php',
-                        type : 'POST',
-                        data : {
-                            method : 'send_mail_verification',
-                            firstName : params.firstName,
-                            Email : params.email,
-                            userId : user.id
-                        }
-                    });
-                }
-            );
+			
+			return getGymById(params.universityGymId).then(
+				function(result) {
+					user.set('universityId', result.get('universityId'));
+					return user.signUp().then(
+						function (user) {
+							user.setACL(new Parse.ACL(user));
+							user.save();
+							// TODO: this can be parallel
+							return $.ajax({
+								url : '/include/ajax.php',
+								type : 'POST',
+								data : {
+									method : 'send_mail_verification',
+									firstName : params.firstName,
+									Email : params.email,
+									userId : user.id
+								}
+							});
+						}
+					);
+				}
+			);
         },
 
     // Registration found in site.js for Facebook users
@@ -133,6 +139,8 @@ if (!window.api) {
             // FINISH
             return user.signUp().then(
                 function (user) {
+					user.setACL(new Parse.ACL(user));
+					user.save();
                     if (!Parse.FacebookUtils.isLinked(user)) {
                         Parse.FacebookUtils.link(user, null, {
                             success : function (user) {
@@ -217,13 +225,6 @@ if (!window.api) {
             return Parse.User.current();
         },
 
-        getUserByName = api.getUserByName = function (username) {
-            var o = Parse.Object.extend('User');
-            var q = new Parse.Query(o);
-            q.equalTo('username', username);
-            return q.first();
-        },
-
         getProfileNotificationsByUser = api.getProfileNotificationsByUser = function (user) {
             if (!user)
                 user = getCurrentUser();
@@ -244,6 +245,19 @@ if (!window.api) {
         getUniversityById = api.getUniversityById = function (universityId) {
             return getRowById(universityId, 'university');
         },
+		
+		getGyms = api.getGyms = function () {
+            var o = Parse.Object.extend('university_gym');
+            var q = new Parse.Query(o);
+            q.equalTo('isActive', 1);
+            q.equalTo('isDelete', 0);
+            q.include('university');
+            return q.find();
+        },
+		
+		getGymById = api.getGymById = function (gymId) {
+			return getRowById(gymId, 'university_gym', ['university']);
+		},
 
         getGymsByUniversity = api.getGymsByUniversity = function (universityId) {
             var o = Parse.Object.extend('university_gym');
@@ -255,6 +269,15 @@ if (!window.api) {
             q.include('university');
             return q.find();
         },
+		
+		getRoomsByUniversity = api.getRoomsByUniversity = function (universityId) {
+		    var o = Parse.Object.extend('room');
+            var q = new Parse.Query(o);
+            q.equalTo('universityId', universityId);
+            q.include('university');
+            q.include('university_gym');
+            return q.find();
+		},
 
         getRoomsByGym = api.getRoomsByGym = function (gymId) {
             var o = Parse.Object.extend('room');
@@ -296,13 +319,21 @@ if (!window.api) {
             q.include('class.room');
             return q.find();
         },
+		
+		getClassSlotReservationCount = api.getClassSlotReservationCount = function (slotId) {
+		    var o = Parse.Object.extend('class_reservation');
+            var q = new Parse.Query(o);
+            q.equalTo('slotId', slotId);
+            q.equalTo('isActive', true);
+            return q.count();
+		},
 
         getClassReservationsByUniversityAndDate = api.getClassReservationsByUniversityAndDate = function (universityId, date) {
             var o = Parse.Object.extend('class_reservation');
             var q = new Parse.Query(o);
             var dbDate = dbFormattedDate(date);
             q.equalTo('universityId', universityId);
-            q.equalTo('date', dbDate);
+            q.equalTo('date', date);
             q.equalTo('isActive', 1);
             q.include('slot');
             q.include('gym');
@@ -317,8 +348,7 @@ if (!window.api) {
             var o = Parse.Object.extend('class_reservation');
             var q = new Parse.Query(o);
             if (date) {
-                var dbDate = dbFormattedDate(date);
-                q.equalTo('date', dbDate);
+                q.equalTo('date', dbFormattedDate(date));
             }
             q.equalTo('user', user);
             q.include('slot');
@@ -328,10 +358,13 @@ if (!window.api) {
             return q.find();
         },
 
-        getEquipmentByUniversity = api.getEquipmentByUniversity = function (universityId) {
+        getEquipmentByUniversity = api.getEquipmentByUniversity = function (universityId, dayIndex) {
             var o = Parse.Object.extend('slots');
             var q = new Parse.Query(o);
             q.equalTo('universityId', universityId);
+			if (typeof dayIndex === 'number') {
+				q.equalTo('dayIndex', dayIndex);
+			}
             q.include('gymId');
             q.include('equipId');
             q.include('roomId');
@@ -352,10 +385,8 @@ if (!window.api) {
         getEquipmentReservationsByUniversityAndDate = api.getEquipmentReservationsByUniversityAndDate = function (universityId, date) {
             var o = Parse.Object.extend('equipment_occupancy');
             var q = new Parse.Query(o);
-            // var dbDate = dbFormattedDate(date);
-            var dbDate = date;
             q.equalTo('universityId', universityId);
-            q.equalTo('reservationDate', dbDate);
+            q.equalTo('reservationDate', date);
             q.include('slotId');
             q.include('slotId.roomId');
             q.include('gymId');
@@ -369,14 +400,13 @@ if (!window.api) {
             var o = Parse.Object.extend('equipment_occupancy');
             var q = new Parse.Query(o);
             if (date) {
-                // var dbDate = dbFormattedDate(date);
-                var dbDate = date;
-                q.equalTo('date', dbDate);
+                q.equalTo('reservationDate', date);
             }
             q.equalTo('userId', user);
             q.include('slotId');
             q.include('slotId.roomId');
             q.include('gymId');
+            q.include('slotId.room');
             q.include('equipmentId');
             return q.find();
         },
@@ -412,14 +442,13 @@ if (!window.api) {
             user.set('sex', settings.sex);
             user.set('memberType', settings.memberType);
             user.set('gymFrequency', settings.gymFrequency);
-            user.set('universityId', settings.universityId);
             user.set('universityGymId', settings.universityGymId);
-            // TODO: are these necessary?
-            // user.set('username', user.get('username'));
-            // user.set('userType', user.get('userType'));
-            // user.set('memberType', user.get('memberType'));
-            // user.set('isActive', user.get('isActive'));
-            return user.save();
+			return getGymById(settings.universityGymId).then(
+				function(result) {
+					user.set('universityId', result.get('universityId'));
+					return user.save();
+				}
+			);
         },
 
         saveUserNotifications = api.saveUserNotifications = function (user, notifications) {
@@ -430,7 +459,11 @@ if (!window.api) {
             q.equalTo('user', user);
             return q.first().then(
                 function (result) {
-                    var o = Parse.Object('notifications');
+                    var o = result || Parse.Object('notifications'),
+						acl = new Parse.ACL();
+					acl.setReadAccess(user.id, true);
+					acl.setWriteAccess(user.id, true);
+					o.setACL(acl);
                     if (result) {
                         o.id = result.id;
                     }
@@ -457,24 +490,55 @@ if (!window.api) {
             if (!user)
                 user = getCurrentUser();
 
-            var resUniversity,
+            var promise = new Parse.Promise.as(),
+				resUniversity,
                 resGym,
-                resClass;
+                resClass,
+				resCount,
+				resSlot;
 
-            return getRowById(classId, 'classes').then(
+			promise = promise.then(
+				function() {
+					return getRowById(classId, 'classes');
+				}
+			);
+			
+            promise = promise.then(
                 function (clazz) {
                     resClass = clazz;
                     return getRowById(user.get('universityGymId'), 'university_gym', ['university']);
                 }
-            ).then(
+            );
+			
+			promise = promise.then(
                 function (gym) {
                     resGym = gym;
                     resUniversity = resGym.get('university');
+					return getClassSlotReservationCount(slotId);
+				}	
+			);
+			
+			promise = promise.then(
+				function (reservationCount) {
+					var totalSpots = parseInt(resClass.get('spots'));
+					resCount = reservationCount;
+					if (resCount >= totalSpots) {
+						// TODO: figure out how to reject this properly.
+						promise.reject('All class spots are reserved.');
+						return;
+					}
                     return getRowById(slotId, 'class_slot');
                 }
-            ).then(
+            );
+			
+			promise = promise.then(
                 function (slot) {
-                    var o = Parse.Object('class_reservation');
+					resSlot = slot;
+                    var o = Parse.Object('class_reservation'),
+						acl = new Parse.ACL();
+					acl.setPublicReadAccess(true);
+					acl.setWriteAccess(user.id, true);
+					o.setACL(acl);
                     o.set('university', resUniversity);
                     o.set('gym', resGym);
                     o.set('class', resClass);
@@ -492,43 +556,93 @@ if (!window.api) {
                     return o.save();
                 }
             );
+			
+			promise = promise.then(
+				function (reservation) {
+					if (reservation) {
+						resSlot.set('reserved_spots', resCount + 1);
+						resSlot.save();
+					}
+					return reservation;
+				}
+			);
+			
+			return promise;
         },
 
-        saveEquipmentReservation = api.saveEquipmentReservation = function (user, equipmentId, slotId) {
+        saveEquipmentReservation = api.saveEquipmentReservation = function (user, equipmentId, slotId, date) {
             if (!user)
                 user = getCurrentUser();
 
-            var resUniversity,
+            var promise = new Parse.Promise.as(),
+				resUniversity,
                 resGym,
-                resEquipment;
+                resEquipment,
+				resSlot;
 
-            return getRowById(equipmentId, 'gym_equipment').then(
+            promise = promise.then(
+				function () {
+					return getRowById(equipmentId, 'gym_equipment');
+				}
+			);
+			
+			promise = promise.then(
                 function (equipment) {
                     resEquipment = equipment;
                     return getRowById(user.get('universityGymId'), 'university_gym', ['university']);
                 }
-            ).then(
+            );
+			
+			promise = promise.then(
                 function (gym) {
                     resGym = gym;
                     resUniversity = gym.get('university');
                     return getRowById(slotId, 'slots');
                 }
-            ).then(
+            );
+			
+			promise = promise.then(
                 function (slot) {
-                    var o = Parse.Object('equipment_occupancy');
-                    o.set('gymId', gym);
+					resSlot = slot;
+					if (resSlot.get('is_occupied')) {
+						// TODO: figure out how to reject this properly.
+						promise.reject('Equipment is already reserved.');
+						return;
+					}
+                    var d = (date) ? new Date(date) : new Date(),
+                        df = ('0' + (d.getMonth()+1)).slice(-2) + '/' + ('0' + d.getDate()).slice(-2) + '/' + d.getFullYear(),
+                        o = Parse.Object('equipment_occupancy'),
+						acl = new Parse.ACL();
+					acl.setPublicReadAccess(true);
+					acl.setWriteAccess(user.id, true);
+					o.setACL(acl);
                     o.set('userId', user);
-                    o.set('slotId', slot.id);
-                    o.set('equipmentId', equipment.id);
+                    o.set('slot', slot.id);
+                    o.set('slotId', slot);
+                    o.set('equipment', resEquipment.id);
+                    o.set('equipmentId', resEquipment);
+                    o.set('gymId', resGym);
                     o.set('university', resUniversity);
                     o.set('universityId', resUniversity.id);
                     o.set('universityGymId', resGym.id);
-                    // o.set('reservationDate', moment(dt).format('MM/DD/YYYY'));
-                    o.set('slot', slot);
-                    o.set('equipment', equipment);
+                    o.set('reservationDate', df);
                     return o.save();
                 }
             );
+			
+			promise = promise.then(
+				function (reservation) {
+					if (reservation) {
+						resSlot.set('is_occupied', true);
+						resSlot.set('occupancy', reservation);
+						resSlot.set('occupancyId', reservation.id);
+						resSlot.save();
+					}
+					return reservation;
+				}
+			);
+			
+			return promise;
         },
 
         saveNotifyOfEquipmentAvailability = api.saveNotifyOfEquipmentAvailability = function(user, eoId) {
@@ -536,7 +650,11 @@ if (!window.api) {
                 user = getCurrentUser();
             return getRowById(eoId, 'equipment_occupancy').then(
                 function (result) {
-                    var o = Parse.Object('equipment_notification');
+                    var o = Parse.Object('equipment_notification'),
+						acl = new Parse.ACL();
+					acl.setPublicReadAccess(false);
+					acl.setWriteAccess(user.id, true);
+					o.setACL(acl);
                     o.set('occupancy', result);
                     o.set('user', user);
                     o.set('occupancyId', result.id);
@@ -550,7 +668,11 @@ if (!window.api) {
             if (!user)
                 user = getCurrentUser();
             var staff = slot.get('instructor');
-            var o = Parse.Object('feedback');
+            var o = Parse.Object('feedback'),
+				acl = new Parse.ACL();
+			acl.setPublicReadAccess(true);
+			acl.setWriteAccess(user.id, true);
+			o.setACL(acl);
             o.set('class', clazz);
             o.set('staff', staff);
             o.set('user', user);
@@ -585,23 +707,28 @@ if (!window.api) {
             q.containedIn('objectId', objIds);
             return q.find().then(
                 function(rows) {
-                    return rows.destroy({});
+					for (var i = 0; i < rows.length; i++) {
+						// Can't return a promise with this one, so we probably won't use it.
+						row[i].destroy({});
+					}
                 }
             );
         },
 
-        deleteClassReservations = api.deleteClassReservation = function (resId) {
-            if (!$.isArray(resId)) {
-                resId = [resId];
+        deleteClassReservations = api.deleteClassReservations = function (resId) {
+            if ($.isArray(resId)) {
+                return deleteRows(resId, 'class_reservation');
+            } else {
+                return deleteRow(resId, 'class_reservation');
             }
-            return deleteRows(resId, 'class_reservation');
         },
 
-        deleteEquipmentReservations = api.deleteEquipmentReservation = function (resId) {
-            if (!$.isArray(resId)) {
-                resId = [resId];
+        deleteEquipmentReservations = api.deleteEquipmentReservations = function (resId) {
+            if ($.isArray(resId)) {
+                return deleteRows(resId, 'equipment_occupancy');
+            } else {
+                return deleteRow(resId, 'equipment_occupancy');
             }
-            return deleteRows(resId, 'equipment_occupancy');
         },
 
         sendNotificationEmail = api.sendNotificationEmail = function (email, subject, message) {
@@ -629,7 +756,6 @@ if (!window.api) {
         },
 
         dbFormattedDate = function (date) {
-            // Do we need Moment.js for this?
             var s = date.split('/');
             return s[1] + '.' + s[0] + '.' + s[2];
         };

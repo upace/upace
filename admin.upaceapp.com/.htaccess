@@ -1,0 +1,45 @@
+RewriteEngine  on
+
+RewriteRule ^viewInstructor$ viewInstructor.php
+RewriteRule ^register$ register.php
+RewriteRule ^login$ login.php
+RewriteRule ^logout$ logout.php
+RewriteRule ^calendar$ calendar.php
+RewriteRule ^staffProfile$ staffProfile.php
+RewriteRule ^addInstructor$ addInstructor.php
+RewriteRule ^addStaff$ addStaff.php
+RewriteRule ^viewEquipments$ viewEquipments.php
+RewriteRule ^viewStaff$ viewStaff.php
+RewriteRule ^addEquipments$ addEquipments.php
+RewriteRule ^class$ class.php
+RewriteRule ^basicInformation$ basicInformation.php
+RewriteRule ^viewInstructor$ viewInstructor.php
+RewriteRule ^index$ index.php
+RewriteRule ^instructorProfile$ instructorProfile.php
+RewriteRule ^forgotpassword$ forgotpassword.php
+RewriteRule ^users$ users.php
+RewriteRule ^addLocation$ addLocation.php
+RewriteRule ^viewLocations$ viewLocations.php
+RewriteRule ^editLocation$ editLocation.php
+RewriteRule ^socialLinks$ socialLinks.php
+RewriteRule ^addRoom$ addRoom.php
+RewriteRule ^viewRooms$ viewRooms.php
+RewriteRule ^editRoom$ editRoom.php
+RewriteRule ^occupancy$ occupancy.php
+RewriteRule ^floorPlan$ floorPlan.php
+RewriteRule ^activate$ activate.php
+RewriteRule ^myreservations$ myreservations.php
+
+RewriteRule ^equipment$ equipment.php
+RewriteRule ^classes$ classes.php
+RewriteRule ^view_class$ view_class.php
+RewriteRule ^view_equipment$ view_equipment.php
+RewriteRule ^landing$ landing.php
+RewriteRule ^router$ router.php
+RewriteRule ^location$ location.php
+
+RewriteRule ^twitterLogin$ twitterLogin.php
+RewriteRule ^tweeterConfirm$ tweeterConfirm.php
+RewriteRule ^map$ map.php
+RewriteCond %{HTTP_HOST} ^admin.upaceapp\.com$
+RewriteRule ^$ /location [L,R=301]

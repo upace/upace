@@ -1,0 +1,976 @@
+/*@font-face {
+   font-family: 'ProximaNovaRegular';
+     src: url('../fonts/ProximaNova-Reg-webfont.eot');
+     src: url('../fonts/ProximaNova-Reg-webfont.eot?iefix') format('eot'),
+          url('../fonts/ProximaNova-Reg-webfont.woff') format('woff'),
+          url('../fonts/ProximaNova-Reg-webfont.ttf') format('truetype');
+     font-weight: normal;
+     font-style: normal;
+ }*/
+
+
+@font-face {
+  font-family: 'ProximaNova-Regular';
+  src: url('../fonts/ProximaNova-Regular.eot?#iefix') format('embedded-opentype'),  
+  url('../fonts/ProximaNova-Regular.otf')  format('opentype'),
+  url('../fonts/ProximaNova-Regular.woff') format('woff'), 
+  url('../fonts/ProximaNova-Regular.ttf')  format('truetype'), 
+  url('../fonts/ProximaNova-Regular.svg#ProximaNova-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+     font-family: 'ProximaNovaRegIt';
+     src: url('../fonts/ProximaNova-RegIt-webfont.eot');
+     src: url('../fonts/ProximaNova-RegIt-webfont.eot?iefix') format('eot'),
+          url('../fonts/ProximaNova-RegIt-webfont.woff') format('woff'),
+          url('../fonts/ProximaNova-RegIt-webfont.ttf') format('truetype');
+     font-weight: normal;
+     font-style: normal;
+ }
+
+
+@font-face {
+     font-family: 'ProximaNovaBold';
+     src: url('../fonts/ProximaNova-Bold-webfont.eot');
+     src: url('../fonts/ProximaNova-Bold-webfont.eot?iefix') format('eot'),
+          url('../fonts/ProximaNova-Bold-webfont.woff') format('woff'),
+          url('../fonts/ProximaNova-Bold-webfont.ttf') format('truetype');
+     font-weight: normal;
+     font-style: normal;
+ }
+ 
+ 
+ @font-face {
+  font-family: 'Montserrat-Bold';
+  src: url('../fonts/Montserrat-Bold.eot?#iefix') format('embedded-opentype'),  
+  url('../fonts/Montserrat-Bold.woff') format('woff'), 
+  url('../fonts/Montserrat-Bold.ttf')  format('truetype'), 
+  url('../fonts/Montserrat-Bold.svg#Montserrat-Bold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+@font-face {
+  font-family: 'ProximaNova-Black';
+  src: url('../fonts/ProximaNova-Black.eot?#iefix') format('embedded-opentype'),  
+  url('../fonts/ProximaNova-Black.otf')  format('opentype'),
+  url('../fonts/ProximaNova-Black.woff') format('woff'), 
+  url('../fonts/ProximaNova-Black.ttf')  format('truetype'), 
+  url('../fonts/ProximaNova-Black.svg#ProximaNova-Black') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+@font-face {
+  font-family: 'ProximaNova-Extrabld';
+  src: url('../fonts/ProximaNova-Extrabld.eot?#iefix') format('embedded-opentype'),  
+  url('../fonts/ProximaNova-Extrabld.otf')  format('opentype'),
+  url('../fonts/ProximaNova-Extrabld.woff') format('woff'), 
+  url('../fonts/ProximaNova-Extrabld.ttf')  format('truetype'), 
+  url('../fonts/ProximaNova-Extrabld.svg#ProximaNova-Extrabld') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+@font-face {
+  font-family: 'ProximaNova-Semibold';
+  src: url('../fonts/ProximaNova-Semibold.eot?#iefix') format('embedded-opentype'),  
+  url('../fonts/ProximaNova-Semibold.otf')  format('opentype'),
+  url('../fonts/ProximaNova-Semibold.woff') format('woff'), 
+  url('../fonts/ProximaNova-Semibold.ttf')  format('truetype'), 
+  url('../fonts/ProximaNova-Semibold.svg#ProximaNova-Semibold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+    font-family: 'questrialregular';
+    src: url('../fonts/questrial-regular-webfont.eot');
+    src: url('../fonts/questrial-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/questrial-regular-webfont.woff2') format('woff2'),
+         url('../fonts/questrial-regular-webfont.woff') format('woff'),
+         url('../fonts/questrial-regular-webfont.ttf') format('truetype'),
+         url('../fonts/questrial-regular-webfont.svg#questrialregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'montserratregular';
+    src: url('../fonts/montserrat-regular-webfont.eot');
+    src: url('../fonts/montserrat-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/montserrat-regular-webfont.woff2') format('woff2'),
+         url('../fonts/montserrat-regular-webfont.woff') format('woff'),
+         url('../fonts/montserrat-regular-webfont.ttf') format('truetype'),
+         url('../fonts/montserrat-regular-webfont.svg#montserratregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+*{ margin:0; padding:0;}
+
+body{ background-attachment: scroll;
+    background-clip: border-box;
+    background-color: rgba(0, 0, 0, 0);
+	height: auto;
+	font-family: 'ProximaNova-Regular';
+	font-size: 1em;
+	
+}
+
+.spalsh {
+  background: url(../img/splash_new.jpg) no-repeat center top fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100% !important;
+  overflow: hidden;
+  min-height: 100%;
+}
+.landing h2{margin-top:0;}
+
+.login-bg {
+	background: url(../img/login_back.jpg) center top no-repeat fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: auto;
+  overflow: hidden;
+  min-height: 1024px;
+}
+.register_page{
+	background: url(../img/register_back.jpg) center top no-repeat fixed;
+	-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+img{max-width:100%;}
+.mar{margin:40px 0 40px ; float:left;}
+.rel-position{ position:relative; margin:24px 0 0 -151px;}
+canvas{ background: none repeat scroll 0 0 #000;
+    border-radius: 50%;
+    width: 84px;}
+::-webkit-input-placeholder {
+   /*font-size: 20px;*/
+   color: #fff !important;
+}
+:-moz-placeholder { /* Firefox 18- */
+   /*font-size: 20px;*/
+   color: #fff !important; 
+}
+::-moz-placeholder {  /* Firefox 19+ */
+   /*font-size: 20px;*/
+   color: #fff !important;
+}
+:-ms-input-placeholder {  
+   /*font-size: 20px;*/
+   color: #fff !important;
+}
+.landing{ width: 100%; height: auto; margin: 18% auto; }
+.landing h1{ background: url("../img/logo_new.png") no-repeat scroll center center / cover rgba(0, 0, 0, 0);
+    display: block;
+    float: none;
+    height: 224px;
+    margin: 0 auto 25px;
+    text-indent: -2000em;
+    width: 562px;}
+.landing h2{font-family: 'ProximaNova-Semibold'; font-size: 60px; color: #fff; line-height: 70px; text-align: center; }
+/*------------------------------ LOGIN ---------------------*/
+.login-pg{ width: 850px; height: auto; margin: 5% auto; float: none; }
+.login-pg h1{ color: #fff; font-family: 'montserratregular'; font-size: 45px; text-align: center; }
+.login-pg h2{ color: #fff; font-family: 'montserratregular'; font-size: 45px; text-align: center; line-height: 60px; }
+.login-pg .social-btn{ width: 100%; height: auto; margin-top: 30px; }
+.login-pg .social-btn .facebook input.button{background:#1453a8; padding:20px 10px; border:none; text-transform:uppercase;width:100%; float:left;
+font-family: 'questrialregular' !important; font-size: 33px; color: #fff; letter-spacing: 2px;font-weight:bold}
+.login-pg .social-btn .facebook{ width: 49%; height: auto; float: left; }
+.login-pg .social-btn .twitter input.button{background:#148ea8; padding:20px 10px; border:none; text-transform:uppercase;width:100%; float:left;
+font-family: 'questrialregular' !important; font-size: 33px; color: #fff; letter-spacing: 2px;font-weight:bold}
+.login-pg .social-btn .twitter{ width: 49%; height: auto; float: right; }
+.txt-field { width: 100%; float: none; }
+.txt-field input {
+    background: none repeat scroll 0 0 #232323;
+    border: medium none;
+    color: #fff;
+    float: left;
+    margin: 0;
+    outline: medium none;
+    padding: 20px 5px;
+    text-align: center;
+    width: 100%;
+	line-height: 40px;
+	font-family: 'questrialregular';
+	font-size: 40px;
+	margin-bottom: 10px;
+	font-weight: normal;
+}
+
+#login,#signup,.save_butn,.signup{ /* IE 8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+
+  /* IE 5-7 */
+  filter: alpha(opacity=50);
+
+  /* Netscape */
+  -moz-opacity: 0.8;
+
+  /* Safari 1.x */
+  -khtml-opacity: 0.8;
+
+  /* Good browsers */
+  opacity: 0.8;
+  }
+  
+  
+.txt-field input.button{background:#5d9fa9; padding:30px 10px; border:none; text-transform:uppercase;width:100%; float:left;
+font-family: 'Montserrat-Bold' !important; font-size: 36px; color: #fff;}
+#login{padding:19px 10px;margin-top:20px;}
+.signup{background:#db1b1b; padding:15px 10px 10px; border:none; text-transform:uppercase;width:100%; float:left;
+font-family: 'Montserrat-Bold' !important;  font-size: 36px; color: #fff; margin-top: 20px;}
+#signup{margin-top:0;}
+
+/*------------------------------ SIGN UP ---------------------*/
+.signup-pg .university{position:relative; overflow:hidden}
+.signup-pg .university a{position:absolute; top:12px; left:10px; font-size:40px; color:#000}
+.signup-pg .txt-field input {
+    background: none repeat scroll 0 0 #242424;
+    border: medium none;
+    color: #fff;
+    float: left;
+    margin: 0;
+    outline: medium none;
+    padding: 20px 5px;
+    text-align: center;
+    width: 100%;
+	line-height: 40px;
+	font-family: "questrialregular";
+	font-size: 40px;
+	margin-bottom: 10px;
+}
+
+.signup-pg .txt-field select {
+    background: none repeat scroll 0 0 #242424;
+    border: medium none;
+    color: #fff;
+    float: left;
+    margin: 0;
+    outline: medium none;
+    padding: 20px 5px;
+    text-align: center;
+    width: 100%;
+	line-height: 25px;
+	font-family: "questrialregular";
+	font-size: 40px;
+	margin-bottom: 10px;
+	font-weight: normal;
+}
+
+.signup-pg .signup{background:#F00 !important}
+
+/************ Terms of use**********/
+
+.overlay{width:100%; height:100%; position:fixed; background:rgba(0,0,0,0.95); z-index:100}
+.terms p{color: #fff; font-family: "ProximaNova-Regular";font-size: 20px;}
+.terms a{text-align:center}
+.terms a:hover{color:#fff}
+.terms h1{position:relative}
+.terms .cancel{ width:32px; height:32px; position:absolute; top:0; right:10px}
+
+/************ Reservation-2**********/
+
+.cancel_all{width:100%; background:#F00; display:inline-block; position:absolute; bottom:0; left:0}
+.cancel_all a{text-align:center; color:#fff; display:block; font-size: 35px;font-weight: bold;line-height: 40px; padding:20px 0;}
+
+
+/************ poweryoga**********/
+
+.poweryoga{width:100%;background:#252525; display:inline-block;}
+.poweryoga h1, .poweryoga h3, .poweryoga p{color:#fff}
+.poweryoga p{ font-size:16px;}
+.poweryoga h3{margin-top:0px}
+
+.poweryoga a {
+    background: none repeat scroll 0 0 #4db2c7;
+    border-radius: 50%;
+    display: block;
+    height: 50px;
+    padding: 10px;
+    text-align: center;
+    transition: all 0.2s ease-in-out 0s;
+    width: 50px;
+	margin-top:15px;
+	margin-bottom:5px;
+	color:#000;
+	
+}
+.poweryoga a:hover{color:#fff}
+.yellow_text{color:#ffcd34 !important}
+
+a.common_cancl_btn{display:block; background:#e94429; transition:all 0.2s ease-in-out; color:#fff; border-radius:0; font-size:34px; padding:20px 0}
+a.common_cancl_btn:hover{display:block; background:#4db2c7; transition:all 0.2s ease-in-out;}
+.margin_minus{margin-top:-4px;}
+
+
+/****************New page*************/
+
+section.bottom_link{min-height:250px;width:100%;overflow:hidden; position:fixed; bottom:0; z-index:9997;} 
+.bottom_link_top{height:auto;width:100%; overflow:hidden; position:relative; margin:0; float:left}
+
+.bottom_link_top a.btn-reserve{ display:block; background:#4db2c7; transition:all 0.2s ease-in-out; color:#fff; border-radius:0; font-size:34px; padding:20px 0; float:left; width:50%;}
+.bottom_link_top a.btn-cancel{ display:block; background:#e94429; transition:all 0.2s ease-in-out; color:#fff; border-radius:0; font-size:34px; padding:20px 0; float:right; width:50%;}
+.bottom_link_top a.btn-reserve:hover, .bottom_link_top a.btn-cancel:hover{ background:#525252; color:#FFFFFF;} 
+
+.bottom_link_bottom{width:100%; background:rgba(0,0,0,0.9); overflow:hidden; position:fixed; bottom:0; margin:0; z-index:10000}
+ul.options2{width:100%; padding:0; margin:0; overflow:hidden;}
+ul.options2 li{ width:20% !important;list-style-type:none; float:left}
+ul.options2 li a{padding:50px 0; display:block; text-align:center;}
+ul.options2 li a i.fa-4x{ font-size:5em; text-align:center !important; color:#fff;}
+ul.options2 li a:hover, ul.options2 li a:focus, ul.options2 li a.selected{
+  color: #fff;
+  text-decoration: underline;
+  background:#4db2c7;
+}
+
+.menu-title select{background:transparent; border:0; padding:0 15px}
+
+
+
+ /*---------------------- Settings --------------*/
+
+.setting_btn{font-family: 'ProximaNova-Regular';font-size:32px;color:#fff; text-align:left; background:#242424; text-indent:5px; margin-bottom:8px;}
+.overflow_scroll{overflow-y:scroll}
+
+.settings input[type="text"], .settings input[type="email"], .settings input[type="password"] {
+    font-size: 30px;
+    height: auto;
+    padding: 10px;
+    width: 100%;
+ background:none;
+ margin-bottom:10px;
+ color:#fff;
+ border:none;
+}
+.settings textarea{
+    font-size: 30px;
+    height: auto;
+    width: 100%;
+ background:none;
+ margin-bottom:10px;
+ color:#fff;
+ text-align:left !important;
+ border:none;
+ min-height:150px;
+}
+.save_butn{background:#299eb6; padding:15px 10px 10px; border:none; text-transform:uppercase;width:100%; float:left;
+font-family: 'Montserrat-Bold' !important;  font-size: 36px; color: #fff; margin-top: 20px;}
+p.support{text-align:center; margin:0; padding:20px 0; font-size:32px;}
+p.support span{color:#299eb6}
+.fnt_30{font-size:30px !important;}
+.settings_overlay{z-index: 10000;display: none;}
+
+
+/*wirn*/
+
+.reservation-bg{ background: url(../img/resv.jpg) center top no-repeat fixed ;/* #d3f3fa - url(../img/login.jpg) center top no-repeat fixed*/ -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;/* height: 100% !important;*/   overflow: hidden; min-height: 940px;}
+.reservation-bg .top-blue-common-head{ background:#299eb6; height:126px; text-align:center;}
+.reservation-bg .top-blue-common-head a{ background-color:transparent; border:5px solid #FFFFFF; border-radius:50%; width:80px; height:80px; margin:23px 25px 23px 25px; text-align:center;}
+.reservation-bg .top-blue-common-head a i{ color:#FFFFFF; line-height:69px;}
+.reservation-bg .top-blue-common-head h2{ text-align:center; font-weight:bold; text-transform:uppercase; color:#FFFFFF; display:inline-block; width:auto; margin:45px auto 0;}
+.reservation-bg .top-blue-common-head h2 span{ font-weight:normal;}
+.reservation-bg .top-next-blue{ background:#4db2c7; border-top:2px solid #5fbdd0; border-bottom:2px solid #ffffff; height:198px; text-align:center; position:relative;}
+.reservation-bg .top-next-blue a.prev{ background:rgba(255, 255, 255, 0.5); position:absolute; z-index:8888; left:0%; top:30%; display:block; opacity:0.5; padding:25px 10px; transition:all 0.2s ease-in-out; border-radius:0 10px 10px 0;}
+.reservation-bg .top-next-blue a.next{ background:rgba(255, 255, 255, 0.5); position:absolute; z-index:8888; right:0%; top:30%; display:block; opacity:0.5; padding:25px 10px; transition:all 0.2s ease-in-out; border-radius:10px 0 0 10px;}
+.reservation-bg .top-next-blue a.prev:hover, .reservation-bg .top-next-blue a.next:hover{ opacity:1; transition:all 0.2s ease-in-out;}
+.reservation-bg .top-next-blue a.prev i, .reservation-bg .top-next-blue a.next i{ color:#FFFFFF;}
+.reservation-bg .top-next-blue .calender{ display: inline-block; height: 100%; overflow-x: hidden; width: 100%;}
+.reservation-bg .top-next-blue .calender a{ font-size:60px; text-align:center; line-height:36px; display:block; width:14.2%; float:left; color:#FFFFFF; font-weight:bold; text-decoration:none; padding:63px 50px; margin:0; transition:all 0.2s ease-in-out;}
+.reservation-bg .top-next-blue .calender a span{ font-size:35px; text-align:center; display:block; line-height:40px;}
+.reservation-bg .top-next-blue .calender a:hover{ background:rgba(222, 76, 52, 0.9); border-radius:0px 0px 10px 10px; text-decoration:none; color:#FFFFFF; transition:all 0.2s ease-in-out;}
+.reservation-bg .top-next-blue .calender a.active{ background:rgba(222, 76, 52, 0.9); border-radius:0px 0px 10px 10px; text-decoration:none; color:#FFFFFF; transition:all 0.2s ease-in-out;}
+.reservation-bg .menu-title{ display:inline-block; width:100%;}
+.reservation-bg .menu-title h3{ color:#222222; font-weight:normal; text-align:left; font-size:50px; display:inline-block; width:auto;}
+.reservation-bg .menu-title h3 span{ color:#3398ad; font-size:30px; text-transform:uppercase; font-weight:bold; display:block; width:auto;font-family:'ProximaNova-Semibold';}
+.reservation-bg .menu-title ul.options{ margin:22px 10px; padding:0; width:auto; display:inline-block;}
+.reservation-bg .menu-title ul.options li{ list-style:none; float:left; margin-right:15px; margin-bottom:15px;}
+.reservation-bg .menu-title ul.options li a{ background:#4db2c7; border-radius:50%; width:100px; height:100px; padding:30px; display:block; text-align:center; transition:all 0.2s ease-in-out;}
+.reservation-bg .menu-title ul.options li a i{ color:#caf1fa;}
+.reservation-bg .menu-title ul.options li:first-child a{ background:#e94429; color:#ccf3fc;transition:all 0.2s ease-in-out;}
+.reservation-bg .menu-title ul.options li a:hover{ background:#e75038; transition:all 0.2s ease-in-out;}
+.reservation-bg .menu-title ul.options li:first-child a:hover{ background:#299eb6; transition:all 0.2s ease-in-out;}
+.reservation-bg .listings{ position:relative;}
+.reservation-bg .listings .list-single{ background:#e9f9fd; box-shadow:2px 2px 10px 1px rgba(113, 179, 195, 0.7); display:inline-block; width:100%; padding:15px 20px; margin:10px auto; position:relative; transition:all 0.2s ease-in-out;}
+.reservation-bg .listings .list-single strong{ background:url(../img/greeny.png) 0px 0px no-repeat; width:84px; height:84px; display:block; float:right; margin:-15px -20px 0 0;}
+.reservation-bg .listings .list-single h4{ color:#4db2c7; font-size:35px; float:left; width:40%; line-height:40px; font-weight:bold;}
+.reservation-bg .listings .list-single p{ color:#4db2c7; font-size:30px; float:left; width:30%;}
+.reservation-bg .listings .list-single p em{ color:#4db2c7; display:block; font-style:normal; text-transform:uppercase;}
+.reservation-bg .listings .list-single span{ color:#000000; font-size:27px; float:left; width:21%; line-height:95px;}
+.reservation-bg .listings .list-single:hover{ background:#d5eff5; transition:all 0.2s ease-in-out;}
+
+/*wirn - 09-12-14*/
+
+.login-bg h1{ text-transform:uppercase;}
+.login-pg h5{ color: #fff; font-family: 'ProximaNova-Regular'; font-size: 26px; text-align: center; line-height: 40px; }
+.login-pg a.custom{ color:#FFFFFF; text-align:center; display:block; margin:10px auto; font-size:100px;}
+.login-pg a.custom:hover{ color:#e94429;}
+.reservation-bg .list-single-form h5{ color:#000000; font-size:33px; display:block; width:auto; font-weight:bold; float:left; line-height:100px;}
+.reservation-bg .list-single-form span{ width:50%; float:right; padding:5px 0; margin:0;}
+.reservation-bg .list-single-form span input[type="text"]{ width:100%; height:auto; padding:35px 20px; font-size:30px;}
+.reservation-bg .menu-title ul.options li a.active{ background:#e75038; transition:all 0.2s ease-in-out;}
+.reservation-bg .listings .list-single.select{ background:#546265; transition:all 0.2s ease-in-out;}
+.reservation-bg .listings .list-single.select h4, .reservation-bg .listings .list-single.select p, .reservation-bg .listings .list-single.select p em, .reservation-bg .listings .list-single.select span{ color:#FFFFFF;}
+
+.pos-btns{ position:absolute; top:55%; left:auto; right:auto; display:block; z-index:8888; width:100%;}
+.pos-btns a.btn-reserve{ display:block; background:#4db2c7; transition:all 0.2s ease-in-out; color:#fff; border-radius:0; font-size:34px; padding:20px 0; float:left; width:50%;}
+.pos-btns a.btn-cancel{ display:block; background:#e94429; transition:all 0.2s ease-in-out; color:#fff; border-radius:0; font-size:34px; padding:20px 0; float:right; width:50%;}
+.pos-btns a.btn-reserve:hover, .pos-btns a.btn-cancel:hover{ background:#525252; color:#FFFFFF;} 
+
+.pos-btns-one{ position:absolute; top:10%; left:auto; right:auto; display:block; z-index:8888; width:100%;}
+.pos-btns-one a.btn-reserve{ display:block; background:#4db2c7; transition:all 0.2s ease-in-out; color:#fff; border-radius:0; font-size:34px; padding:20px 0; text-transform:uppercase;}
+.pos-btns-one a.btn-reserve:hover{ background:#525252; color:#FFFFFF;}
+
+.reservation-bg .listings .list-singley{}
+.reservation-bg .listings .list-singley h3{ color:#525252; font-size:25px; font-weight:bold; display:block; width:100%;}
+.reservation-bg .listings .list-singley h4{ color:#555555; font-size:20px; font-weight:normal; display:block; width:100%;}
+
+.pos-multiselect{ position:fixed; bottom:28%; left:auto; right:2%; z-index:8888; width:15%; background:rgba(0, 0, 0, 0.8); border-radius:50%;}
+.pos-multiselect a.btn-multi{ text-align:center; font-size:25px; color:#FFFFFF; line-height:30px; display:block; width:auto; white-space:normal; padding-top:15px;}
+.pos-multiselect a.btn-multi i{ color:#FFFFFF; display:block; width:100%;}
+
+/***********************Land Page*****************/
+
+.land_page{
+  background:url(../img/landing_bg.jpg) no-repeat center top ; 
+  -webkit-background-size:contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+  /*height: 100% !important;*/
+  overflow: hidden;
+  min-height: 640px;
+  background-color:#000;
+  background-color: -webkit-linear-gradient(#090504, #000); /* For Safari 5.1 to 6.0 */
+background-color: -o-linear-gradient(#090504, #000); /* For Opera 11.1 to 12.0 */
+background-color: -moz-linear-gradient(#090504, #000); /* For Firefox 3.6 to 15 */
+background-color: linear-gradient(#090504, #000);
+}
+/*.top_land_page{border-bottom:3px solid #cecbc8}*/
+.top_land_page .right_link{margin-top:29px; margin-bottom:0px; float:right;}
+.top_land_page .right_link a{background:none; display:block; width:55px; height:55px; border-radius:50%; float:left; margin-left:10px;}
+.top_land_page .right_link a i{color:#000; display:block; font-size:32px; line-height:58px; text-align:center}
+.top_land_page .right_link a:hover{text-decoration:none}
+
+.three_round_area{padding:8px; background:#615953; border-radius:90px; margin-top:15px; float:right}
+.three_round_area img{margin:0 5px;width:24px;}
+
+.middle_land_page{border-bottom:3px solid #cecbc8}
+.big_round_hold{padding-bottom:22px;}
+.big_round{width:100%; height:740px; width:740px; border-radius:50%; display:block; margin:0 auto; border:10px solid rgba(255,255,255,0.8)}
+.big_round{height:327px; width:327px; border-radius:50%; display:block; margin:0 auto; border:11px solid rgba(255,255,255,0.8)}
+.bg_green{background:rgba(75,220,41,0.7);}
+.big_round h1{font-family: 'ProximaNova-Extrabld';text-align:center; color:#fff; font-size:89px; margin:0; margin-top:98px;}
+.big_round h2{font-family: 'Montserrat-Bold';text-align:center; color:#fff; font-size:22px; margin:0;}
+.big_round p{font-family: 'Montserrat-Bold'; text-align:center; color:#fff; font-size:22px; line-height:23px;  text-transform:uppercase}
+
+
+.circular-bg .top_circular-bg {background: none;height: auto;position: relative;text-align: center;padding:7px 0;}
+
+.circular-bg .top_circular-bg .circular_item{ display: inline-block; height: 100%; overflow-x: hidden; width: 90%; padding:0 2%;}
+.circular-bg .top_circular-bg .circular_item a{ font-size: 40px; padding: 60px 15px;}
+.circular-bg .top_circular-bg .circular_item a span{ font-size:25px;}
+
+.myStat, .myStathalf, .myStathalf2, .myStat2, .myStat3, .myStat4, .myStathalf3{color:#fff !important; text-align:center; margin:0 19px;}
+
+.circular-bg .top_circular-bg a.prev{ background:rgba(255, 255, 255, 0.5); position:absolute; z-index:8888; left:0%; top:37%; display:block; opacity:0.5; padding:25px 10px; transition:all 0.2s ease-in-out; border-radius:0 10px 10px 0;}
+.circular-bg .top_circular-bg a.next{ background:rgba(255, 255, 255, 0.5); position:absolute; z-index:8888; right:0%; top:37%; display:block; opacity:0.5; padding:25px 10px; transition:all 0.2s ease-in-out; border-radius:10px 0 0 10px;}
+.circular-bg .top_circular-bg a.prev:hover, .circular-bg .top_circular-bg a.next:hover{ opacity:1; transition:all 0.2s ease-in-out;}
+.circular-bg .top_circular-bg a.prev i, .circular-bg .top_circular-bg a.next i{ color:#FFFFFF;}
+.circular-bg .top_circular-bg .circular_item{ display: inline-block; height: 100%; width: 70%;}
+.circular-bg canvas{ background: none;
+    border-radius: 50%;
+    width: 150px;
+	}
+.circle-text,.circliful{width:150px !important;margin:0 auto !important}
+.circle-text{line-height:157px !important;}
+
+.on_deck{border-bottom:2px solid #696663; border-top:2px solid #696663;}
+.on_deck .bg_black{background:#1a1a1a; padding-bottom:10px;}
+.on_deck h1{font-family: 'montserratregular';text-align:center; color:#fff; font-size:70px; line-height:90px; font-weight:normal}
+.on_deck h2{font-family: 'montserratregular';text-align:center; color:#dbc525; font-size:40px; line-height:50px; margin:0; margin-bottom:20px; font-weight:normal}
+.on_deck h3{font-family: 'montserratregular';text-align:left; color:#fff; font-size:50px; line-height:50px; font-weight:normal}
+.on_deck h4{font-family: 'Montserrat-Bold';text-align:left; color:#fff; font-size:25px; line-height:30px; font-weight:normal}
+.on_deck p{font-family: 'montserratregular';text-align:left; color:#a4a4a4; font-size:20px; line-height:30px; font-weight:normal}
+
+.other_gym h1{font-family: 'Montserrat-Bold';text-align:center; color:#fff; font-size:39px; line-height:60px; margin:0; margin:20px 0}
+
+
+.gym_location a.prev{ background:rgba(255, 255, 255, 0.5); position:absolute; z-index:8888; left:0%; top:30%; display:block; opacity:0.5; padding:25px 10px; transition:all 0.2s ease-in-out; border-radius:0 10px 10px 0;}
+.gym_location a.next{ background:rgba(255, 255, 255, 0.5); position:absolute; z-index:8888; right:0%; top:30%; display:block; opacity:0.5; padding:25px 10px; transition:all 0.2s ease-in-out; border-radius:10px 0 0 10px;}
+.gym_location a.prev:hover, .gym_location a.next:hover{ opacity:1; transition:all 0.2s ease-in-out;}
+.gym_location a.prev i, .gym_location a.next i{ color:#FFFFFF;}
+.gym_location .gym_item{ display: inline-block; height: 100%; width: 100%;}
+.gym_location .gym_item ul{height: auto; width: 100%; overflow:hidden;}
+.gym_location .gym_item ul li{display:block;}
+.gym_location .gym_item ul li h1{font-family: 'Montserrat-Bold';text-align:center; color:#fff; font-size:38px; line-height:98px; margin:0}
+.gym_location .gym_item ul li p{font-family: 'Montserrat-Bold';text-align:center; color:#fff; font-size:24px; line-height:60px; text-transform:uppercase}
+.gym_location .gym_item ul li .yellow_bg{background:#dbbe24}
+.gym_location .gym_item ul li .green_bg{background:#2fc83b}
+.gym_location .gym_item ul li .red_bg{background:#e4321b}
+.gym_location .gym_item ul li .no-padd{padding:0; margin:0}
+
+/***************** Feedback******************/
+
+.feedback h2{text-align:center; border-bottom:2px solid #3d3d3d;}
+.feedback h3{text-align:center; color:#fff; font-size:30px; margin-bottom:20px !important}
+.feedback .custom {background: none repeat scroll 0 0 #4db2c7;
+    border-radius: 50%;
+    height: 150px;
+    margin: 2% 1% !important;
+    text-align: center !important;
+    width: 150px; text-decoration:none; padding:0 0 0 21px;}
+.feedback .custom i{color:#000; display:block; font-size:100px; line-height:149px;}
+.feedback .custom:hover i{ color:#ffcd34;}
+
+.feedback textarea{background:#e9e9e9; width:100%; min-height:350px; padding:5%; border:0; font-size:32px; color:#5d5d5d; margin-top:40px;}
+
+.common_feedback .btn{ width:100%; display:block; background:#4db2c7; color:#fff; font-size:40px; line-height:80px; font-weight:bold}
+
+.on_deck,.other_gym,.gym_location{background:#000;}
+
+
+
+/*---------------------- Responsive Css ------------------------------*/
+
+@charset "utf-8";
+/* CSS Document */
+@media only screen and (max-width: 1024px){
+  
+  
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px){
+		/* ---------------------------------------------------------------------- */
+/*	Wrap
+/* ---------------------------------------------------------------------- */
+.circular-bg canvas,.circle-text, .circliful{width:100% !important}
+.circle-text {
+    line-height: 89px !important;font-size:28px !important
+}
+.landing h2{font-size: 50px; line-height: 60px;}
+.login-pg{ width: 80%; }
+
+.reservation-bg .top-blue-common-head a{ width:50px; height:50px; margin:35px 10px 0;}
+.reservation-bg .top-blue-common-head a i{ line-height:39px;}
+.reservation-bg .top-blue-common-head a i.fa-4x{ font-size:3em;}
+
+.reservation-bg .top-next-blue .calender { display: inline-block; height: 100%; overflow: hidden; width: 90%;}
+.reservation-bg .listings .list-single strong{ left:88.4%;}
+
+.reservation-bg .top-next-blue .calender a{padding: 16px 0 !important;}
+.reservation-bg .top-next-blue{height: 90px ;}
+
+.reservation-bg .top-next-blue a.prev,.reservation-bg .top-next-blue a.next{top: 2px;}
+
+
+}
+
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+@media only screen and (min-width: 320px) and (max-width: 767px) {
+			/* ---------------------------------------------------------------------- */
+/*	Wrap
+/* ---------------------------------------------------------------------- */
+
+.landing h2{font-size: 40px; line-height: 40px;}
+.landing{ margin: 25% auto; }
+.landing h1{  margin: 0 auto 40px;}
+.login-pg{ width: 96%; }
+.login-pg .social-btn .facebook { width: 49%; }
+.login-pg .social-btn .facebook input.button{padding: 12px 8px; float: none; font-size: 26px;}
+.login-pg .social-btn .twitter input.button{padding:12px 8px;font-size: 26px;}
+.login-pg .social-btn .twitter{ width: 49%;}
+.txt-field input { padding: 18px 5px; line-height: 25px; font-size: 26px;	margin-bottom: 10px;}
+.reservation-bg .top-blue-common-head a{ width:50px; height:50px; margin:70px 10px 0;}
+.txt-field input.button{ padding:18px 5px; font-size: 26px;}
+.signup{ padding:16px 5px 7px; font-size: 26px; color: #fff;}
+
+.reservation-bg .top-blue-common-head a{ width:50px; height:50px; margin:70px 10px 0;}
+.reservation-bg .top-blue-common-head a i{ line-height:39px;}
+.reservation-bg .top-blue-common-head a i.fa-4x{ font-size:3em;}
+.reservation-bg .top-blue-common-head h2{ margin:38px auto 0; width:50%; font-size:20px;}
+/*.reservation-bg .top-blue-common-head h2 span{ display:none;}*/
+.reservation-bg .top-blue-common-head h2 span.day{ font-size: 18px;}
+.reservation-bg .top-blue-common-head h2 span.month{ font-size: 18px;}
+
+.reservation-bg .top-next-blue .calender{ display: inline-block; height: 100%; overflow: hidden; width: 90%;}
+.reservation-bg .top-next-blue .calender a{ font-size: 40px; padding: 60px 15px;}
+.reservation-bg .top-next-blue .calender a span{ font-size:25px;}
+
+.reservation-bg .listings .list-single h4, .reservation-bg .listings .list-single p, .reservation-bg .listings .list-single span{ float:none; width:80%;}
+
+.big_round{width:200px;height:200px;}
+.big_round h1{font-size: 55px;margin: 53px 0 0;}
+.big_round h2{font-size: 16px}
+.big_round p{font-size: 13px}
+.three_round_area img{margin:0 3px;width:14px;}
+.three_round_area{margin-top: 9px;padding: 5px;}
+.top_land_page .right_link a{height: 40px;width: 40px;}
+.top_land_page .right_link a i{font-size: 24px;line-height: 41px;}
+
+.on_deck .col-sm-3,.carousel-inner .col-sm-3{width:25% !important;float:left !important;padding-left:5px;padding-right:5px;}
+
+
+
+.on_deck h1{font-size: 30px;line-height: 33px;}
+.on_deck h2{font-size: 21px;margin: 0px;line-height: 39px;}
+
+.on_deck h3{font-size:35px;line-height: 34px;margin-top:10px;}
+.on_deck h4{font-size:14px;line-height:0}
+.on_deck p{line-height: 11px;font-size:8px;}
+
+
+.other_gym h1{line-height: 60px;margin: 5px 0;font-size: 20px;}
+.gym_location .container{width:90% !important;}
+
+
+.gym_location a.next,.gym_location a.prev{top:0;}
+
+
+
+.gym_location .gym_item ul li h1{font-size: 21px;line-height: 42px;}
+.gym_location .gym_item ul li p{font-size: 9px;line-height: 31px;}
+
+.circular-bg .top_circular-bg .circular_item{width:100%;}
+.circular-bg canvas,.circle-text, .circliful{width:100% !important}
+.circle-text {line-height: 79px !important;font-size: 25px !important;}
+.carousel-inner h4{font-size:13px !important;}
+
+.landing h1{height: 129px;width: 324px;}
+.landing h2 {font-size: 32px;font-weight: normal;line-height: 34px;}
+
+.login-bg{height:100%;min-height:200px;}
+.login-pg h1,.login-pg h2{font-size:26px;}
+.login-pg .social-btn .facebook input.button,.login-pg .social-btn .twitter input.button{font-weight: normal;}
+.login-pg h2{line-height:20px;}
+.login-pg .social-btn{margin-top:12px;}
+.login-pg .social-btn .twitter input.button,.login-pg .social-btn .facebook input.button{padding: 9px 8px !important;}
+.txt-field input,.signup-pg .txt-field input{font-size:21px !important;line-height: 25px;}
+.txt-field input,.signup-pg .txt-field input{padding: 13px 5px !important;}
+#loginForm aside{height: 55px !important;}
+.login-bg{height:auto;min-height:100%;}
+.txt-field input,.signup-pg .txt-field select,.signup-pg .txt-field input{margin-bottom:3px;}
+
+.signup-pg .row{margin-left: 0px;margin-right: 0px;}
+.col-lg-6.col-md-6.col-sm-6.pull-left,.col-lg-6.col-md-6.col-sm-6.pull-right{width:49%;padding:0}
+
+.signup-pg .txt-field select,.signup-pg .txt-field input{font-size: 22px;padding: 12px 25px !important;}
+
+.land_page{background-size:cover !important;}
+.big_round{height: 225px;width: 225px;}
+.big_round h1{font-size: 84px;margin: 41px 0 0;}
+.big_round h2{font-size: 13px;font-weight: normal;}
+.big_round p{font-size: 13px}
+
+.circular-bg .top_circular-bg a.next,.circular-bg .top_circular-bg a.prev{top:14%;}
+
+.reservation-bg .top-blue-common-head a{ width:50px; height:50px; margin:25px 10px 0;}
+
+.reservation-bg .top-blue-common-head{height: 95px;}
+.reservation-bg .top-next-blue {height: 68px !important;}
+.reservation-bg .top-next-blue .calender a{padding: 16px 0 !important;}
+.reservation-bg .top-next-blue a.prev,.reservation-bg .top-next-blue a.next{top: 6%;padding: 14px 1px;}
+
+
+.reservation-bg .menu-title h3{font-size: 31px;}
+.reservation-bg .menu-title h3 span{font-size: 18px;margin-top: 5px;}
+.reservation-bg .listings .list-single p{font-size: 18px}
+.reservation-bg .listings .list-single h4{font-size: 24px; line-height: 24px;}
+.reservation-bg .listings .list-single span{font-size: 19px;line-height: 23px;}
+.reservation-bg .menu-title ul.options li a{height: 48px;padding: 10px 0 0;width: 48px;}
+.reservation-bg .menu-title ul.options{margin: 4px 10px;}
+}
+
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (max-width: 479px) {
+			/* ---------------------------------------------------------------------- */
+/*	Wrap
+/* ---------------------------------------------------------------------- */
+
+
+.three_round_area img{margin:0 1px;width:14px;}
+.three_round_area{margin-top: 9px;padding: 5px;}
+.top_land_page .right_link a{height: 40px;width: 40px;}
+.top_land_page .right_link a i{font-size: 24px;line-height: 41px;}
+
+.on_deck .col-sm-3,.carousel-inner .col-sm-3{width:25% !important;float:left !important;padding-left:5px;padding-right:5px;}
+
+
+
+.on_deck h1{font-size: 30px;line-height: 33px;}
+.on_deck h2{font-size: 21px;margin: 0px;line-height: 39px;}
+
+.on_deck h3{font-size:20px;line-height: 34px;}
+.on_deck h4{font-size:8px;line-height:0}
+.on_deck p{line-height: 14px;font-size:8px;}
+
+
+.other_gym h1{line-height: 60px;margin: 5px 0;font-size: 20px;}
+.gym_location .container{width:90% !important;}
+
+
+.gym_location a.next,.gym_location a.prev{top:0;}
+
+
+
+.gym_location .gym_item ul li h1{font-size: 21px;line-height: 42px;}
+.gym_location .gym_item ul li p{font-size: 9px;line-height: 31px;}
+
+.circular-bg .top_circular-bg .circular_item{width:100%;}
+.circular-bg canvas,.circle-text, .circliful{width:100% !important}
+
+.circle-text {line-height: 66px !important;font-size: 25px !important;}
+.carousel-inner h4{font-size:13px !important;}
+
+.landing{ margin: 35% auto 0; }
+.landing h1{width: 259px;height: 103px;}
+.landing h2 {font-size: 21px !important;font-weight: normal;line-height: 23px !important;}
+.login-pg{ width: 96%; }
+
+/*.reservation-bg .top-blue-common-head a{ width:50px; height:50px; margin:70px 10px 0;}*/
+.reservation-bg .top-blue-common-head a i{ line-height:39px;}
+.reservation-bg .top-blue-common-head a i.fa-4x{ font-size:3em;}
+/*.reservation-bg .top-blue-common-head h2{ margin:50px auto 0; width:50%; font-size:20px;}*/
+.reservation-bg .top-blue-common-head h2 span{ display:none;}
+.reservation-bg .top-blue-common-head h2 span.day{ font-size: 18px; display:block;}
+.reservation-bg .top-blue-common-head h2 span.month{ font-size: 18px; display:block;}
+
+.reservation-bg .top-next-blue .calender{ display: inline-block; height: 100%; overflow: hidden; width: 90%;}
+.reservation-bg .top-next-blue .calender a{ font-size: 40px; padding: 10px 15px;}
+.reservation-bg .top-next-blue .calender a span{ font-size:25px;}
+
+.login-pg h1,.login-pg h2{font-size:26px;}
+.login-pg .social-btn .facebook input.button,.login-pg .social-btn .twitter input.button{font-weight: normal;}
+.login-pg h2{line-height:20px;}
+.login-pg .social-btn{margin-top:12px;}
+.login-pg .social-btn .twitter input.button,.login-pg .social-btn .facebook input.button{padding: 9px 8px !important;}
+.txt-field input{font-size:21px !important;}
+.txt-field input{padding: 13px 5px !important;}
+#loginForm aside{height: 55px !important;}
+.login-bg{height:auto;min-height:480px;}
+
+
+.on_deck h3{font-size:240%;line-height: 34px;margin-top:10px;;text-align:center;}
+.on_deck h4{font-size:100%;line-height:0;text-align:center;}
+.on_deck p{line-height: 15px;font-size:100%;text-align:center;}
+
+
+
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+			/* ---------------------------------------------------------------------- */
+/*	Wrap
+/* ---------------------------------------------------------------------- */
+.landing h2{font-size: 35px; line-height: 36px;}
+.landing{ margin: 35% auto 0; }
+.landing h1{  margin: 0 auto 20px;}
+.login-pg{ width: 96%; }
+.login-pg .social-btn .facebook {width: 49%; }
+.login-pg .social-btn .facebook input.button{padding: 12px 8px; float: none; font-size: 20px;}
+.login-pg .social-btn .twitter input.button{padding:12px 8px;font-size: 20px;}
+.login-pg .social-btn .twitter{ width: 49%;}
+.txt-field input { padding: 18px 5px; line-height: 25px; font-size: 26px;	margin-bottom: 10px;}
+.txt-field input.button{ padding:18px 5px; font-size: 26px;}
+.signup{ padding:16px 5px 7px; font-size: 26px; color: #fff;}
+
+/*.reservation-bg .top-blue-common-head a{ width:50px; height:50px; margin:70px 10px 0;}*/
+.reservation-bg .top-blue-common-head a i{ line-height:39px;}
+.reservation-bg .top-blue-common-head a i.fa-4x{ font-size:3em;}
+/*.reservation-bg .top-blue-common-head h2{ margin:65px auto 0; width:50%; font-size:20px;}*/
+.reservation-bg .top-blue-common-head h2 span{ display:none;}
+.reservation-bg .top-blue-common-head h2 span.day{ font-size: 18px; display:block;}
+.reservation-bg .top-blue-common-head h2 span.month{ font-size: 18px; display:block;}
+
+.reservation-bg .top-next-blue .calender{ display: inline-block; height: 100%; overflow: hidden; width: 90%;}
+.reservation-bg .top-next-blue .calender a{ font-size: 40px; padding: 60px 10px;}
+.reservation-bg .top-next-blue .calender a span{ font-size:25px;}
+
+.reservation-bg .menu-title ul.options li a{ width:60px; height:60px; padding:15px 0 0 0;}
+.reservation-bg .menu-title ul.options li a i.fa-4x{ font-size:3em;}
+.reservation-bg .listings .list-single strong{ left:71%;}
+.reservation-bg .listings .list-single h4, .reservation-bg .listings .list-single p, .reservation-bg .listings .list-single span{ float:none; width:auto;}
+}
+
+
+
+/***************Validation Css*******************/
+.txt-field .state-error + em {
+    /*color: #D56161;
+    display: block;
+    font-size: 11px;
+    font-style: normal;
+    line-height: 15px;
+    margin-top: 6px;
+    padding: 0 1px;*/
+    
+    background: none repeat scroll 0 0 #A90329;
+    border-radius:0px;
+    color: #FFFFFF;
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1.25;
+    margin-bottom: 10px;
+    padding: 7px;
+    text-align: center;
+}
+}
+.txt-field .state-error + em :after {
+position: absolute;
+top: -12px;
+left: 10px;
+content: "";
+display: block;
+position: absolute;
+width: 0;
+height: 0;
+border: solid 6px;
+border-color: transparent transparent #d62540 transparent;
+}
+
+.txt-field .input .icon-append + input, .txt-field .textarea .icon-append + textarea {
+    padding-right: 37px;
+}
+.txt-field .checkbox.state-error i, .txt-field .radio.state-error i, .txt-field .state-error input, .txt-field .state-error select, .txt-field .state-error textarea, .txt-field .toggle.state-error {
+    /*background: none repeat scroll 0 0 #FFF0F0;*/
+    border: 2px solid #A90329;
+}
+
+/************************************nits********************************/
+.land_logo{width:100px;}
+
+/*********************** Search Landing *****************/
+
+.search_landing{width:100%; position:relative; border:0px solid red; overflow-x:auto}
+.search_landing input[type="text"]{width:100%; height:80px; font-size:30px; padding:0 2%; text-indent:50px;}
+.search_landing a.close{font-size:30px; text-align:center; color:#4db2c7 !important; line-height:80px;}
+.search_landing h1{font-family: 'Montserrat-Bold';text-align:center; color:#fff; font-size:52px; line-height:60px; margin:0; margin:20px 0; text-transform:uppercase; font-weight:normal}
+.search_landing h2{font-family: 'Montserrat-Bold';text-align:center; color:#fff; font-size:38px; line-height:40px; margin:0; margin:20px 0;}
+.magnifying{height:80px;position:absolute; top:0px; left:15px;}
+.magnifying a.custom {color: #c4c4c4;display: block;font-size: 40px;text-align: center; line-height:80px; padding:0 10px; margin:0}
+
+.search_landing .logo img.img-responsive{ width:60%; margin:0 auto}
+
+.overflow_scroll_y{overflow-y:scroll; overflow-x:hidden}
+
+/*********************** Search Result *****************/
+
+.search_landing h3{font-family: 'Montserrat-Bold';text-align:left; color:#fff; font-size:52px; line-height:52px; margin:0; margin:20px 0;}
+
+.search_landing .search_listings {
+    position: relative;
+}
+.search_landing .search_listings .list-single {
+    background: trassparent;
+    display: inline-block;
+    margin: 10px auto;
+    padding: 15px 20px;
+    position: relative;
+    transition: all 0.2s ease-in-out 0s;
+    width: 100%;
+    border-top:4px solid #414141;
+}
+.search_landing .search_listings .list-single h4{margin:0; font-size:40px; color:#fff;}
+.search_landing .search_listings .list-single p{margin:0; font-size:34px; color:#fff;}
+
+.calender .active a.active b{border:2px solid #fff;border-radius: 100%;display: block;padding: 13px 0px;}
+.calender .active a.active{padding:47px 26px}
+
+.stop_watch_back{background:url(../img/stop.png);background-repeat: no-repeat;background-position: center center;background-size: contain;-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+
+  /* IE 5-7 */
+  filter: alpha(opacity=50);
+
+  /* Netscape */
+  -moz-opacity: 0.8;
+
+  /* Safari 1.x */
+  -khtml-opacity: 0.8;
+
+  /* Good browsers */
+  opacity: 0.8;}
+  
+ .settings textarea {
+overflow-y: scroll;
+overflow-x: hidden;
+}
+.terms_text{font-size: 30px;color: #fff;
+text-align: justify;}
+
+
+
+
+#terms_div{position: absolute;z-index:999;top:0;background:url("../img/register_back.jpg") no-repeat fixed center top / cover  rgba(0, 0, 0, 0);left:0;width:100%;display:none;}
+
+
+.terms_close_button{border: 5px solid #ffffff;
+border-radius: 50%;
+height: 80px;
+margin: 55px 25px 25px;
+text-align: center;
+width: 80px;text-align: center;}
+
+.terms_close_button i{
+    color: #fff;
+    font-size: 48px;
+    line-height: 66px;
+}
+#loginForm aside{position: relative;height:84px;overflow: hidden;font-weight: bold;
+    max-width: 100%;display: block;}
+.forgot_btn{position: absolute;z-index:99;right:20px;top:0;width:auto !important;font-size:26px !important;color:#95d6e4 !important;}
+
+@media only screen and (min-width: 495px) and (max-width: 1035px) {
+	.calender .active a b{border:2px solid #4DB2C7;border-radius: 100%;display: block;padding: 13px 0px;margin:0 auto;}
+	.reservation-bg .top-next-blue .calender a:hover b{border:2px solid #fff !important;}
+	.calender .active b{width:59px !important;padding:4px 0 !important}
+	
+	.reservation-bg .top-next-blue .calender a{font-size: 32px;}
+	.reservation-bg .top-next-blue .calender a span{font-size: 22px;line-height: 16px;}
+	.calender .active a.active,.reservation-bg .top-next-blue .calender a:hover,.reservation-bg .top-next-blue .calender a{padding: 0px;}
+}
+
+@media only screen and (max-width: 494px) {
+	.calender .active a b{border:1px solid #4DB2C7;border-radius: 100%;display: block;padding: 13px 0px;margin:0 auto;}
+	.reservation-bg .top-next-blue .calender a:hover b{border:1px solid #fff !important;}
+	.calender .active b{width:30px !important;padding:0px 0 !important}
+	
+	.reservation-bg .top-next-blue .calender a{font-size: 18px;/*padding: 70px 0 !important;*/line-height: 20px !important;}
+	.reservation-bg .top-next-blue .calender a span{font-size: 12px;line-height: 14px;}
+	.calender .active a.active,.reservation-bg .top-next-blue .calender a:hover,.reservation-bg .top-next-blue .calender a{padding: 0px;}
+	.reservation-bg .top-next-blue{height:177px;}
+	.login-pg .social-btn .twitter input.button,.login-pg .social-btn .facebook input.button{font-size:19px !important}
+	
+	
+	#loginForm aside{margin-bottom:0px;}
+	.signup{margin-top:0}
+	label{margin-bottom: 0;}
+	.signup-pg .txt-field select,.signup-pg .txt-field input{font-size: 22px;padding: 12px 25px !important;}
+	#loginForm aside .forgot_btn{font-size: 18px !important;right:5px;}
+	.signup,.txt-field input{font-size: 18px;padding: 13px 5px;}
+	.reservation-bg .top-blue-common-head h2 {font-size: 16px;margin: 25px auto 0;width: 50%;}
+}
+
+
+
+
+
+

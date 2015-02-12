@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<meta charset="utf-8">
+		<!--<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
+
+		<title> uPace </title>
+		<meta name="description" content="">
+		<meta name="author" content="">
+			
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<!-- Basic Styles -->
+		<link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="css/font-awesome.min.css">
+
+		<!-- uPace Styles : Caution! DO NOT change the order -->
+		<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-production-plugins.min.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-production.min.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-skins.min.css">
+
+		<!-- uPace RTL Support -->
+		<link rel="stylesheet" type="text/css" media="screen" href="css/smartadmin-rtl.min.css"> 
+
+		<!-- We recommend you use "your_style.css" to override uPace
+		     specific styles this will also ensure you retrain your customization with each uPace update.
+		<link rel="stylesheet" type="text/css" media="screen" href="css/your_style.css"> -->
+
+		<!-- Demo purpose only: goes with demo.js, you can delete this css when designing your own WebApp -->
+		<link rel="stylesheet" type="text/css" media="screen" href="css/demo.min.css">
+
+		<!-- FAVICONS -->
+		<link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="img/favicon/favicon.ico" type="image/x-icon">
+
+		<!-- GOOGLE FONT -->
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,300,400,700">
+
+		<!-- Specifying a Webpage Icon for Web Clip 
+			 Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html -->
+		<link rel="apple-touch-icon" href="img/splash/sptouch-icon-iphone.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="img/splash/touch-icon-ipad.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="img/splash/touch-icon-iphone-retina.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="img/splash/touch-icon-ipad-retina.png">
+		
+		<!-- iOS web-app metas : hides Safari UI Components and Changes Status Bar Appearance -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		
+		<!-- Startup image for web apps -->
+		<link rel="apple-touch-startup-image" href="img/splash/ipad-landscape.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)">
+		<link rel="apple-touch-startup-image" href="img/splash/ipad-portrait.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)">
+		<link rel="apple-touch-startup-image" href="img/splash/iphone.png" media="screen and (max-device-width: 320px)">
+
+	</head>
+	
+	<!--
+
+	TABLE OF CONTENTS.
+	
+	Use search to find needed section.
+	
+	===================================================================
+	
+	|  01. #CSS Links                |  all CSS links and file paths  |
+	|  02. #FAVICONS                 |  Favicon links and file paths  |
+	|  03. #GOOGLE FONT              |  Google font link              |
+	|  04. #APP SCREEN / ICONS       |  app icons, screen backdrops   |
+	|  05. #BODY                     |  body tag                      |
+	|  06. #HEADER                   |  header tag                    |
+	|  07. #PROJECTS                 |  project lists                 |
+	|  08. #TOGGLE LAYOUT BUTTONS    |  layout buttons and actions    |
+	|  09. #MOBILE                   |  mobile view dropdown          |
+	|  10. #SEARCH                   |  search field                  |
+	|  11. #NAVIGATION               |  left panel & navigation       |
+	|  12. #RIGHT PANEL              |  right panel userlist          |
+	|  13. #MAIN PANEL               |  main panel                    |
+	|  14. #MAIN CONTENT             |  content holder                |
+	|  15. #PAGE FOOTER              |  page footer                   |
+	|  16. #SHORTCUT AREA            |  dropdown shortcuts area       |
+	|  17. #PLUGINS                  |  all scripts and plugins       |
+	
+	===================================================================
+	
+	-->
+	
+	<!-- #BODY -->
+	<!-- Possible Classes
+
+		* 'smart-style-{SKIN#}'
+		* 'smart-rtl'         - Switch theme mode to RTL
+		* 'menu-on-top'       - Switch to top navigation (no DOM change required)
+		* 'no-menu'			  - Hides the menu completely
+		* 'hidden-menu'       - Hides the main menu but still accessable by hovering over left edge
+		* 'fixed-header'      - Fixes the header
+		* 'fixed-navigation'  - Fixes the main menu
+		* 'fixed-ribbon'      - Fixes breadcrumb
+		* 'fixed-page-footer' - Fixes footer
+		* 'container'         - boxed layout mode (non-responsive: will not work with fixed-navigation & fixed-ribbon)
+	-->
+	<body class="">
+
+		<!-- HEADER -->
+		<header id="header">
+			<div id="logo-group">
+
+				<!-- PLACE YOUR LOGO HERE -->
+				<a href="/"><span id="logo" style="margin-top: 0;"> <img src="img/logo.png" alt="uPace"> </span></a>
+				<!-- END LOGO PLACEHOLDER -->
+
+				<!-- Note: The activity badge color changes when clicked and resets the number to 0
+				Suggestion: You may want to set a flag when this happens to tick off all checked messages / notifications -->
+				<span id="activity" class="activity-dropdown"> <i class="fa fa-user"></i> <b class="badge"> 3 </b> </span>
+			</div>
+
+			<!-- projects dropdown -->
+			<div class="project-context hidden-xs">
+
+				<span class="label">New Members:</span>
+				<span class="project-selector dropdown-toggle" data-toggle="dropdown">Recent members <i class="fa fa-angle-down"></i></span>
+
+				<!-- Suggestion: populate this list with fetch and push technique -->
+				<ul class="dropdown-menu">
+					<li>
+						<a href="javascript:void(0);">John Doe</a>
+					</li>
+					<li>
+						<a href="javascript:void(0);">Angelina Jolie</a>
+					</li>
+					<li>
+						<a href="javascript:void(0);">Jennifer Lopez</a>
+					</li>
+				</ul>
+				<!-- end dropdown-menu-->
+
+			</div>
+			<!-- end projects dropdown -->
+
+			<!-- pulled right: nav area -->
+			<div class="pull-right">
+				
+				<!-- collapse menu button -->
+				<div id="hide-menu" class="btn-header pull-right">
+					<span> <a href="javascript:void(0);" data-action="toggleMenu" title="Collapse Menu"><i class="fa fa-reorder"></i></a> </span>
+				</div>
+				<!-- end collapse menu -->
+				
+				<!-- #MOBILE -->
+				<!-- Top menu profile link : this shows only when top menu is active -->
+				<ul id="mobile-profile-img" class="header-dropdown-list hidden-xs padding-5">
+					<li class="">
+						<a href="#" class="dropdown-toggle no-margin userdropdown" data-toggle="dropdown"> 
+							<img src="img/avatars/sunny.png" alt="John Doe" class="online" />  
+						</a>
+						<ul class="dropdown-menu pull-right">
+							<li>
+								<a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0"><i class="fa fa-cog"></i> Setting</a>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<a href="profile" class="padding-10 padding-top-0 padding-bottom-0"> <i class="fa fa-user"></i> <u>P</u>rofile</a>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0" data-action="toggleShortcut"><i class="fa fa-arrow-down"></i> <u>S</u>hortcut</a>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<a href="javascript:void(0);" class="padding-10 padding-top-0 padding-bottom-0" data-action="launchFullscreen"><i class="fa fa-arrows-alt"></i> Full <u>S</u>creen</a>
+							</li>
+							<li class="divider"></li>
+							<li>
+								<a href="login" class="padding-10 padding-top-5 padding-bottom-5" data-action="userLogout"><i class="fa fa-sign-out fa-lg"></i> <strong><u>L</u>ogout</strong></a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+
+				<!-- logout button -->
+				<div id="logout" class="btn-header transparent pull-right">
+					<span> <a href="login" title="Sign Out" data-action="userLogout" data-logout-msg="You can improve your security further after logging out by closing this opened browser"><i class="fa fa-sign-out"></i></a> </span>
+				</div>
+				<!-- end logout button -->
+
+				<!-- search mobile button (this is hidden till mobile view port) -->
+				<div id="search-mobile" class="btn-header transparent pull-right">
+					<span> <a href="javascript:void(0)" title="Search"><i class="fa fa-search"></i></a> </span>
+				</div>
+				<!-- end search mobile button -->
+
+				<!-- input: search field -->
+				<form action="" class="header-search pull-right">
+					<input id="search-fld"  type="text" name="param" placeholder="Find reports and more" data-autocomplete='[
+					"ActionScript",
+					"AppleScript",
+					"Asp",
+					"BASIC",
+					"C",
+					"C++",
+					"Clojure",
+					"COBOL",
+					"ColdFusion",
+					"Erlang",
+					"Fortran",
+					"Groovy",
+					"Haskell",
+					"Java",
+					"JavaScript",
+					"Lisp",
+					"Perl",
+					"PHP",
+					"Python",
+					"Ruby",
+					"Scala",
+					"Scheme"]'>
+					<button type="submit">
+						<i class="fa fa-search"></i>
+					</button>
+					<a href="javascript:void(0);" id="cancel-search-js" title="Cancel Search"><i class="fa fa-times"></i></a>
+				</form>
+				<!-- end input: search field -->
+
+				<!-- fullscreen button -->
+				<div id="fullscreen" class="btn-header transparent pull-right">
+					<span> <a href="javascript:void(0);" data-action="launchFullscreen" title="Full Screen"><i class="fa fa-arrows-alt"></i></a> </span>
+				</div>
+				<!-- end fullscreen button -->
+				
+				<!-- #Voice Command: Start Speech -->
+				<div id="speech-btn" class="btn-header transparent pull-right hidden-sm hidden-xs">
+					<div> 
+						<a href="javascript:void(0)" title="Voice Command" data-action="voiceCommand"><i class="fa fa-microphone"></i></a> 
+						<div class="popover bottom"><div class="arrow"></div>
+							<div class="popover-content">
+								<h4 class="vc-title">Voice command activated <br><small>Please speak clearly into the mic</small></h4>
+								<h4 class="vc-title-error text-center">
+									<i class="fa fa-microphone-slash"></i> Voice command failed
+									<br><small class="txt-color-red">Must <strong>"Allow"</strong> Microphone</small>
+									<br><small class="txt-color-red">Must have <strong>Internet Connection</strong></small>
+								</h4>
+								<a href="javascript:void(0);" class="btn btn-success" onClick="commands.help()">See Commands</a> 
+								<a href="javascript:void(0);" class="btn bg-color-purple txt-color-white" onClick="$('#speech-btn .popover').fadeOut(50);">Close Popup</a> 
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- end voice command -->
+
+			</div>
+			<!-- end pulled right: nav area -->
+
+		</header>
+		<!-- END HEADER -->
+
+		<!-- Left panel : Navigation area -->
+		<!-- Note: This width of the aside area can be adjusted through LESS variables -->
+		<aside id="left-panel">
+
+			<!-- User info -->
+			<div class="login-info">
+				<span> <!-- User image size is adjusted inside CSS, it should stay as it --> 
+					
+					<a href="javascript:void(0);" id="show-shortcut" data-action="toggleShortcut">
+						<img src="img/avatars/sunny.png" alt="me" class="online" /> 
+						<span>
+							john.doe 
+						</span>
+						<i class="fa fa-angle-down"></i>
+					</a> 
+					
+				</span>
+			</div>
+			<!-- end user info -->
+
+			<!-- NAVIGATION : This navigation is also responsive-->
+			<?php
+				require_once('los-nav.php');
+			?>
+			<span class="minifyme" data-action="minifyMenu"> 
+				<i class="fa fa-arrow-circle-left hit"></i> 
+			</span>
+
+		</aside>
+		<!-- END NAVIGATION -->
+
+		<!-- MAIN PANEL -->
+		<div id="main" role="main">
+
+			<!-- RIBBON -->
+			<div id="ribbon">
+
+				<span class="ribbon-button-alignment"> 
+					<span id="refresh" class="btn btn-ribbon" data-action="resetWidgets" data-title="refresh"  rel="tooltip" data-placement="bottom" data-original-title="<i class='text-warning fa fa-warning'></i> Warning! This will reset all your details." data-html="true">
+						<i class="fa fa-refresh"></i>
+					</span> 
+				</span>
+
+				<!-- breadcrumb -->
+				
+				<!-- end breadcrumb -->
+
+				<!-- You can also add more buttons to the
+				ribbon for further usability
+
+				Example below:
+
+				<span class="ribbon-button-alignment pull-right">
+				<span id="search" class="btn btn-ribbon hidden-xs" data-title="search"><i class="fa-grid"></i> Change Grid</span>
+				<span id="add" class="btn btn-ribbon hidden-xs" data-title="add"><i class="fa-plus"></i> Add</span>
+				<span id="search" class="btn btn-ribbon" data-title="search"><i class="fa-search"></i> <span class="hidden-mobile">Search</span></span>
+				</span> -->
+
+			</div>
+			<!-- END RIBBON -->
+
+			<!-- MAIN CONTENT -->
+			<div id="content">
+
+
+<div class="row">
+	<div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+		<h1 class="page-title txt-color-blueDark">
+			
+			<!-- PAGE HEADER -->
+			<i class="fa-fw fa fa-bar-chart-o"></i> 
+				Facility
+			<span>>  
+				Basic Information
+			</span>
+		</h1>
+	</div>
+	
+	
+</div>
+
+<!-- widget grid -->
+<section id="widget-grid" class="">
+
+
+	<!-- START ROW -->
+
+	<div class="row">
+
+		
+
+		<!-- NEW COL START -->
+		<article class="col-sm-12 col-md-12 col-lg-12">
+			
+			<!-- Widget ID (each widget will need unique ID)-->
+			<div class="jarviswidget" data-widget-editbutton="false" data-widget-custombutton="false">
+				<!-- widget options:
+					usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+					
+					data-widget-colorbutton="false"	
+					data-widget-editbutton="false"
+					data-widget-togglebutton="false"
+					data-widget-deletebutton="false"
+					data-widget-fullscreenbutton="false"
+					data-widget-custombutton="false"
+					data-widget-collapsed="true" 
+					data-widget-sortable="false"
+					
+				-->
+				<header>
+					<span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+					<h2>Basic Information form </h2>				
+					
+				</header>
+
+				<!-- widget div-->
+				<div>
+					
+					<!-- widget edit box -->
+					<div class="jarviswidget-editbox">
+						<!-- This area used as dropdown edit box -->
+						
+					</div>
+					<!-- end widget edit box -->
+					
+					<!-- widget content -->
+					<div class="widget-body no-padding">
+						
+						<form id="smart-form-register" class="smart-form">
+							<header>
+								Basic Information
+							</header>
+
+							
+
+							<fieldset>
+								<div class="row">
+									<section class="col col-6">
+										<label class="input">
+											<input type="text" name="username" placeholder="Max Occupancy of gym">
+										</label>
+									</section>
+									<section class="col col-6">
+										<label class="input">
+											<input type="text" name="email" placeholder="Hours of operation">
+										</label>
+									</section>
+								</div>
+								
+								<div class="row">
+									<section class="col col-6">
+										<label class="input"> <i class="icon-append fa fa-calendar"></i>
+											<input type="text" name="request" placeholder="Dates the gym will be closed" class="datepicker" data-dateformat='dd/mm/yy'>
+										</label>
+									</section>
+									<section class="col col-6">
+										<label class="input"> <i class="icon-append fa fa-phone"></i>
+											<input type="tel" name="phone" placeholder="Phone number" data-mask="(999) 999-9999">
+										</label>
+									</section>
+								</div>	
+
+								
+							</fieldset>
+							<fieldset>
+								<div class="row">
+									<section class="col col-5">
+										<label class="select">
+											<select name="country">
+												<option value="0" selected="" disabled="">Country</option>
+												<option value="244">Aaland Islands</option>
+												<option value="1">Afghanistan</option>
+												<option value="2">Albania</option>
+												<option value="3">Algeria</option>
+												<option value="4">American Samoa</option>
+												<option value="5">Andorra</option>
+												<option value="6">Angola</option>
+												<option value="7">Anguilla</option>
+												<option value="8">Antarctica</option>
+												<option value="9">Antigua and Barbuda</option>
+												<option value="10">Argentina</option>
+												<option value="11">Armenia</option>
+												<option value="12">Aruba</option>
+												<option value="13">Australia</option>
+												<option value="14">Austria</option>
+												<option value="15">Azerbaijan</option>
+												<option value="16">Bahamas</option>
+												<option value="17">Bahrain</option>
+												<option value="18">Bangladesh</option>
+												<option value="19">Barbados</option>
+												<option value="20">Belarus</option>
+												<option value="21">Belgium</option>
+												<option value="22">Belize</option>
+												<option value="23">Benin</option>
+												<option value="24">Bermuda</option>
+												<option value="25">Bhutan</option>
+												<option value="26">Bolivia</option>
+												<option value="245">Bonaire, Sint Eustatius and Saba</option>
+												<option value="27">Bosnia and Herzegovina</option>
+												<option value="28">Botswana</option>
+												<option value="29">Bouvet Island</option>
+												<option value="30">Brazil</option>
+												<option value="31">British Indian Ocean Territory</option>
+												<option value="32">Brunei Darussalam</option>
+												<option value="33">Bulgaria</option>
+												<option value="34">Burkina Faso</option>
+												<option value="35">Burundi</option>
+												<option value="36">Cambodia</option>
+												<option value="37">Cameroon</option>
+												<option value="38">Canada</option>
+												<option value="251">Canary Islands</option>
+												<option value="39">Cape Verde</option>
+												<option value="40">Cayman Islands</option>
+												<option value="41">Central African Republic</option>
+												<option value="42">Chad</option>
+												<option value="43">Chile</option>
+												<option value="44">China</option>
+												<option value="45">Christmas Island</option>
+												<option value="46">Cocos (Keeling) Islands</option>
+												<option value="47">Colombia</option>
+												<option value="48">Comoros</option>
+												<option value="49">Congo</option>
+												<option value="50">Cook Islands</option>
+												<option value="51">Costa Rica</option>
+												<option value="52">Cote D'Ivoire</option>
+												<option value="53">Croatia</option>
+												<option value="54">Cuba</option>
+												<option value="246">Curacao</option>
+												<option value="55">Cyprus</option>
+												<option value="56">Czech Republic</option>
+												<option value="237">Democratic Republic of Congo</option>
+												<option value="57">Denmark</option>
+												<option value="58">Djibouti</option>
+												<option value="59">Dominica</option>
+												<option value="60">Dominican Republic</option>
+												<option value="61">East Timor</option>
+												<option value="62">Ecuador</option>
+												<option value="63">Egypt</option>
+												<option value="64">El Salvador</option>
+												<option value="65">Equatorial Guinea</option>
+												<option value="66">Eritrea</option>
+												<option value="67">Estonia</option>
+												<option value="68">Ethiopia</option>
+												<option value="69">Falkland Islands (Malvinas)</option>
+												<option value="70">Faroe Islands</option>
+												<option value="71">Fiji</option>
+												<option value="72">Finland</option>
+												<option value="74">France, skypolitan</option>
+												<option value="75">French Guiana</option>
+												<option value="76">French Polynesia</option>
+												<option value="77">French Southern Territories</option>
+												<option value="126">FYROM</option>
+												<option value="78">Gabon</option>
+												<option value="79">Gambia</option>
+												<option value="80">Georgia</option>
+												<option value="81">Germany</option>
+												<option value="82">Ghana</option>
+												<option value="83">Gibraltar</option>
+												<option value="84">Greece</option>
+												<option value="85">Greenland</option>
+												<option value="86">Grenada</option>
+												<option value="87">Guadeloupe</option>
+												<option value="88">Guam</option>
+												<option value="89">Guatemala</option>
+												<option value="241">Guernsey</option>
+												<option value="90">Guinea</option>
+												<option value="91">Guinea-Bissau</option>
+												<option value="92">Guyana</option>
+												<option value="93">Haiti</option>
+												<option value="94">Heard and Mc Donald Islands</option>
+												<option value="95">Honduras</option>
+												<option value="96">Hong Kong</option>
+												<option value="97">Hungary</option>
+												<option value="98">Iceland</option>
+												<option value="99">India</option>
+												<option value="100">Indonesia</option>
+												<option value="101">Iran (Islamic Republic of)</option>
+												<option value="102">Iraq</option>
+												<option value="103">Ireland</option>
+												<option value="104">Israel</option>
+												<option value="105">Italy</option>
+												<option value="106">Jamaica</option>
+												<option value="107">Japan</option>
+												<option value="240">Jersey</option>
+												<option value="108">Jordan</option>
+												<option value="109">Kazakhstan</option>
+												<option value="110">Kenya</option>
+												<option value="111">Kiribati</option>
+												<option value="113">Korea, Republic of</option>
+												<option value="114">Kuwait</option>
+												<option value="115">Kyrgyzstan</option>
+												<option value="116">Lao People's Democratic Republic</option>
+												<option value="117">Latvia</option>
+												<option value="118">Lebanon</option>
+												<option value="119">Lesotho</option>
+												<option value="120">Liberia</option>
+												<option value="121">Libyan Arab Jamahiriya</option>
+												<option value="122">Liechtenstein</option>
+												<option value="123">Lithuania</option>
+												<option value="124">Luxembourg</option>
+												<option value="125">Macau</option>
+												<option value="127">Madagascar</option>
+												<option value="128">Malawi</option>
+												<option value="129">Malaysia</option>
+												<option value="130">Maldives</option>
+												<option value="131">Mali</option>
+												<option value="132">Malta</option>
+												<option value="133">Marshall Islands</option>
+												<option value="134">Martinique</option>
+												<option value="135">Mauritania</option>
+												<option value="136">Mauritius</option>
+												<option value="137">Mayotte</option>
+												<option value="138">Mexico</option>
+												<option value="139">Micronesia, Federated States of</option>
+												<option value="140">Moldova, Republic of</option>
+												<option value="141">Monaco</option>
+												<option value="142">Mongolia</option>
+												<option value="242">Montenegro</option>
+												<option value="143">Montserrat</option>
+												<option value="144">Morocco</option>
+												<option value="145">Mozambique</option>
+												<option value="146">Myanmar</option>
+												<option value="147">Namibia</option>
+												<option value="148">Nauru</option>
+												<option value="149">Nepal</option>
+												<option value="150">Netherlands</option>
+												<option value="151">Netherlands Antilles</option>
+												<option value="152">New Caledonia</option>
+												<option value="153">New Zealand</option>
+												<option value="154">Nicaragua</option>
+												<option value="155">Niger</option>
+												<option value="156">Nigeria</option>
+												<option value="157">Niue</option>
+												<option value="158">Norfolk Island</option>
+												<option value="112">North Korea</option>
+												<option value="159">Northern Mariana Islands</option>
+												<option value="160">Norway</option>
+												<option value="161">Oman</option>
+												<option value="162">Pakistan</option>
+												<option value="163">Palau</option>
+												<option value="247">Palestinian Territory, Occupied</option>
+												<option value="164">Panama</option>
+												<option value="165">Papua New Guinea</option>
+												<option value="166">Paraguay</option>
+												<option value="167">Peru</option>
+												<option value="168">Philippines</option>
+												<option value="169">Pitcairn</option>
+												<option value="170">Poland</option>
+												<option value="171">Portugal</option>
+												<option value="172">Puerto Rico</option>
+												<option value="173">Qatar</option>
+												<option value="174">Reunion</option>
+												<option value="175">Romania</option>
+												<option value="176">Russian Federation</option>
+												<option value="177">Rwanda</option>
+												<option value="178">Saint Kitts and Nevis</option>
+												<option value="179">Saint Lucia</option>
+												<option value="180">Saint Vincent and the Grenadines</option>
+												<option value="181">Samoa</option>
+												<option value="182">San Marino</option>
+												<option value="183">Sao Tome and Principe</option>
+												<option value="184">Saudi Arabia</option>
+												<option value="185">Senegal</option>
+												<option value="243">Serbia</option>
+												<option value="186">Seychelles</option>
+												<option value="187">Sierra Leone</option>
+												<option value="188">Singapore</option>
+												<option value="189">Slovak Republic</option>
+												<option value="190">Slovenia</option>
+												<option value="191">Solomon Islands</option>
+												<option value="192">Somalia</option>
+												<option value="193">South Africa</option>
+												<option value="194">South Georgia &amp; South Sandwich Islands</option>
+												<option value="248">South Sudan</option>
+												<option value="195">Spain</option>
+												<option value="196">Sri Lanka</option>
+												<option value="249">St. Barthelemy</option>
+												<option value="197">St. Helena</option>
+												<option value="250">St. Martin (French part)</option>
+												<option value="198">St. Pierre and Miquelon</option>
+												<option value="199">Sudan</option>
+												<option value="200">Suriname</option>
+												<option value="201">Svalbard and Jan Mayen Islands</option>
+												<option value="202">Swaziland</option>
+												<option value="203">Sweden</option>
+												<option value="204">Switzerland</option>
+												<option value="205">Syrian Arab Republic</option>
+												<option value="206">Taiwan</option>
+												<option value="207">Tajikistan</option>
+												<option value="208">Tanzania, United Republic of</option>
+												<option value="209">Thailand</option>
+												<option value="210">Togo</option>
+												<option value="211">Tokelau</option>
+												<option value="212">Tonga</option>
+												<option value="213">Trinidad and Tobago</option>
+												<option value="214">Tunisia</option>
+												<option value="215">Turkey</option>
+												<option value="216">Turkmenistan</option>
+												<option value="217">Turks and Caicos Islands</option>
+												<option value="218">Tuvalu</option>
+												<option value="219">Uganda</option>
+												<option value="220">Ukraine</option>
+												<option value="221">United Arab Emirates</option>
+												<option value="222">United Kingdom</option>
+												<option value="223">United States</option>
+												<option value="224">United States Minor Outlying Islands</option>
+												<option value="225">Uruguay</option>
+												<option value="226">Uzbekistan</option>
+												<option value="227">Vanuatu</option>
+												<option value="228">Vatican City State (Holy See)</option>
+												<option value="229">Venezuela</option>
+												<option value="230">Viet Nam</option>
+												<option value="231">Virgin Islands (British)</option>
+												<option value="232">Virgin Islands (U.S.)</option>
+												<option value="233">Wallis and Futuna Islands</option>
+												<option value="234">Western Sahara</option>
+												<option value="235">Yemen</option>
+												<option value="238">Zambia</option>
+												<option value="239">Zimbabwe</option>
+											</select> <i></i> </label>
+									</section>
+
+									<section class="col col-4">
+										<label class="input">
+											<input type="text" name="city" placeholder="City">
+										</label>
+									</section>
+
+									<section class="col col-3">
+										<label class="input">
+											<input type="text" name="code" placeholder="Post code">
+										</label>
+									</section>
+								</div>
+
+								<section>
+									<label for="address2" class="input">
+										<input type="text" name="address2" id="address2" placeholder="Address">
+									</label>
+								</section>
+
+								<section>
+									<label class="textarea"> 										
+										<textarea rows="3" name="info" placeholder="Additional info"></textarea> 
+									</label>
+								</section>
+							</fieldset>
+							<footer>
+								<button type="submit" class="btn btn-primary">
+									Submit
+								</button>
+							</footer>
+						</form>						
+						
+					</div>
+					<!-- end widget content -->
+					
+				</div>
+				<!-- end widget div -->
+				
+			</div>
+			<!-- end widget -->
+		
+
+		</article>
+		<!-- END COL -->		
+
+	</div>
+
+	<!-- END ROW -->
+
+</section>
+<!-- end widget grid -->
+
+
+
+
+			</div>
+			<!-- END MAIN CONTENT -->
+
+		</div>
+		<!-- END MAIN PANEL -->
+
+
+		<!-- SHORTCUT AREA : With large tiles (activated via clicking user name tag)
+		Note: These tiles are completely responsive,
+		you can add as many as you like
+		-->
+		<?php
+		require_once('los-shortcut.php');
+		?>
+		<!-- END SHORTCUT AREA -->
+
+		<!--================================================== -->
+
+		<!-- PACE LOADER - turn this on if you want ajax loading to show (caution: uses lots of memory on iDevices)-->
+		<script data-pace-options='{ "restartOnRequestAfter": true }' src="js/plugin/pace/pace.min.js"></script>
+
+		<!-- Link to Google CDN's jQuery + jQueryUI; fall back to local -->
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script>
+			if (!window.jQuery) {
+				document.write('<script src="js/libs/jquery-2.1.1.min.js"><\/script>');
+			}
+		</script>
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+		<script>
+			if (!window.jQuery.ui) {
+				document.write('<script src="js/libs/jquery-ui-1.10.3.min.js"><\/script>');
+			}
+		</script>
+
+		<!-- IMPORTANT: APP CONFIG -->
+		<script src="js/app.config.js"></script>
+
+		<!-- JS TOUCH : include this plugin for mobile drag / drop touch events-->
+		<script src="js/plugin/jquery-touch/jquery.ui.touch-punch.min.js"></script> 
+
+		<!-- BOOTSTRAP JS -->
+		<script src="js/bootstrap/bootstrap.min.js"></script>
+
+		<!-- CUSTOM NOTIFICATION -->
+		<script src="js/notification/SmartNotification.min.js"></script>
+
+		<!-- JARVIS WIDGETS -->
+		<script src="js/smartwidgets/jarvis.widget.min.js"></script>
+
+		<!-- EASY PIE CHARTS -->
+		<script src="js/plugin/easy-pie-chart/jquery.easy-pie-chart.min.js"></script>
+
+		<!-- SPARKLINES -->
+		<script src="js/plugin/sparkline/jquery.sparkline.min.js"></script>
+
+		<!-- JQUERY VALIDATE -->
+		<script src="js/plugin/jquery-validate/jquery.validate.min.js"></script>
+
+		<!-- JQUERY MASKED INPUT -->
+		<script src="js/plugin/masked-input/jquery.maskedinput.min.js"></script>
+
+		<!-- JQUERY SELECT2 INPUT -->
+		<script src="js/plugin/select2/select2.min.js"></script>
+
+		<!-- JQUERY UI + Bootstrap Slider -->
+		<script src="js/plugin/bootstrap-slider/bootstrap-slider.min.js"></script>
+
+		<!-- browser msie issue fix -->
+		<script src="js/plugin/msie-fix/jquery.mb.browser.min.js"></script>
+
+		<!-- FastClick: For mobile devices -->
+		<script src="js/plugin/fastclick/fastclick.min.js"></script>
+
+		<!--[if IE 8]>
+
+		<h1>Your browser is out of date, please update your browser by going to www.microsoft.com/download</h1>
+
+		<![endif]-->
+
+		<!-- MAIN APP JS FILE -->
+		<script src="js/app.min.js"></script>
+
+		<!-- ENHANCEMENT PLUGINS : NOT A REQUIREMENT -->
+		<!-- Voice command : plugin -->
+		<script src="js/speech/voicecommand.min.js"></script>
+
+		<!-- SmartChat UI : plugin -->
+		<script src="js/smart-chat-ui/smart.chat.ui.min.js"></script>
+		<script src="js/smart-chat-ui/smart.chat.manager.min.js"></script>
+
+		<!-- PAGE RELATED PLUGIN(S) -->
+		<script src="js/plugin/jquery-form/jquery-form.min.js"></script>
+		
+
+		<script type="text/javascript">
+		
+		// DO NOT REMOVE : GLOBAL FUNCTIONS!
+		
+		$(document).ready(function() {
+			
+			pageSetUp();
+
+					
+			var $registerForm = $("#smart-form-register").validate({
+	
+				// Rules for form validation
+				rules : {
+					username : {
+						required : true
+					},
+					email : {
+						required : true,
+					}
+				},
+	
+				// Messages for form validation
+				messages : {
+					username : {
+						required : 'Please enter Max Occupancy of gym'
+					},
+					email : {
+						required : 'Please enter Hours of operation',
+						
+					}
+				},
+	
+				// Do not change code below
+				errorPlacement : function(error, element) {
+					error.insertAfter(element.parent());
+				}
+			});
+	
+			
+	
+			// START AND FINISH DATE
+			$('#startdate').datepicker({
+				dateFormat : 'dd.mm.yy',
+				prevText : '<i class="fa fa-chevron-left"></i>',
+				nextText : '<i class="fa fa-chevron-right"></i>',
+				onSelect : function(selectedDate) {
+					$('#finishdate').datepicker('option', 'minDate', selectedDate);
+				}
+			});
+			
+			$('#finishdate').datepicker({
+				dateFormat : 'dd.mm.yy',
+				prevText : '<i class="fa fa-chevron-left"></i>',
+				nextText : '<i class="fa fa-chevron-right"></i>',
+				onSelect : function(selectedDate) {
+					$('#startdate').datepicker('option', 'maxDate', selectedDate);
+				}
+			});
+
+
+		
+		})
+
+		</script>
+
+		<!-- Your GOOGLE ANALYTICS CODE Below -->
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+				_gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
+				_gaq.push(['_trackPageview']);
+			
+			(function() {
+				var ga = document.createElement('script');
+				ga.type = 'text/javascript';
+				ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0];
+				s.parentNode.insertBefore(ga, s);
+			})();
+
+		</script>
+
+	</body>
+
+</html>

@@ -84,11 +84,13 @@
         handleDateSlideClick = function(e) {
             var $caro = $(selectors.dateCarousel),
                 $el = $(this);
-            $caro.find('.' + activeDateClass).removeClass(activeDateClass);
-            $caro.trigger('to.owl.carousel', [$el.data('pos')]);
-            $el.addClass(activeDateClass);
-            updateHeaderDate(new Date($el.data('full-date')));
-            $(document).trigger('date_carousel:date_selected', $el);
+            if(!$el.hasClass(activeDateClass)) {
+                $caro.find('.' + activeDateClass).removeClass(activeDateClass);
+                $caro.trigger('to.owl.carousel', [$el.data('pos')]);
+                $el.addClass(activeDateClass);
+                updateHeaderDate(new Date($el.data('full-date')));
+                $(document).trigger('date_carousel.date_selected', $el);
+            }
         }
 
     initializeDateScroller();

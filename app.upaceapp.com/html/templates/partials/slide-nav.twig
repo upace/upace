@@ -1,0 +1,45 @@
+<nav class="slide">
+    <ul>
+        <li style="margin-top:50px"></li>
+        <li>
+            <a data-toggle="modal" class="reserve-modal" data-target="#search-modal">
+                <div style="width:40px; height:40px; float:left;">
+                    <i class="fa fa-search"></i>
+                </div>
+                <span>Search</span>
+            </a>
+        </li>
+        <li>
+            <a href="/reservations/" {% if reservations %}class="active"{% endif %}>
+                <div style="width:40px; height:40px; float:left">
+                    <i class="fa fa-book"></i>
+                </div>
+                <span>Reservations</span>
+            </a>
+        </li>
+        <li>
+            <a href="/classes/" {% if classes %}class="active"{% endif %}>
+                <div style="width:40px; height:40px; float:left">
+                    <i class="fa fa-users"></i>
+                </div>
+                <span>Classes</span>
+            </a>
+        </li>
+        <li>
+            <a href="/equipment/" {% if equipment %}class="active"{% endif %}>
+                <div style="width:40px; height:40px; float:left">
+                    <i class="fa fa-bicycle"></i>
+                </div>
+                <span>Equipment</span>
+            </a>
+        </li>
+        <li>
+            <a data-toggle="modal" class="reserve-modal" data-target="#settings-modal">
+                <div style="width:40px; height:40px; float:left">
+                    <i class="fa fa-cog"></i>
+                </div>
+                <span>Settings</span>
+            </a>
+        </li>
+    </ul>
+</nav>

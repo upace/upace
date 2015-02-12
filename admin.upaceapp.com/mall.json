@@ -1,0 +1,54 @@
+{
+	"mapwidth": "800",
+	"mapheight": "600",
+	"categories": [
+		{
+			"id": "gym1",
+			"title": "Gym1",
+			"icon": "images/misc.png",
+			"color": "#bfe79e",
+			"show": "false"
+		},
+		{
+			"id": "gym2",
+			"title": "Gym2",
+			"icon": "images/misc.png",
+			"color": "#bfe79e",
+			"show": "false"
+		}
+	],
+	"levels": [
+		{
+			"id": "basement",
+			"title": "Basement",
+			"map": "images/mall/mall-basement.svg",
+			"minimap": "images/mall/mall-basement-small.jpg",
+			"locations": [
+				{
+					"id": "applebees",
+					"title": "Applebee's",
+					"about": "Lorem ipsum",
+					"description": "See you tomorrow",
+					"category": "gym1",
+					"thumbnail": "images/mall/thumb/applebees.jpg",
+					"x": "0.665",
+					"y": "0.41",
+					"zoom": "5"
+				},
+				{
+					"id": "kfc",
+					"title": "KFC",
+					"about": "Lorem ipsum",
+					"description": "Kentucky Fried Chicken",
+					"category": "food",
+					"thumbnail": "images/mall/thumb/kfc.jpg",
+					"tooltip": "default",
+					"x": "0.6012",
+					"y": "0.32",
+					"zoom": "8"
+				}
+				
+			]
+		}
+	]
+}

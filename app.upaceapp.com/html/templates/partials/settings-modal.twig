@@ -1,0 +1,321 @@
+<div class="modal fade" id="settings-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="col-xs-2" style="margin-bottom:2%"></div>
+            <div class="col-xs-8" style="margin-bottom:2%">
+                <center><span class="modal-title">Settings</span><br/></center>
+            </div>
+            <div class="col-xs-2">
+                <center style="margin-bottom:2em"><a data-dismiss="modal" class="modal-reserve-button"><i class="fa fa-times"></i></a></center>
+            </div>
+
+            <!-- Content -->
+            <div class="container">
+
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="false" style="margin-top:5em">
+
+                <!-- Profile-->
+                <div class="panel panel-default panel-bg">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true"
+                       aria-controls="collapseOne">
+                        <div class="panel-heading" role="tab" id="headingOne">
+                            <h4 class="panel-title">
+                                Profile
+                            </h4>
+                        </div>
+                    </a>
+
+                    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            <form id="profilechange-form">
+                                <input type="text" name="firstname" class="form-control" placeholder="First Name" />
+                                <input type="text" name="lastname" class="form-control" placeholder="Last Name" />
+                                <input type="text" name="email" class="form-control" placeholder="Email" />
+                                <input type="text" name="phone" class="form-control" placeholder="Phone" />
+
+                                <div class="formframe form-group col-xs-14">
+                                    <div class="radioformset" style="margin-bottom:10px" id="accordion6" role="tablist" aria-multiselectable="false">
+                                        <div id="radioformset" style="background-color:#000">
+                                            <a data-toggle="collapse" data-parent="#accordion6" href="#collapseSix" aria-expanded="true"
+                                               aria-controls="collapseSix">
+                                                <div class="radioform" style="height:54px" name="memberType" role="tab" id="inputMtype headingOne">
+                                                    <label style="cursor: pointer;"><span class="group-label">Member Type</span></label>
+                                                </div>
+                                            </a>
+                                            <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                                <div class="panel-body">
+                                                    <div id="radioformset">
+                                                        <div class="col-xs-12">
+                                                            <label class="radioform">
+                                                                <input type="radio" name="memberType" value="Freshman" style="height:54px;"
+                                                                       data-label="Freshman" />
+                                                                <span>Freshman</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-xs-12">
+                                                            <label class="radioform">
+                                                                <input type="radio" name="memberType" value="Sophomore" data-label="Sophomore" />
+                                                                <span>Sophomore</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-xs-12">
+                                                            <label class="radioform">
+                                                                <input type="radio" name="memberType" value="Junior" data-label="Junior" />
+                                                                <span>Junior</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-xs-12">
+                                                            <label class="radioform">
+                                                                <input type="radio" name="memberType" value="Senior" data-label="Senior" />
+                                                                <span>Senior</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-xs-12">
+                                                            <label class="radioform">
+                                                                <input type="radio" name="memberType" value="Graduate Student" data-label="Graduate Student" />
+                                                                <span>Graduate Student</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-xs-12">
+                                                            <label class="radioform">
+                                                                <input type="radio" name="memberType" value="Community Member"
+                                                                       data-label="Community Member" />
+                                                                <span>Community Member</span>
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-xs-12">
+                                                            <label class="radioform">
+                                                                <input type="radio" name="memberType" value="Staff" data-label="Staff" />
+                                                                <span>Staff</span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--/Member Type -->
+
+                                <!-- University -->
+                                <div class="accordion col-xs-14" id="accordion1">
+                                    <div class="accordion-group">
+                                        <div class="accordion-heading">
+                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseUniversity">
+                                                <div id="radioformset">
+                                                    <label class="radioform" name="university">
+                                                        <input type="radio" style="height:54px;" data-label="University" />
+                                                        <span class="group-label">University</span>
+                                                    </label>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div id="collapseUniversity" class="accordion-body collapse col-xs-12">
+                                            <div class="accordion-inner" id="university-items">
+                                                <!-- populated via js -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /University -->
+
+                                <!-- Gender -->
+                                <div id="radioformset" class="row">
+                                    <div class="col-xs-6" style="padding-right:2px">
+                                        <label class="radioform">
+                                            <input type="radio" name="sex" value="male">
+                                            <span>Male</span></input>
+                                        </label>
+                                    </div>
+                                    <div class="col-xs-6" style="padding-left:2px">
+                                        <label class="radioform">
+                                            <input type="radio" name="sex" value="female">
+                                            <span>Female</span></input>
+                                        </label>
+                                    </div>
+                                </div>
+                                <!-- /Gender -->
+
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <button class="btn btn-danger btn-lg btn-block" type="submit">
+                                                SAVE CHANGES
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Profile -->
+
+                <!-- Password -->
+                <div class="panel panel-default panel-bg">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true"
+                       aria-controls="collapseTwo">
+                        <div class="panel-heading" role="tab" id="headingTwo">
+                            <h4 class="panel-title">
+                                Password
+                            </h4>
+                        </div>
+                    </a>
+
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                        <div class="panel-body">
+                            <form id="passwordchange-form">
+                                <input type="password" name="oldpassword" class="form-control" placeholder="Old Password" />
+                                <input type="password" name="password" class="form-control" placeholder="New Password" />
+                                <input type="password" name="retypepassword" class="form-control" placeholder="Retype Password" />
+
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <button class="btn btn-danger btn-lg btn-block" type="submit">
+                                                SAVE CHANGES
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Password -->
+
+                <!-- Terms -->
+                <div class="panel panel-default panel-bg">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true"
+                       aria-controls="collapseThree">
+                        <div class="panel-heading" role="tab" id="headingThree">
+                            <h4 class="panel-title">
+                                Terms & Privacy Policy
+                            </h4>
+                        </div>
+                    </a>
+
+                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                        <div class="panel-body">
+                            {{ source('./partials/terms_mobile.html') }}
+                            {{ source('./partials/privacy_mobile.html') }}
+                        </div>
+                    </div>
+                </div>
+                <!-- /Terms -->
+
+                <!-- Notification -->
+                <div class="panel panel-default panel-bg">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="true"
+                       aria-controls="collapseFour">
+                        <div class="panel-heading" role="tab" id="headingFour">
+                            <h4 class="panel-title">
+                                Notifications
+                            </h4>
+                        </div>
+                    </a>
+
+                    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                        <div class="panel-body">
+                            <form id="notificationchange-form">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-xs-9 notification">
+                                            Class Reminder
+                                        </div>
+                                        <div class="col-xs-3 notification" style="text-align:right;">
+                                            <input type="checkbox" name="class_noti" class="settings-notifications">
+                                        </div>
+                                        <div class="col-xs-9 notification">
+                                            Daily Exercise Reminder
+                                        </div>
+                                        <div class="col-xs-3 notification" style="text-align:right;">
+                                            <input type="checkbox" name="daily_exercise" class="settings-notifications">
+                                        </div>
+                                        <div class="col-xs-9 notification">
+                                            General Notifications
+                                        </div>
+                                        <div class="col-xs-3 notification" style="text-align:right;">
+                                            <input type="checkbox" name="general_noti" class="settings-notifications">
+                                        </div>
+                                        <div class="col-xs-9 notification">
+                                            Send to me via Email
+                                        </div>
+                                        <div class="col-xs-3 notification" style="text-align:right;">
+                                            <input type="checkbox" name="via_email" class="settings-notifications">
+                                        </div>
+                                        <div class="col-xs-9 notification">
+                                            Send to me via Text
+                                        </div>
+                                        <div class="col-xs-3 notification" style="text-align:right;">
+                                            <input type="checkbox" name="via_text" class="settings-notifications">
+                                        </div>
+                                        <!--<div class="col-xs-9 notification">
+                                          Favorite Classes
+                                        </div>
+                                        <div class="col-xs-3 notification" style="text-align:right;">
+                                          <input type="checkbox" name="favclass" class="settings-notifications" checked>
+                                        </div>-->
+                                        <div class="container-fluid">
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <button class="btn btn-danger btn-lg btn-block" type="submit">
+                                                        SAVE CHANGES
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Notifications -->
+
+                <!-- Support -->
+                <div class="panel panel-default panel-bg">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="true"
+                       aria-controls="collapseFive">
+                        <div class="panel-heading" role="tab" id="headingFive">
+                            <h4 class="panel-title">
+                                Support
+                            </h4>
+                        </div>
+                    </a>
+
+                    <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+                        <div class="panel-body">
+                            <h2 style="font-size:2em;margin-top:1em">Need assistance?</h2>
+
+                            <h2 style="font-size:2em">Contact us at</h2>
+                            <a href="mailto:info@upaceapp.com" style="color:#299eb6;"><h2 style="font-size:2em">
+                                    info@upaceapp.com</h2></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Support -->
+            </div>
+        </div>
+        <!-- /Content -->
+
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <button id="logout-button" class="btn btn-danger btn-lg btn-block" type="submit" style="margin-top:5%">
+                        LOGOUT
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+</div>
+
+<script id="university-item-template" type="text/x-twig-template">
+    {{ source('./partials/form-university-item.twig') }}
+</script>
+<script id="gym-item-template" type="text/x-twig-template">
+    {{ source('./partials/form-gym-item.twig') }}
+</script>

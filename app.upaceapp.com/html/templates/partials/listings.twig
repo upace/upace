@@ -1,0 +1,11 @@
+<div class="listings-wrap">
+{% block listings %}
+{% endblock %}
+</div>
+
+{% include './partials/listing-modal.twig' %}
+
+<script id="listing-item-template" type="text/x-twig-template">
+    {{ source('./partials/listing-item.twig') }}
+</script>
+

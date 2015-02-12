@@ -1,0 +1,14 @@
+/********* notify bar ***********/
+
+.jquery-notify-bar {
+	z-index: 99999999; position: fixed; text-align: center; filter: progid:dximagetransform.microsoft.gradient(startcolorstr='#ebebeb', endcolorstr='#cccccc'); padding-bottom: 20px; background-color: #ebebeb; padding-left: 0px; width: 100%; padding-right: 0px; font-family: arial, candara, cochin, georgia, times, "times new roman", serif; color: #555; font-size: 18px; top: 0px; font-weight: bold; padding-top: 20px; left: 0px; text-shadow: 1px 1px 2px #ddd; -moz-box-shadow: 0px 2px 8px #888; -webkit-box-shadow: 0px 2px 8px #888; box-shadow: 0px 2px 8px #888; margin-top:0px;
+}
+.error.jquery-notify-bar {
+	filter: progid:dximagetransform.microsoft.gradient(startcolorstr='#db4444', endcolorstr='#bd3a3a'); background-color: #E77300; color: #fff0f0; text-shadow: 1px 1px 1px #bd3a3a;
+}
+.success.jquery-notify-bar {
+	filter: progid:dximagetransform.microsoft.gradient(startcolorstr='#8dc96f', endcolorstr='#509c4b'); background-color: #8dc96f; color: #fff; text-shadow: #509c4b 1px 1px 1px
+}
+.notify-bar-close {
+	position: absolute; font-size: 11px; left: 95%
+}

@@ -1,14 +1,14 @@
 <?php
 $SITE = array(
     "name" => "UPACE",
-    "base_url" => "http://upace.com",
+    "base_url" => "http://app.upaceapp.com",
 	"parse_app_id" => "nN7dcS3c3LNXlkOgMhmVxcu2L4b1zeUDuaSXIfzr",
 	"parse_js_key" => "thCEUZ2AV4ShhzGlQpxYucpLI0uwj7JNBizIrThe",
 	"parse_rest_api_key" => "rD5RqXmCez2ZbQ3T67Sag85borrt1m2G4pk1wmGf",
 	"parse_master_key" => "iQTtB6OeotyyKWP29H3zpf1uL8DYlzkSHLconPtt",
     "fb_app_id" => "371970302963349",
     "libraries_path" => __DIR__ . '/lib',
-    "templates_path" => __DIR__ . '/templates',
+    "templates_path" => __DIR__ . '/html/templates',
     "templates_cache_path" => __DIR__ . '/cache',
     "includes_path" => __DIR__ . '/includes',
     "helpers_path" => __DIR__ . '/helpers',

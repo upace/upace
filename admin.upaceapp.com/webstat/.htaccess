@@ -1,0 +1,7 @@
+AuthType Basic
+AuthName "/www/server3-upace.vm-host.net/webstat"
+AuthUserFile /var/www/unserver3/data/etc/631624.passwd
+DirectoryIndex index.html
+<Limit GET POST>
+	require valid-user
+</Limit>

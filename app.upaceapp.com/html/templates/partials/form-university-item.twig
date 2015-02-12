@@ -1,0 +1,20 @@
+<div class="accordion" id="university-{{ counter }}">
+    <div class="accordion-group">
+        <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#university-{{ counter }}"
+               href="#university-collapse-{{ counter }}">
+                <div id="radioformset">
+                    <label class="radioform">
+                        <input type="radio" name="universityId" value="{{ id }}">
+                        <span>{{ name }}</span>
+                    </label>
+                </div>
+            </a>
+        </div>
+        <div id="university-collapse-{{ counter }}" class="accordion-body collapse col-xs-12">
+            <div class="accordion-inner">
+                {{ gyms }}
+            </div>
+        </div>
+    </div>
+</div>

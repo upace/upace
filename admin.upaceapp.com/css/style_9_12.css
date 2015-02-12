@@ -1,0 +1,493 @@
+/*@font-face {
+   font-family: 'ProximaNovaRegular';
+     src: url('../fonts/ProximaNova-Reg-webfont.eot');
+     src: url('../fonts/ProximaNova-Reg-webfont.eot?iefix') format('eot'),
+          url('../fonts/ProximaNova-Reg-webfont.woff') format('woff'),
+          url('../fonts/ProximaNova-Reg-webfont.ttf') format('truetype');
+     font-weight: normal;
+     font-style: normal;
+ }*/
+
+
+@font-face {
+  font-family: 'ProximaNova-Regular';
+  src: url('../fonts/ProximaNova-Regular.eot?#iefix') format('embedded-opentype'),  
+  url('../fonts/ProximaNova-Regular.otf')  format('opentype'),
+  url('../fonts/ProximaNova-Regular.woff') format('woff'), 
+  url('../fonts/ProximaNova-Regular.ttf')  format('truetype'), 
+  url('../fonts/ProximaNova-Regular.svg#ProximaNova-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+     font-family: 'ProximaNovaRegIt';
+     src: url('../fonts/ProximaNova-RegIt-webfont.eot');
+     src: url('../fonts/ProximaNova-RegIt-webfont.eot?iefix') format('eot'),
+          url('../fonts/ProximaNova-RegIt-webfont.woff') format('woff'),
+          url('../fonts/ProximaNova-RegIt-webfont.ttf') format('truetype');
+     font-weight: normal;
+     font-style: normal;
+ }
+
+
+@font-face {
+     font-family: 'ProximaNovaBold';
+     src: url('../fonts/ProximaNova-Bold-webfont.eot');
+     src: url('../fonts/ProximaNova-Bold-webfont.eot?iefix') format('eot'),
+          url('../fonts/ProximaNova-Bold-webfont.woff') format('woff'),
+          url('../fonts/ProximaNova-Bold-webfont.ttf') format('truetype');
+     font-weight: normal;
+     font-style: normal;
+ }
+ 
+ 
+ @font-face {
+  font-family: 'Montserrat-Bold';
+  src: url('../fonts/Montserrat-Bold.eot?#iefix') format('embedded-opentype'),  
+  url('../fonts/Montserrat-Bold.woff') format('woff'), 
+  url('../fonts/Montserrat-Bold.ttf')  format('truetype'), 
+  url('../fonts/Montserrat-Bold.svg#Montserrat-Bold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+@font-face {
+  font-family: 'ProximaNova-Black';
+  src: url('../fonts/ProximaNova-Black.eot?#iefix') format('embedded-opentype'),  
+  url('../fonts/ProximaNova-Black.otf')  format('opentype'),
+  url('../fonts/ProximaNova-Black.woff') format('woff'), 
+  url('../fonts/ProximaNova-Black.ttf')  format('truetype'), 
+  url('../fonts/ProximaNova-Black.svg#ProximaNova-Black') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+@font-face {
+  font-family: 'ProximaNova-Extrabld';
+  src: url('../fonts/ProximaNova-Extrabld.eot?#iefix') format('embedded-opentype'),  
+  url('../fonts/ProximaNova-Extrabld.otf')  format('opentype'),
+  url('../fonts/ProximaNova-Extrabld.woff') format('woff'), 
+  url('../fonts/ProximaNova-Extrabld.ttf')  format('truetype'), 
+  url('../fonts/ProximaNova-Extrabld.svg#ProximaNova-Extrabld') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+@font-face {
+  font-family: 'ProximaNova-Semibold';
+  src: url('../fonts/ProximaNova-Semibold.eot?#iefix') format('embedded-opentype'),  
+  url('../fonts/ProximaNova-Semibold.otf')  format('opentype'),
+  url('../fonts/ProximaNova-Semibold.woff') format('woff'), 
+  url('../fonts/ProximaNova-Semibold.ttf')  format('truetype'), 
+  url('../fonts/ProximaNova-Semibold.svg#ProximaNova-Semibold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+
+*{ margin:0; padding:0;}
+
+body{ background-attachment: scroll;
+    background-clip: border-box;
+    background-color: rgba(0, 0, 0, 0);
+	height: auto;
+	font-family: 'ProximaNova-Regular';
+	font-size: 1em;
+	
+}
+
+.spalsh {
+  background: url(../img/main-bg.jpg) no-repeat center top fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100% !important;
+  overflow: hidden;
+  min-height: 640px;
+}
+
+.login-bg {
+	background: url(../img/login.jpg) center top no-repeat fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: auto;
+  overflow: hidden;
+  min-height: 940px;
+}
+
+img{max-width:100%;}
+.mar{margin:40px 0 40px ; float:left;}
+.rel-position{ position:relative; margin:24px 0 0 -151px;}
+canvas{ background: none repeat scroll 0 0 #000;
+    border-radius: 50%;
+    width: 84px;}
+::-webkit-input-placeholder {
+   /*font-size: 20px;*/
+   color: #fff !important;
+}
+:-moz-placeholder { /* Firefox 18- */
+   /*font-size: 20px;*/
+   color: #fff !important; 
+}
+::-moz-placeholder {  /* Firefox 19+ */
+   /*font-size: 20px;*/
+   color: #fff !important;
+}
+:-ms-input-placeholder {  
+   /*font-size: 20px;*/
+   color: #fff !important;
+}
+.landing{ width: 100%; height: auto; margin: 18% auto; }
+.landing h1{ background: url(../img/logo.png) no-repeat center center; width: 234px; height: 98px; display: block;
+text-indent: -2000em; margin: 0 auto 50px; float: none; }
+.landing h2{font-family: 'ProximaNova-Semibold'; font-size: 70px; color: #fff; line-height: 70px; text-align: center; }
+/*------------------------------ LOGIN ---------------------*/
+.login-pg{ width: 850px; height: auto; margin: 5% auto; float: none; }
+.login-pg h1{ color: #fff; font-family: 'ProximaNova-Regular'; font-size: 60px; text-align: center; }
+.login-pg h2{ color: #fff; font-family: 'ProximaNova-Regular'; font-size: 30px; text-align: center; line-height: 60px; }
+.login-pg .social-btn{ width: 100%; height: auto; margin-top: 30px; }
+.login-pg .social-btn .facebook input.button{background:#1453a8; padding:20px 10px; border:none; text-transform:uppercase;width:100%; float:left;
+font-family: 'ProximaNova-Regular' !important; font-size: 36px; color: #fff; letter-spacing: 2px;}
+.login-pg .social-btn .facebook{ width: 49%; height: auto; float: left; }
+.login-pg .social-btn .twitter input.button{background:#148ea8; padding:20px 10px; border:none; text-transform:uppercase;width:100%; float:left;
+font-family: 'ProximaNova-Regular' !important; font-size: 36px; color: #fff; letter-spacing: 2px;}
+.login-pg .social-btn .twitter{ width: 49%; height: auto; float: right; }
+.txt-field { width: 100%; float: none; }
+.txt-field input {
+    background: none repeat scroll 0 0 #686a6d;
+    border: medium none;
+    color: #fff;
+    float: left;
+    margin: 0;
+    outline: medium none;
+    padding: 20px 5px;
+    text-align: center;
+    width: 100%;
+	line-height: 25px;
+	font-family: 'ProximaNova-Regular';
+	font-size: 40px;
+	margin-bottom: 10px;
+}
+.txt-field input.button{background:#5d9fa9; padding:30px 10px; border:none; text-transform:uppercase;width:100%; float:left;
+font-family: 'Montserrat-Bold' !important; font-size: 36px; color: #fff;}
+.signup{background:#db1b1b; padding:15px 10px 10px; border:none; text-transform:uppercase;width:100%; float:left;
+font-family: 'Montserrat-Bold' !important;  font-size: 36px; color: #fff; margin-top: 20px;}
+
+
+/*------------------------------ SIGN UP ---------------------*/
+.signup-pg .university{position:relative; overflow:hidden}
+.signup-pg .university a{position:absolute; top:12px; left:10px; font-size:40px; color:#000}
+.signup-pg .txt-field input {
+    background: none repeat scroll 0 0 #242424;
+    border: medium none;
+    color: #fff;
+    float: left;
+    margin: 0;
+    outline: medium none;
+    padding: 20px 5px;
+    text-align: center;
+    width: 100%;
+	line-height: 25px;
+	font-family: 'ProximaNova-Regular';
+	font-size: 40px;
+	margin-bottom: 10px;
+}
+
+.signup-pg .txt-field select {
+    background: none repeat scroll 0 0 #242424;
+    border: medium none;
+    color: #fff;
+    float: left;
+    margin: 0;
+    outline: medium none;
+    padding: 20px 5px;
+    text-align: center;
+    width: 100%;
+	line-height: 25px;
+	font-family: 'ProximaNova-Regular';
+	font-size: 40px;
+	margin-bottom: 10px;
+}
+
+.signup-pg .signup{background:#F00 !important}
+
+/************ Terms of use**********/
+
+.overlay{width:100%; height:100%; position:fixed; background:rgba(0,0,0,0.95); z-index:100}
+.terms p{color: #fff; font-family: "ProximaNova-Regular";font-size: 20px;}
+.terms a{text-align:center}
+.terms a:hover{color:#fff}
+.terms h1{position:relative}
+.terms .cancel{ width:32px; height:32px; position:absolute; top:0; right:10px}
+
+/************ Reservation-2**********/
+
+.cancel_all{width:100%; background:#F00; display:inline-block; position:absolute; bottom:0; left:0}
+.cancel_all a{text-align:center; color:#fff; display:block; font-size: 35px;font-weight: bold;line-height: 40px; padding:20px 0;}
+
+
+/************ poweryoga**********/
+
+.poweryoga{width:100%;background:#252525; display:inline-block;}
+.poweryoga h1, .poweryoga h3, .poweryoga p{color:#fff}
+.poweryoga p{ font-size:16px;}
+.poweryoga h3{margin-top:0px}
+
+.poweryoga a {
+    background: none repeat scroll 0 0 #4db2c7;
+    border-radius: 50%;
+    display: block;
+    height: 50px;
+    padding: 10px;
+    text-align: center;
+    transition: all 0.2s ease-in-out 0s;
+    width: 50px;
+	margin-top:15px;
+	margin-bottom:5px;
+	color:#000;
+	
+}
+.poweryoga a:hover{color:#fff}
+
+
+/*wirn*/
+
+.reservation-bg{ background: url(../img/resv.jpg) center top no-repeat fixed ;/* #d3f3fa - url(../img/login.jpg) center top no-repeat fixed*/ -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; /*height: 100% !important;*/   overflow: hidden; min-height: 940px;}
+.reservation-bg .top-blue-common-head{ background:#299eb6; height:198px; text-align:center;}
+.reservation-bg .top-blue-common-head a{ background-color:transparent; border:5px solid #FFFFFF; border-radius:50%; width:80px; height:80px; margin:55px 25px 25px 25px; text-align:center;}
+.reservation-bg .top-blue-common-head a i{ color:#FFFFFF; line-height:69px;}
+.reservation-bg .top-blue-common-head h2{ text-align:center; font-weight:bold; text-transform:uppercase; color:#FFFFFF; display:inline-block; width:auto; margin:80px auto 0;}
+.reservation-bg .top-blue-common-head h2 span{ font-weight:normal;}
+
+.reservation-bg .top-next-blue{ background:#4db2c7; border-top:2px solid #5fbdd0; border-bottom:2px solid #ffffff; height:198px; text-align:center; position:relative;}
+.reservation-bg .top-next-blue a.prev{ background:rgba(255, 255, 255, 0.5); position:absolute; z-index:8888; left:0%; top:30%; display:block; opacity:0.5; padding:25px 10px; transition:all 0.2s ease-in-out; border-radius:0 10px 10px 0;}
+.reservation-bg .top-next-blue a.next{ background:rgba(255, 255, 255, 0.5); position:absolute; z-index:8888; right:0%; top:30%; display:block; opacity:0.5; padding:25px 10px; transition:all 0.2s ease-in-out; border-radius:10px 0 0 10px;}
+.reservation-bg .top-next-blue a.prev:hover, .reservation-bg .top-next-blue a.next:hover{ opacity:1; transition:all 0.2s ease-in-out;}
+.reservation-bg .top-next-blue a.prev i, .reservation-bg .top-next-blue a.next i{ color:#FFFFFF;}
+.reservation-bg .top-next-blue .calender{ display: inline-block; height: 100%; overflow: hidden; width: 100%;}
+.reservation-bg .top-next-blue .calender a{ font-size:60px; text-align:center; line-height:36px; display:block; width:auto; float:left; color:#FFFFFF; font-weight:bold; text-decoration:none; padding:63px 50px; margin:0; transition:all 0.2s ease-in-out;}
+.reservation-bg .top-next-blue .calender a span{ font-size:35px; text-align:center; display:block; line-height:40px;}
+.reservation-bg .top-next-blue .calender a:hover{ background:rgba(222, 76, 52, 0.9); border-radius:0px 0px 10px 10px; text-decoration:none; color:#FFFFFF; transition:all 0.2s ease-in-out;}
+.reservation-bg .menu-title{ display:inline-block; width:100%;}
+.reservation-bg .menu-title h3{ color:#222222; font-weight:normal; text-align:left; font-size:50px; display:inline-block; width:auto;}
+.reservation-bg .menu-title h3 span{ color:#3398ad; font-size:30px; text-transform:uppercase; font-weight:bold; display:block; width:auto;}
+.reservation-bg .menu-title ul.options{ margin:22px 10px; padding:0; width:auto; display:inline-block;}
+.reservation-bg .menu-title ul.options li{ list-style:none; float:left; margin-right:15px; margin-bottom:15px;}
+.reservation-bg .menu-title ul.options li a{ background:#4db2c7; border-radius:50%; width:100px; height:100px; padding:30px; display:block; text-align:center; transition:all 0.2s ease-in-out;}
+.reservation-bg .menu-title ul.options li a i{ color:#caf1fa;}
+.reservation-bg .menu-title ul.options li:first-child a{ background:#e94429; color:#ccf3fc;transition:all 0.2s ease-in-out;}
+.reservation-bg .menu-title ul.options li a:hover{ background:#e75038; transition:all 0.2s ease-in-out;}
+.reservation-bg .menu-title ul.options li:first-child a:hover{ background:#299eb6; transition:all 0.2s ease-in-out;}
+.reservation-bg .listings{}
+.reservation-bg .listings .list-single{ background:#e9f9fd; box-shadow:2px 2px 10px 1px rgba(113, 179, 195, 0.7); display:inline-block; width:100%; padding:15px 20px; margin:10px auto; position:relative; transition:all 0.2s ease-in-out;}
+.reservation-bg .listings .list-single strong{ background:url(../img/greeny.png) 0px 0px no-repeat; width:84px; height:84px; display:block; float:right; margin:-15px -20px 0 0;}
+.reservation-bg .listings .list-single h4{ color:#4db2c7; font-size:35px; float:left; width:40%; line-height:40px; font-weight:bold;}
+.reservation-bg .listings .list-single p{ color:#4db2c7; font-size:30px; float:left; width:30%;}
+.reservation-bg .listings .list-single p em{ color:#4db2c7; display:block; font-style:normal; text-transform:uppercase;}
+.reservation-bg .listings .list-single span{ color:#000000; font-size:30px; float:left; width:20%; line-height:95px;}
+.reservation-bg .listings .list-single:hover{ background:#d5eff5; transition:all 0.2s ease-in-out;}
+
+/*wirn - 09-12-14*/
+
+.login-bg h1{ text-transform:uppercase;}
+.login-pg h5{ color: #fff; font-family: 'ProximaNova-Regular'; font-size: 26px; text-align: center; line-height: 40px; }
+.login-pg a.custom{ color:#FFFFFF; text-align:center; display:block; margin:10px auto; font-size:100px;}
+.login-pg a.custom:hover{ color:#e94429;}
+.reservation-bg .list-single-form h5{ color:#000000; font-size:33px; display:block; width:auto; font-weight:bold; float:left; line-height:100px;}
+.reservation-bg .list-single-form span{ width:50%; float:right; padding:5px 0; margin:0;}
+.reservation-bg .list-single-form span input[type="text"]{ width:100%; height:auto; padding:35px 20px; font-size:30px;}
+.reservation-bg .menu-title ul.options li a.active{ background:#e75038; transition:all 0.2s ease-in-out;}
+.reservation-bg .listings .list-single.select{ background:#546265; transition:all 0.2s ease-in-out;}
+.reservation-bg .listings .list-single.select h4, .reservation-bg .listings .list-single.select p, .reservation-bg .listings .list-single.select p em, .reservation-bg .listings .list-single.select span{ color:#FFFFFF;}
+
+.pos-btns{ position:absolute; top:55%; left:auto; right:auto; display:block; z-index:8888; width:100%;}
+.pos-btns a.btn-reserve{ display:block; background:#4db2c7; transition:all 0.2s ease-in-out; color:#fff; border-radius:0; font-size:34px; padding:20px 0; float:left; width:50%;}
+.pos-btns a.btn-cancel{ display:block; background:#e94429; transition:all 0.2s ease-in-out; color:#fff; border-radius:0; font-size:34px; padding:20px 0; float:right; width:50%;}
+.pos-btns a.btn-reserve:hover, .pos-btns a.btn-cancel:hover{ background:#525252; color:#FFFFFF;} 
+
+.pos-btns-one{ position:absolute; top:10%; left:auto; right:auto; display:block; z-index:8888; width:100%;}
+.pos-btns-one a.btn-reserve{ display:block; background:#4db2c7; transition:all 0.2s ease-in-out; color:#fff; border-radius:0; font-size:34px; padding:20px 0; text-transform:uppercase;}
+.pos-btns-one a.btn-reserve:hover{ background:#525252; color:#FFFFFF;}
+
+.reservation-bg .listings .list-singley{}
+.reservation-bg .listings .list-singley h3{ color:#525252; font-size:25px; font-weight:bold; display:block; width:100%;}
+.reservation-bg .listings .list-singley h4{ color:#555555; font-size:20px; font-weight:normal; display:block; width:100%;}
+
+
+
+/*---------------------- Responsive Css ------------------------------*/
+
+@charset "utf-8";
+/* CSS Document */
+@media only screen and (max-width: 1024px){
+  
+  
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px){
+		/* ---------------------------------------------------------------------- */
+/*	Wrap
+/* ---------------------------------------------------------------------- */
+
+.landing h2{font-size: 50px; line-height: 60px;}
+.login-pg{ width: 80%; }
+
+.reservation-bg .top-blue-common-head a{ width:50px; height:50px; margin:70px 10px 0;}
+.reservation-bg .top-blue-common-head a i{ line-height:39px;}
+.reservation-bg .top-blue-common-head a i.fa-4x{ font-size:3em;}
+
+.reservation-bg .top-next-blue .calender { display: inline-block; height: 100%; overflow: hidden; width: 90%;}
+.reservation-bg .listings .list-single strong{ left:88.4%;}
+
+}
+
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+			/* ---------------------------------------------------------------------- */
+/*	Wrap
+/* ---------------------------------------------------------------------- */
+
+.landing h2{font-size: 40px; line-height: 40px;}
+.landing{ margin: 25% auto; }
+.landing h1{  margin: 0 auto 40px;}
+.login-pg{ width: 96%; }
+.login-pg .social-btn .facebook { float: none; margin: 10px auto; width: 100%; }
+.login-pg .social-btn .facebook input.button{padding: 12px 8px; float: none; font-size: 26px;}
+.login-pg .social-btn .twitter input.button{padding:12px 8px;font-size: 26px;}
+.login-pg .social-btn .twitter{ width: 100%; height: auto; float: none; }
+.txt-field input { padding: 18px 5px; line-height: 25px; font-size: 26px;	margin-bottom: 10px;}
+.reservation-bg .top-blue-common-head a{ width:50px; height:50px; margin:70px 10px 0;}
+.txt-field input.button{ padding:18px 5px; font-size: 26px;}
+.signup{ padding:16px 5px 7px; font-size: 26px; color: #fff;}
+
+.reservation-bg .top-blue-common-head a{ width:50px; height:50px; margin:70px 10px 0;}
+.reservation-bg .top-blue-common-head a i{ line-height:39px;}
+.reservation-bg .top-blue-common-head a i.fa-4x{ font-size:3em;}
+.reservation-bg .top-blue-common-head h2{ margin:65px auto 0; width:50%; font-size:20px;}
+.reservation-bg .top-blue-common-head h2 span{ display:none;}
+.reservation-bg .top-blue-common-head h2 span.day{ font-size: 18px; display:block;}
+.reservation-bg .top-blue-common-head h2 span.month{ font-size: 18px; display:block;}
+
+.reservation-bg .top-next-blue .calender{ display: inline-block; height: 100%; overflow: hidden; width: 90%;}
+.reservation-bg .top-next-blue .calender a{ font-size: 40px; padding: 60px 15px;}
+.reservation-bg .top-next-blue .calender a span{ font-size:25px;}
+
+.reservation-bg .listings .list-single h4, .reservation-bg .listings .list-single p, .reservation-bg .listings .list-single span{ float:none; width:80%;}
+
+}
+
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (max-width: 479px) {
+			/* ---------------------------------------------------------------------- */
+/*	Wrap
+/* ---------------------------------------------------------------------- */
+.landing h2{font-size: 35px; line-height: 36px;}
+.landing{ margin: 35% auto 0; }
+.landing h1{  margin: 0 auto 20px;}
+.login-pg{ width: 96%; }
+
+.reservation-bg .top-blue-common-head a{ width:50px; height:50px; margin:70px 10px 0;}
+.reservation-bg .top-blue-common-head a i{ line-height:39px;}
+.reservation-bg .top-blue-common-head a i.fa-4x{ font-size:3em;}
+.reservation-bg .top-blue-common-head h2{ margin:50px auto 0; width:50%; font-size:20px;}
+.reservation-bg .top-blue-common-head h2 span{ display:none;}
+.reservation-bg .top-blue-common-head h2 span.day{ font-size: 18px; display:block;}
+.reservation-bg .top-blue-common-head h2 span.month{ font-size: 18px; display:block;}
+
+.reservation-bg .top-next-blue .calender{ display: inline-block; height: 100%; overflow: hidden; width: 90%;}
+.reservation-bg .top-next-blue .calender a{ font-size: 40px; padding: 10px 15px;}
+.reservation-bg .top-next-blue .calender a span{ font-size:25px;}
+
+}
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+			/* ---------------------------------------------------------------------- */
+/*	Wrap
+/* ---------------------------------------------------------------------- */
+.landing h2{font-size: 35px; line-height: 36px;}
+.landing{ margin: 35% auto 0; }
+.landing h1{  margin: 0 auto 20px;}
+.login-pg{ width: 96%; }
+.login-pg .social-btn .facebook { float: none; margin: 10px auto; width: 100%; }
+.login-pg .social-btn .facebook input.button{padding: 12px 8px; float: none; font-size: 26px;}
+.login-pg .social-btn .twitter input.button{padding:12px 8px;font-size: 26px;}
+.login-pg .social-btn .twitter{ width: 100%; height: auto; float: none; }
+.txt-field input { padding: 18px 5px; line-height: 25px; font-size: 26px;	margin-bottom: 10px;}
+.txt-field input.button{ padding:18px 5px; font-size: 26px;}
+.signup{ padding:16px 5px 7px; font-size: 26px; color: #fff;}
+
+.reservation-bg .top-blue-common-head a{ width:50px; height:50px; margin:70px 10px 0;}
+.reservation-bg .top-blue-common-head a i{ line-height:39px;}
+.reservation-bg .top-blue-common-head a i.fa-4x{ font-size:3em;}
+.reservation-bg .top-blue-common-head h2{ margin:65px auto 0; width:50%; font-size:20px;}
+.reservation-bg .top-blue-common-head h2 span{ display:none;}
+.reservation-bg .top-blue-common-head h2 span.day{ font-size: 18px; display:block;}
+.reservation-bg .top-blue-common-head h2 span.month{ font-size: 18px; display:block;}
+
+.reservation-bg .top-next-blue .calender{ display: inline-block; height: 100%; overflow: hidden; width: 90%;}
+.reservation-bg .top-next-blue .calender a{ font-size: 40px; padding: 60px 10px;}
+.reservation-bg .top-next-blue .calender a span{ font-size:25px;}
+
+.reservation-bg .menu-title ul.options li a{ width:60px; height:60px; padding:15px 0 0 0;}
+.reservation-bg .menu-title ul.options li a i.fa-4x{ font-size:3em;}
+.reservation-bg .listings .list-single strong{ left:71%;}
+.reservation-bg .listings .list-single h4, .reservation-bg .listings .list-single p, .reservation-bg .listings .list-single span{ float:none; width:auto;}
+}
+
+
+
+/***************Validation Css*******************/
+.txt-field .state-error + em {
+    /*color: #D56161;
+    display: block;
+    font-size: 11px;
+    font-style: normal;
+    line-height: 15px;
+    margin-top: 6px;
+    padding: 0 1px;*/
+    
+    background: none repeat scroll 0 0 #A90329;
+    border-radius:0px;
+    color: #FFFFFF;
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1.25;
+    margin-bottom: 10px;
+    padding: 7px;
+    text-align: center;
+}
+}
+.txt-field .state-error + em :after {
+position: absolute;
+top: -12px;
+left: 10px;
+content: "";
+display: block;
+position: absolute;
+width: 0;
+height: 0;
+border: solid 6px;
+border-color: transparent transparent #d62540 transparent;
+}
+
+.txt-field .input .icon-append + input, .txt-field .textarea .icon-append + textarea {
+    padding-right: 37px;
+}
+.txt-field .checkbox.state-error i, .txt-field .radio.state-error i, .txt-field .state-error input, .txt-field .state-error select, .txt-field .state-error textarea, .txt-field .toggle.state-error {
+    /*background: none repeat scroll 0 0 #FFF0F0;*/
+    border: 2px solid #A90329;
+}
+

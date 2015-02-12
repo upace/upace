@@ -1,2 +1,11 @@
 /* global styles */
 
+div.clear {
+    clear: both;
+    float: none;
+}
+
+div.clear:after {
+    content: '';
+    display: table;
+}

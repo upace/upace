@@ -1,0 +1,333 @@
+{% extends 'base.twig' %}
+
+{% block extra_css %}
+    <link href="{{ site.css_path }}/classes.css" rel="stylesheet">
+{% endblock extra_css %}
+
+{% block header %}
+    {% include './partials/date-scroller-header.twig' with {'title': 'Classes'} %}
+{% endblock header %}
+
+{% block extra_footer_js %}
+    <script src="{{ site.js_path }}/date-scroller.js"></script>
+    <script src="{{ site.js_path }}/listings.js"></script>
+    <script src="{{ site.js_path }}/classes.js"></script>
+    <script src="{{ site.js_path }}/settings-modal.js"></script>
+{% endblock extra_footer_js %}
+
+{% block content %}
+<!--Nav-->
+{% include './partials/slide-nav.twig' with {'classes': true} %}
+<!--/Nav-->
+
+<!--Calendar-->
+{% include './partials/date-scroller.twig' %}
+<!--/Calendar-->
+
+<!--Class Listings-->
+{% include './partials/listings-classes.twig' %}
+<!--/Class Listings-->
+
+<!--Footer Margin-->
+<section class="footer-margin content slide"></section>
+<!--/Footer Margin-->
+
+<!-- Navbar Bottom -->
+{% include './partials/listings-filters.twig' %}
+<!-- /Navbar Bottom -->
+
+<!-- Navbar Bottom Content -->
+{#
+<!-- Available Times -->
+<div class="modal fade" id="available-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="col-xs-2" style="margin-bottom:2%">
+                </div>
+                <div class="col-xs-8" style="margin-bottom:2%">
+                    <center><span class="modal-title">AVAILABLE TIMES</span><br/></center>
+                </div>
+                <div class="col-xs-2">
+                    <center style="margin-bottom:2em"><a data-dismiss="modal" class="modal-reserve-button"><i
+                                    class="fa fa-times"></i></a></center>
+                </div>
+                <div role="tabpanel">
+
+                    <ul class="nav nav-tabs container" role="tablist" style="margin-bottom:2em; border:0">
+                        <li role="presentation" class="active col-xs-6">
+                            <center><a href="#classes" aria-controls="Classes" class="available-label" role="tab"
+                                       data-toggle="tab">Classes</a>
+                            </center>
+                        </li>
+                        <li role="presentation" class="col-xs-6">
+                            <centeR><a href="#equipment" aria-controls="Equipment" class="available-label" role="tab"
+                                       data-toggle="tab">Equipment</a>
+                            </center>
+                        </li>
+
+                    </ul>
+
+                    <div class="tab-content container" style="background:#d4f2fa; padding-top:.5em">
+
+                        <section class="upace-form content slide collapse row" id="collapse-add-time-modal">
+                            <div class="container">
+                                <div class="col-xs-6 col-sm-7 formcol-height">
+                                    <center><span class="formcol-1">Enter a Start Time</span></center>
+                                </div>
+                                <div class="col-xs-6 col-sm-5 formcol-height formcol-2ab">
+                                    <form class="enter-start-time-form" action="#">
+                                        <div class="col-xs-12">
+                                            <input type="addTime" class="form-add-time" placeholder="00:00 AM"/>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- disabled for beta
+                        <div role="tabpanel" class="col-xs-12 tab-pane fade in active" id="classes" style="margin-bottom:3em">
+                        <ul>
+                        <li>
+                            <section class="upace-form row">
+                                <a href="#">
+                                    <div class="col-sm-3 hidden-xs formcol-height formcol-2ab">
+                                        <center><span class="formcol-2a" style="color:#000">10/12</span></center>
+                                        <center><span class="formcol-2a" style="color:#000">SUN</span></center>
+                                    </div>
+                                    <div class="col-sm-3 col-xs-4 formcol-height formcol-2ab">
+                                        <center><span class="formcol-2a formcol-room" style="color:#000">Blue Room</span></center>
+                                        <center><span class="formcol-2b formcol-gym" style="color:#000">HAMILTON</span></center>
+                                    </div>
+                                    <div class="col-sm-3 col-xs-4 formcol-height">
+                                        <center><span class="formcol-3" style="color:#000">2 Spots</span></center>
+                                    </div>
+                                    <div class="col-sm-3 col-xs-4 formcol-height">
+                                        <center><span class="formcol-3" style="color:#000">12:30-1:25PM</span></center>
+                                    </div>
+                                </a>
+                            </section>
+                        </li>
+                        <li>
+                            <section class="upace-form row">
+                                <a href="#">
+                                    <div class="col-sm-3 hidden-xs formcol-height formcol-2ab">
+                                        <center><span class="formcol-2a" style="color:#000">10/12</span></center>
+                                        <center><span class="formcol-2a" style="color:#000">SUN</span></center>
+                                    </div>
+                                    <div class="col-sm-3 col-xs-4 formcol-height formcol-2ab">
+                                        <center><span class="formcol-2a formcol-room" style="color:#000">Blue Room</span></center>
+                                        <center><span class="formcol-2b formcol-gym" style="color:#000">HAMILTON</span></center>
+                                    </div>
+                                    <div class="col-sm-3 col-xs-4 formcol-height">
+                                        <center><span class="formcol-3" style="color:#000">2 Spots</span></center>
+                                    </div>
+                                    <div class="col-sm-3 col-xs-4 formcol-height">
+                                        <center><span class="formcol-3" style="color:#000">12:30-1:25PM</span></center>
+                                    </div>
+                                </a>
+                            </section>
+                        </li>
+                        </ul>
+                        </div>
+                        <div role="tabpanel" class="col-xs-12 tab-pane fade" id="equipment" style="margin-bottom:3em">
+                            <ul>
+                                <li>
+                                    <section class="upace-form row">
+                                        <a href="#">
+                                            <div class="col-sm-3 hidden-xs formcol-height formcol-2ab">
+                                                <center><span class="formcol-2a" style="color:#000">10/12</span></center>
+                                                <center><span class="formcol-2a" style="color:#000">SUN</span></center>
+                                            </div>
+                                            <div class="col-sm-3 col-xs-4 formcol-height formcol-2ab">
+                                                <center><span class="formcol-2a formcol-room" style="color:#000">Blue Room</span></center>
+                                                <center><span class="formcol-2b formcol-gym" style="color:#000">HAMILTON</span></center>
+                                            </div>
+                                            <div class="col-sm-3 col-xs-4 formcol-height">
+                                                <center><span class="formcol-3" style="color:#000">2 Spots</span></center>
+                                            </div>
+                                            <div class="col-sm-3 col-xs-4 formcol-height">
+                                                <center><span class="formcol-3" style="color:#000">12:30-1:25PM</span></center>
+                                            </div>
+                                        </a>
+                                    </section>
+                                </li>
+                                <li>
+                                    <section class="upace-form row">
+                                        <a href="#">
+                                            <div class="col-sm-3 hidden-xs formcol-height formcol-2ab">
+                                                <center><span class="formcol-2a" style="color:#000">10/12</span></center>
+                                                <center><span class="formcol-2a" style="color:#000">SUN</span></center>
+                                            </div>
+                                            <div class="col-sm-3 col-xs-4 formcol-height formcol-2ab">
+                                                <center><span class="formcol-2a formcol-room" style="color:#000">Blue Room</span></center>
+                                                <center><span class="formcol-2b formcol-gym" style="color:#000">HAMILTON</span></center>
+                                            </div>
+                                            <div class="col-sm-3 col-xs-4 formcol-height">
+                                                <center><span class="formcol-3" style="color:#000">2 Spots</span></center>
+                                            </div>
+                                            <div class="col-sm-3 col-xs-4 formcol-height">
+                                                <center><span class="formcol-3" style="color:#000">12:30-1:25PM</span></center>
+                                            </div>
+                                        </a>
+                                    </section>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Available Times -->
+
+<!-- Locations -->
+
+<!-- disabled for beta
+<div class="modal fade" id="location-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="col-xs-2" style="margin-bottom:2%">
+            </div>
+            <div class="col-xs-8" style="margin-bottom:2%">
+                <center><span class="modal-title">Gyms</span><br/></center>
+            </div>
+            <div class="col-xs-2">
+                <center style="margin-bottom:2em"><a data-dismiss="modal" class="modal-reserve-button"><i
+                                class="fa fa-times"></i></a></center>
+            </div>
+
+            <div class="col-sm-6 col-sm-offset-3 location-gyms" style="margin-top:4em">
+                <center><span class="modal-title">HAMILTON</span></center>
+            </div>
+
+            <div class="col-sm-6 col-sm-offset-3 location-gyms">
+                <center><span class="modal-title">HAMILTON</span></center>
+            </div>
+
+            <div class="col-sm-6 col-sm-offset-3 location-gyms">
+                <center><span class="modal-title">HAMILTON</span></center>
+            </div>
+
+            <div class="col-sm-6 col-sm-offset-3 location-gyms">
+                <center><span class="modal-title">HAMILTON</span></center>
+            </div>
+
+            <div class="col-sm-6 col-sm-offset-3 location-gyms">
+                <center><span class="modal-title">HAMILTON</span></center>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Locations -->
+<!-- /Navbar Bottom Content -->
+
+<!-- Location Class Modal -->
+<div class="modal fade" id="location-modal-class" tabindex="-1" role="dialog" aria-labelledby="Gym"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="col-xs-2" style="margin-bottom:2%">
+            </div>
+            <div class="col-xs-8" style="margin-bottom:2%">
+                <center><span class="modal-title">Gyms</span><br/></center>
+            </div>
+            <div class="col-xs-2">
+                <center style="margin-bottom:2em">
+                    <a data-dismiss="modal" class="modal-reserve-button">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </center>
+            </div>
+            <div class="col-sm-6 col-sm-offset-3 location-gyms" style="margin-top:4em">
+                <center><span class="modal-title">HAMILTON</span></center>
+            </div>
+
+            <div class="col-sm-6 col-sm-offset-3 location-gyms">
+                <center><span class="modal-title">HAMILTON</span></center>
+            </div>
+
+            <div class="col-sm-6 col-sm-offset-3 location-gyms">
+                <center><span class="modal-title">HAMILTON</span></center>
+            </div>
+
+            <div class="col-sm-6 col-sm-offset-3 location-gyms">
+                <center><span class="modal-title">HAMILTON</span></center>
+            </div>
+
+            <div class="col-sm-6 col-sm-offset-3 location-gyms">
+                <center><span class="modal-title">HAMILTON</span></center>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Location Class Modal -->
+
+<!-- Share Modal -->
+<div class="modal fade" id="share-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="col-xs-2" style="margin-bottom:2%">
+            </div>
+            <div class="col-xs-8" style="margin-bottom:2%">
+                <center><span class="modal-title">SHARE</span><br/></center>
+            </div>
+            <div class="col-xs-2">
+                <center style="margin-bottom:2em"><a data-dismiss="modal" class="modal-reserve-button"><i
+                                class="fa fa-times"></i></a></center>
+            </div>
+            <div class="col-xs-12">
+                <center style="font-size:1.5em">Share this class</center>
+            </div>
+            <div class="container" style="border-top:1px #fff solid; border-bottom:1px #fff solid; margin-top:11em">
+                <div class="row" style="margin-top:3em">
+                    <center><span style="font-size:2em">Power Yoga 1<br/></span></center>
+                </div>
+                <div class="row">
+                    <center style="font-size:1.5em"><span>Blue Room</span> | <span>HAMILTON</span><br/></center>
+                </div>
+                <div class="row" style="margin-bottom:3em">
+                    <center style="font-size:1.5em"><span>FRI 10/10 | 12:30-1:25PM</span></center>
+                </div>
+            </div>
+            <div class="container-fluid " style="margin-top:2em; font-size:25pt;">
+                <div class="col-xs-2 col-sm-1 col-sm-offset-3">
+                    <center style="color:#4db2c7"><i class="fa fa-envelope-square"></i></center>
+                </div>
+                <div class="col-xs-2 col-sm-1">
+                    <center style="color:#4db2c7"><i class="fa fa-facebook-square"></i></center>
+                </div>
+                <div class="col-xs-2 col-sm-1">
+                    <center style="color:#4db2c7"><i class="fa fa-pinterest-square"></i></center>
+                </div>
+                <div class="col-xs-2 col-sm-1">
+                    <center style="color:#4db2c7"><i class="fa fa-linkedin-square"></i></center>
+                </div>
+                <div class="col-xs-2 col-sm-1">
+                    <center style="color:#4db2c7"><i class="fa fa-google-plus-square"></i></center>
+                </div>
+                <div class="col-xs-2 col-sm-1">
+                    <center style="color:#4db2c7"><i class="fa fa-twitter-square"></i></center>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Share Modal -->
+#}
+
+<!--Search Modal -->
+    {% include './partials/search-modal.twig' %}
+<!--/Search Modal-->
+
+<!-- Settings Modal -->
+    {% include './partials/settings-modal.twig' %}
+<!--/Settings Modal -->
+
+{% endblock content %}

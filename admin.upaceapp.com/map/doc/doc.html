@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>User Guide - Custom Interactive Map</title>
+	<link rel="stylesheet" type="text/css" href="assets/style.css">
+</head>
+<body>
+	<header id="header">
+			<h1>Mapplic - Custom Interactive Map</h1>
+			<h2>jQuery Plugin</h2>
+	</header>
+
+	<div id="wrap">
+		<section>
+			<p>Thank you for purchasing <strong>Custom Interactive Map - jQuery Plugin</strong>. Here you can find information about using and customizing the plugin. If you need anything that is beyond of this documentation, please feel free to contact us through our <a href="http://codecanyon.net/user/sekler#contact">CodeCanyon profile page</a>, we'll be more than happy to help.</p>
+		</section>
+		<nav id="contents">
+			<h2>Table of Contents</h2>
+			<ul>
+				<li><a href="#header">Introduction</a></li>
+				<li><a href="#files">Files</a></li>
+				<li>
+					<a href="#start">Quick Start Guide</a>
+					<ul>
+						<li><a href="#structure">Basic Structure</a></li>
+						<li><a href="#coordinates">Determination of Coordinates</a></li>
+					</ul>
+				</li>
+				<li><a href="#options">Options</a></li>
+				<li><a href="#data">Data Structure</a></li>
+				<li>
+					<a href="#components">Components</a>
+					<ul>
+						<li><a href="#sidebar">Sidebar</a></li>
+						<li><a href="#minimap">Minimap</a></li>
+					</ul>
+				</li>
+				<li><a href="#svg">SVG Maps</a></li>
+				<li><a href="#dependencies">Dependencies</a></li>
+			</ul>
+		</nav>
+
+		<hr>
+
+		<section id="files">
+			<h2>Files</h2>
+			<p>After purchasing <strong>Custom Interactive Map - jQuery Plugin</strong>, a ZIP archive file can be downloaded from CodeCanyon. Three folders can be found after unpacking the archive:</p>
+			<ul>
+				<li><strong>assets</strong> - three Illustrator files (floors of a shopping mall)</li>
+				<li><strong>doc</strong> - contains the user guide and an SVG map tutorial</li>
+				<li><strong>html</strong> - contains the plugin with other libraries it depends on, and a working demo</li>
+			</ul>
+		</section>
+
+		<hr>
+
+		<section id="start">
+			<h2>Quick Start Guide</h2>
+			<p>Follow the instructions to get started with the plugin. This is how you can add a custom interactive map to a new or existing project.</p>
+
+			<div id="structure">
+				<h3>Basic Structure</h3>
+				<img src="assets/structure.png" alt="Structure" class="right">
+				<p>Every file is in the (html/)<strong>mapplic</strong> directory. Copy the dir into your project.</p>
+				<p>You need at least one image to use as map (camera.jpg), copy into the root folder.</p>
+				<img src="assets/camera.jpg" alt="Map">
+				<p>And create an empty text file called 'locations.json'. See the structure on the right.</p>
+
+				<p>The index file's structure should be similar to this:</p>
+				<img src="assets/index.png" alt="Index">
+			</div>
+
+			<div id="locations">
+				<h3>Preparing the data file</h3>
+				<p>There's an empty file, 'locations.json', let's go ahead and open it. The first step is to find out the dimensions of our map file (camera.jpg). There are various to find out the width and height of an image, for example with photoshop, by pressing Ctrl + C.</p>
+				<img src="assets/canvas.png" alt="Image size">
+				<p>It is highly recommended to include a smaller version of the map for the minimap. In photoshop, a picture can be resized by pressing Ctrl + I. The minified version should be saved with a different name. (camera-small.jpg)</p>
+				<p>With the given informations, an initial data file can be prepared:</p>
+				<img src="assets/initial.png" alt="Initial">
+			</div>
+
+			<div id="coordinates">
+				<h3>Determination of Coordinates</h3>
+				<ol>
+					<li>Set the developer option to <strong>true</strong>, a small box containing the cursors positon will appear at the top of the map.</li>
+					<li>Move your cursor over the desired location and copy the displayed x and y coordinates into your data file</li>
+				</ol>
+
+				<h3>Determination of Coordinates (old, manual method)</h3>
+				<p>In order to determinate the coordinates of a location, we need a photo editing software like Adobe Photostop, Corel Draw etc., every software which can display the position of the cursor over an image can do the job. For example, in Photoshop, by pressing <strong>F8</strong>, the 'Info' panel will appear, and the cursor's position in pixels is visible.</p>
+
+				<ol>
+					<li>Move the cursor to the desired location and write down the x and y values.</li>
+					<li>Use the formulas to convert coordinates.</li>
+					<li>Fill the fields in the JSON file with the normalized values.</li>
+				</ol>
+
+				<p>The following formulas normalize the values, for a more flexible representation:</p>
+				<code>
+					xnew = x/mapwidth<br>
+					ynew = y/mapheight
+				</code>
+
+				<p>mapwidth and mapheight are values from the <a href="#data">data</a> file.</p>
+				<p>The results obrained are floats between 0 and 1. (ex. 0.8625). Use numbers with 4 decimal places for good accuracy.</p>
+
+				<p>For the above example in practice:</p>
+				<img src="assets/position.png" alt="Position">
+				<p>So the normalized values will be:</p>
+				<span>659/2090 = <strong>0.3153</strong></span><br>
+				<span>583/1395 = <strong>0.4179</strong></span>
+
+				<p>So the data file with a landmark will be:</p>
+				<img src="assets/data.png" alt="Data file">
+				<p>Similarly, you can add unlimited levels and landmarks. (JSON objects in an array must be comma-separated!)</p>
+			</div>
+		</section>
+
+		<hr>
+
+		<section id="options">
+			<h2>Options</h2>
+			<p><strong>Custom Interactive Map - jQuery Plugin</strong> comes with a range of options to customise the application. Here is the list of the default options. You can add, remove, or completely skip out the options object.</p>
+			<code>
+				$('#map').mapplic({<br>
+				&nbsp;&nbsp;&nbsp;source: 'locations.json',<br>
+				&nbsp;&nbsp;&nbsp;height: 420,<br>
+				&nbsp;&nbsp;&nbsp;locations: true,<br>
+				&nbsp;&nbsp;&nbsp;minimap: true,<br>
+				&nbsp;&nbsp;&nbsp;sidebar: true,<br>
+				&nbsp;&nbsp;&nbsp;search: true,<br>
+				&nbsp;&nbsp;&nbsp;clearbutton: true,<br>
+				&nbsp;&nbsp;&nbsp;hovertip: true,<br>
+				&nbsp;&nbsp;&nbsp;developer: false,<br>
+				&nbsp;&nbsp;&nbsp;animate: true,<br>
+				&nbsp;&nbsp;&nbsp;maxscale: 4<br>
+				});
+			</code>
+			<ul>
+				<li><strong>source</strong>(string) - path to the data JSON file, expounded on the <a href="#data">next chapter</a>. This path is relative to the HTML file. If you wish to use the default value, your data file must be called 'locations.json', and has to be in the same directory with the index file.</li>
+				<li><strong>height</strong>(integer) - height of the application in pixels. The width will take up the available space.</li>
+				<li><strong>locations</strong>(true/false) -  whether to display the locations on the map. This should be set to false in case we have an interactive SVG as map, because the overlaying 'locations' layer may block the interactivity of the SVG.</li>
+				<li><strong>minimap</strong>(true/false) - whether to display the <a href="#minimap">minimap</a>.</li>
+				<li><strong>sidebar</strong>(true/false) - whether to display the sidebar, which contains a search form and a list with locations.</li>
+				<li><strong>search</strong>(true/false) - in case there's a small number of locations, the search form can be disabled.</li>
+				<li><strong>clearbutton</strong>(true/false) - whether to display the <strong>clear button</strong>.</li>
+				<li><strong>hovertip</strong>(true/false) - show or hide the hover tooltip containing the landmark's title.</li>
+				<li><strong>fullscreen</strong>(true/false) - enable or disable the fullscreen option.</li>
+				<li><strong>developer</strong>(true/false) - enable or disable the developer option (displaying coordinates of the cursor).</li>
+				<li><strong>animate</strong>(true/false) - enable or disable pin animations.</li>
+				<li><strong>maxscale</strong>(float) - the zoom-in limit of the map. For example, if we have a file with 600x400 dimensions when it fits, and the limit is set to 2, the maximum zoom will be 1200x800.</li>
+			</ul>
+		</section>
+
+		<hr>
+
+		<section id="data">
+			<h2>Data Structure</h2>
+			<p>There is need for a JSON file which provides information about the map files, layers, ladmarks and categories. It is a simple text file that can be edited with the simples editor, however it has to be valid! Several JSON validators can be found on the internet, please use a validator to verify your locations file, or to find possible errors. See the demo for a complete example.</p>
+
+			<h3>The structure:</h3>
+			<code>
+				{<br>
+				&nbsp;&nbsp;&nbsp;"mapwidth": "800",<br>
+				&nbsp;&nbsp;&nbsp;"mapheight": "600",<br>
+				&nbsp;&nbsp;&nbsp;"categories": [<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id": "food",<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title": "Fast-foods & Restaurants",<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"icon": "images/food.png",<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"color": "#a6ce38",<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"show": "false"<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+				&nbsp;&nbsp;&nbsp;],<br>
+				&nbsp;&nbsp;&nbsp;"levels": [<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id": "basement",<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"name": "-1",<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title": "Basement",<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"map": "images/mall-basement.svg",<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"minimap": "images/mall-basement-small.jpg",<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"locations": [<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id": "petco",<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"title": "Petco",<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"about": "Lorem ipsum",<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"description": "Dolor sit amet",<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"action": "redirect",<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"pin": "green",<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"category": "misc",<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"thumbnail": "images/thumb/petco.jpg",<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"link": "http://www.codecanyon.net",<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"x": "0.5516",<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"y": "0.3174",<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"zoom": "6"<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+				&nbsp;&nbsp;&nbsp;]<br>
+				}
+			</code>
+			<p>Note: this is a simplified example, arrays can have multiple values. Its is only used to describe the meaning of each attribute. For a complete example please check the demo.</p>
+
+			<ul>
+				<li><strong>mapwidth</strong> - width of the map(s).</li>
+				<li><strong>mapheight</strong> - height of the map(s).</li>
+				<li>
+					<strong>categories</strong> LIST - can be used for categorizing the landmarks. This list can be completely skipped if there is no need for categories.
+					<ul>
+						<li><strong>id</strong> - every category has a unique identifier, it will be used for classifying the landmarks.</li>
+						<li><strong>title</strong> - title of the category, displayed on the sidebar</li>
+						<li><strong>icon</strong> - path to the icon file. Icons are optional</li>
+						<li><strong>color</strong> - display color of the category</li>
+						<li><strong>show</strong> - default value is true. Setting it to false will make the category collapsed on page load.</li>
+					</ul>
+				</li>
+				<li>
+					<strong>levels</strong> LIST - list of levels/floors. This can have 1 or more values.
+					<ul>
+						<li><strong>id</strong> - every level has a unique identifier</li>
+						<li><strong>name</strong> - short name of the level, displayed on the level switcher (max. 2 characters)</li>
+						<li><strong>title</strong> - title of the level</li>
+						<li><strong>map</strong> - path to the main map file of the level, relative to the HTML file</li>
+						<li><strong>minimap</strong> - path to the minimap file of the level, relative to the HTML file</li>
+						<li><strong>locations</strong> LIST - list of locations situated on the level
+							<ul>
+								<li><strong>id</strong> - unique identifier of the location. It will be used for deeplinking</li>
+								<li><strong>title</strong> - name of the location, it will be displayed on sidebar and tooltip</li>
+								<li><strong>about</strong> - short text displayed in the sidebar</li>
+								<li><strong>description</strong> - short description displayed in the tooltip</li>
+								<li><strong>pin</strong> - type of the pin. This string will be added to the respective pin as class, so it can be styled with CSS. Set it to false for no pin.</li>
+								<li><strong>category</strong> - id of a category the location belongs to. There has to be a category defined with this id</li>
+								<li><strong>action</strong> - the action to perform when the pin is clicked. It can be "redirect", to automatically redirect ot the URL defined in <strong>link</strong> or "none" for zooming only.</li>
+								<li><strong>thumbnail</strong> - path to the thumbnail image file. Thumbnails are optional</li>
+								<li><strong>link</strong> - an internal or external link. It will appear in tooltip. It's optional</li>
+								<li><strong>x</strong> - x position of the location. See <a href="#coordinates">determine coordinates</a> for more information.</li>
+								<li><strong>y</strong> - y position of the location. See <a href="#coordinates">determine coordinates</a> for more information.</li>
+								<li><strong>zoom</strong> - target zoom level when the location is focused. The default value is 4</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</section>
+
+		<hr>
+
+		<section id="components">
+			<h2>Components</h2>
+			<p><strong>Custom Interactive Map - jQuery Plugin</strong> has a few components that can be customized or enabled/disabled by the <a href="#options">options</a>.</p>
+
+			<img src="assets/components.png" alt="Components">
+			
+			<div id="sidebar">
+				<h3>Sidebar</h3>
+				<p>The sidebar gives place to the search form and the landmark list. It is situated on the left side of the application, however it can be moved to the right side by applying the following CSS style:</p>
+
+				<code>.mapplic-sidebar { float: left; }</code>
+
+				<p>By default, the sidebar takes 30% of the available width. This can also be modified as illustrated by the example below. The sum of <strong>sidebar</strong>'s and <strong>container</strong>'s width has to be 100%!</p>
+
+				<code>
+					.mapplic-sidebar { width: 25%; }<br>
+					.mapplic-container { width: 75%; }
+				</code>
+			</div>
+
+			<div id="minimap">
+				<h3>Minimap</h3>
+				<p>Minimap eases the navigation. The files used for minimaps are defined in the data file. Any of the supported formats can be used as minimaps, however using <strong>JPG</strong> is highly advised for best performace.</p>
+				<p>By default, the minimap has a width of 140 pixels. To resize it, we have to alter the width, the height will be adjusted automatically maintaining the aspect ratio. It can be resized using the following style:</p>
+				<code>.mapplic-minimap { width: 200px; }</code>
+
+				<p>It is situated on the bottom-right corner of the container. We can use the top/right/bottom/left attributes to move it. For example, if we wanted to move it to the top-left corner:</p>
+				<code>
+					.mapplic-minimap {<br>
+					&nbsp;&nbsp;&nbsp;top: 0;<br>
+					&nbsp;&nbsp;&nbsp;left: 0;<br>
+					}
+				</code>
+
+				<p>The clear button and level switcher can be positioned in the same manner, using the CSS classes <strong>.mapplic-clear-button</strong> and <strong>.mapplic-levels</strong>.</p>
+			</div>
+		</section>
+
+		<hr>
+
+		<section id="svg">
+			<h2>SVG Maps</h2>
+			<p>SVG is an XML-based vector image format, so it's actually a readable/editable text file. A few things about SVG maps to keep in mind:</p>
+			<ul>
+				<li>You can assign class or id names to elements and style them with CSS.</li>
+				<li>You can add links. A shape with a link attached to it can replace the pin.</li>
+				<li>SVG graphics should be optimized for the best performance.</li>
+			</ul>
+			<h3><a href="svg-map.html">SVG Tutorial</a></h3>
+			<p>Please check the demo for a correctly prepared SVG file.</p>
+		</section>
+
+		<hr>
+
+		<section id="dependencies">
+			<h2>Dependencies</h2>
+			<p><strong>Custom Interactive Map - jQuery Plugin</strong> is dependent on the following libraries:<p>
+			<ul>
+				<li><strong>jQuery Library</strong></li>
+				<li><strong>jQuery Mouse Wheel Plugin</strong> - mousewheel support</li>
+				<li><strong>jQuery Easing Plugin</strong> - easing animations</li>
+				<li><strong>Hammer.js</strong> - pinch zoom</li>
+			</ul>
+		</section>
+	</div>
+
+	<footer id="footer">
+		<p>Once again, thank you for purchasing this plugin. If you have a more general question relating to JSON, SVG or anything that is beyond the scope of this documentation, please consult the internet, there are lots of great resources to rely on.</p>
+	</footer>
+</body>
+</html>

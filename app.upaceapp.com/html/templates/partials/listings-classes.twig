@@ -1,0 +1,22 @@
+{% extends './partials/listings.twig' %}
+
+{% block listings %}
+<section class="upace-title content slide" style="margin-bottom:.5em">
+    <div class="container">
+        <div class="col-xs-6 upace-title-main">
+            <span style="color:#000; font-size:2em; bottom:0">Classes</span>
+        </div>
+        <!-- removed for beta
+        <div class="col-xs-6 upace-title-sub" style="bottom:0; text-align:right;">
+            <a data-toggle="modal" class="reserve-modal" data-target="#location-modal">
+                <span style="color:#299eb6;">ALL GYMS</span>
+            </a>
+        </div>
+        -->
+    </div>
+</section>
+{% include './partials/listings-start-time.twig' %}
+<section class="upace-form content slide" id="class-listings">
+    <!-- class listing items populated via js -->
+</section>
+{% endblock %}

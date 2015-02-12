@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>jQuery UI Draggable - Default functionality</title>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+
+<style>
+#draggable { width: 150px; height: 150px; padding: 0.5em; }
+</style>
+<script>
+$(function() {
+$( "#draggable" ).draggable( {
+        stop: function(){
+            var offset = $(this).offset();
+            var xPos = offset.left;
+            var yPos = offset.top;
+			console.log('x - ' + xPos + ' / y -' + yPos);
+            //$('#posX').text('x: ' + xPos);
+            //$('#posY').text('y: ' + yPos);
+        }
+    });
+});
+</script>
+</head>
+<body>
+<div id="draggable" class="ui-widget-content">
+<p>Drag me around</p>
+</div>
+</body>
+</html>

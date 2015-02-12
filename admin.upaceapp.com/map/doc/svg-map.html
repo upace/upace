@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Creating SVG maps - Mapplic</title>
+	<link rel="stylesheet" type="text/css" href="assets/style.css">
+</head>
+<body>
+	<header id="header">
+			<h1>Creating SVG maps</h1>
+			<h2>For Mapplic</h2>
+	</header>
+
+	<div id="wrap">
+		<nav id="contents">
+			<h2>Table of Contents</h2>
+			<ul>
+				<li><a href="#introduction">Introduction</a></li>
+				<li><a href="#new-document">1. Creating new document</a></li>
+				<li><a href="#add-pattern">2. Adding pattern</a></li>
+				<li><a href="#draw-landmarks">3. Drawing landmarks</a></li>
+				<li><a href="#save-document">4. Saving document</a></li>
+				<li><a href="#optimization">5. Optimization</a></li>
+				<li><a href="#add-links">6. Adding links</a></li>
+				<li><a href="#styling-css">7. Styling with CSS</a></li>
+			</ul>
+		</nav>
+
+		<hr>
+
+		<section id="introduction">
+			<h2>Intorduction</h2>
+			<p>Mapplic is the ultimate plugin for creating custom interactive maps, using simple images (JPG/PNG) or vector graphics (SVG). It is available as a standard jQuery plugin or a WordPress plugin with admin interface. In the following, we will show you how you can easily create compatible vector maps (<b>S</b>calable <b>V</b>ector <b>G</b>raphics) and use them with Mapplic (both versions). If you need further assistance, do no hesitate to contact support.</p>
+
+			<div class="space"></div>
+
+			<div id="about">
+				<h3>About SVG</h3>
+				<p>SVG or Scalable Vector Graphics is an XML-based vector image format (open standard) for two-dimensional graphics with support for interactivity and animation.</p>
+				<p>SVG files can be searched, indexed, scripted, and styled with CSS, just like HTML files. As XML files, SVG images can be created and edited with any text editor, but are more often created with drawing software.</p>
+			</div>
+
+			<div class="space"></div>
+
+			<div id="tools">
+				<h3>Tools</h3>
+
+				<p>In order to prepare an SVG file for Mapplic, you will have to use at least two tools: a drawing software and a text editor.</p>
+
+				<h4>Drawing Software</h4>
+				<p>There are a few options, however these are the favored ones:</p>
+				<ul>
+					<li><strong>Adobe Illustrator</strong> - definitely the most used and probably the most advanced drawing software</li>
+					<li><strong>Inkscape</strong> - a free tool dedicated to Scalable Vector Graphics, with a unique feature set</li>
+				</ul>
+
+				<h4>Text Editor</h4>
+				<p>There are hundreds, from the simple Notepad and TextEdit to the advanced Notepad++ and Coda. It doesn't matter which one you are using, you will get the same result.</p>
+
+				<p><b>Sublime Text</b> is our editor of choice, which is available for OS X, Windows and Linux.</p>
+			</div>
+
+		</section>
+
+		<hr>
+
+		<section id="new-document">
+
+			<h2><span>1.</span> Creating new document</h2>
+			<p>Open Adobe Illustrator and create a new document. Give your document a name, make sure the <b>Units</b> is set to <b>Pixels</b> and choose the desired dimensions (width and height).</p>
+
+			<img class="center" src="assets/new.png" alt="New Document">
+
+		</section>
+
+		<hr>
+
+		<section id="add-pattern">
+			<h2><span>2.</span> Adding pattern <span>(optional)</span></h2>
+			<p>In most cases, there is and image to use as a pattern or vectorize. If you want to draw freely, feel free to skip this step.</p>
+			<p>To load an image into your newly created document, all you have to do is to drag&drop it to the artboard. Using the <b>Free Transform Tool (E)</b>, you can scale and position the image according to your needs.</p>
+			<p>Locking the layer will ease drawing over the image. In order to keep your document organized, give your new layer a name. Giving the name <b>background</b> will make the layer have <b>id="background"</b> in the SVG file.</p>
+
+			<img class="center" src="assets/pattern.png" alt="Pattern">
+
+			<p>You can later delete this image, or keep it by embeding it into the SVG file.</p>
+		</section>
+
+		<hr>
+
+		<section id="draw-landmarks">
+			<h2><span>3.</span> Drawing landmarks</span></h2>
+			<p>It's time to use the pattern (or not, if you are drawing freely) and draw a shape over each landmark. The <b>Rectangle</b> and <b>Ellipse</b> tool can be used to draw basic shapes, but for more complex polyogns and curvy shapes, use the <b>Pen Tool (P)</b>.</p>
+			<p>Don't worry about the stroke and fill colors, it can be manipulated with CSS.</p>
+
+			<img class="center" src="assets/pen.png" alt="Pen Tool">
+
+			<p>Make sure you draw shapes and not just lines. To close the path, position the Pen tool over the first anchor point. A small circle appears next to the Pen tool pointer when it is positioned correctly. Click to close the path.</p>
+
+			<img class="center" src="assets/group.png" alt="Grouping">
+
+			<p>A semantic grouping of elements is important, it will help later with styling landmarks.</p>
+		</section>
+
+		<hr>
+
+		<section id="save-document">
+			<h2><span>4.</span> Saving document</h2>
+
+			<p>When you are done with drawing, saving the document is all what is left.</p>
+			<p>On the <b>Save</b> or <b>Save As...</b> dialog, set <b>SVG (.SVG)</b> as type. A new, SVG Options dialog will pop up.</p>
+
+			<img class="center" src="assets/save.png" alt="Save">
+
+			<p>If you go ahead and open the new SVG with a text editor, you will see something similar to this.</p>
+
+			<img class="center" src="assets/raw.png" alt="Raw">
+		</section>
+
+		<hr>
+
+		<section id="optimization">
+			<h2><span>5.</span> Optimization <span>(optional)</span></h2>
+
+			<p>Unfortunately, drawing softwares like Adobe Illustrator often add unnecessary data to the file. Feel free to delete everything that is found before the opening <b>svg</b> tag. The fill, stroke and other styling attributes are also needless since we are going to use CSS for styling. This is the above example after applying a few simplifications.</p>
+
+			<img class="center" src="assets/simplified.png" alt="Simplified">
+		</section>
+
+		<hr>
+
+		<section id="add-links">
+			<h2><span>6.</span> Adding links</h2>
+
+			<p>The <b>a</b> (anchor) tag is used whenever we want to add a hyperlink on the world wide web, just like in the world of SVGs. The only difference is that the xlink namespace must be used. Insted of writing <b>href="#location"</b>, you will have to write <b>xlink:href="#location"</b>. Simple as that.</p>
+
+			<p>This can be done manually, using a text editor, however if you prefer clicking, adding links is natively supported in <b>Inkscape</b>.</p>
+
+			<img class="right" src="assets/linkink.png" alt="Adding links with Inkscape">
+
+			<h3>Adding links with Inkscape</h3>
+			<ol>
+				<li>Select the shape</li>
+				<li>Right click on the shape and <b>Create Link</b></li>
+				<li>Right click again and select <b>Link Properties</b></li>
+				<li>Enter the target in the Href field and close the dialog</li>
+			</ol>
+			<p>Repeat these steps for each shape and save the documment.</p>
+
+			<div class="clear"></div>
+
+			<p>The above example with links added should look like this when opened with a text editor:</p>
+
+			<img class="center" src="assets/links.png" alt="Links added">
+
+			<p>Note the hrefs <b>#lot01</b>, <b>#lot02</b> etc. When creating the landmarks, the unique IDs will be <b>lot01</b>, <b>lot02</b> etc.</p>
+		</section>
+
+		<hr>
+
+		<section id="styling-css">
+			<h2><span>7.</span> Styling with CSS</h2>
+
+			<p>SVGs can be styled using Cascading Style Sheets just like plain HTML, which makes possible adding hover (roll over) styles. Explaining how CSS works is beyond the scope of this tutorial, you can find plenty of information on the web.</p>
+
+			<p>You can link your SVG styles anywhere in the page, you can even use the <b>style</b> element to add inline styling.</p>
+
+			<p>This is a basic styling example for the above example. </p>
+
+			<img class="center" src="assets/css.png" alt="CSS Example">
+
+		</section>
+
+	</div>
+
+	<footer id="footer">
+		<p>Copyright &copy; 2014 - Mapplic</p>
+	</footer>
+</body>
+</html>

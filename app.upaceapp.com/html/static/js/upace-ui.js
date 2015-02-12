@@ -1,7 +1,5 @@
 // TODO: store these somewhere instead of using globals
 
-$("[class='settings-notifications']").bootstrapSwitch();
-
 Date.prototype.addDays = function(days) {
     var dat = new Date(this.valueOf());
     dat.setDate(dat.getDate() + days);
@@ -12,8 +10,9 @@ var
     months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October',
               'November', 'December'],
     dateAbbr = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+    msPerDay = 1000 * 60 * 60 * 24,
 
-	flattenFormArray = function(arr) {
+    flattenFormArray = function(arr) {
 		var flattened = {};
 		for (var i = 0; i < arr.length; i++) {
 			flattened[arr[i].name] = arr[i].value;
@@ -21,7 +20,19 @@ var
 		return flattened;
 	},
 
-	getUrlParameter = function (name) {
+    statusMessage = function(target, message, type) {
+        // target {jquery object} - container to append bootstrap message to
+        // type - warning, danger, success, info
+        var $html = $('<div style="margin-top: 1em;" class="alert alert-' + type + '" role="alert"><strong>' + message + '</strong></div>');
+        target.after($html);
+        window.setTimeout(function() {
+            $html.fadeTo(500, 0).slideUp(500, function(){
+                $(this).remove();
+            });
+        }, 3000);
+    },
+
+    getUrlParameter = function (name) {
 	    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
 	    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
 	        results = regex.exec(location.search);
@@ -32,6 +43,22 @@ var
 		var day = ('0' + date.getDate()).slice(-2);
 		var month = ('0' + (date.getMonth() + 1)).slice(-2);
 		return month + '/' + day + '/' + date.getFullYear();
+    },
+	
+	normalizeDateFromParse = function(date) {
+		// TODO: get all dates in the DB in the same format so we don't need this.
+		if (date && date.indexOf('.') !== -1) {
+			var s = date.split('.');
+			return s[1] + '/' + s[0] + '/' + s[2];
+		}
+		return date;
+	},
+
+    dateDiffInDays = function(a, b) {
+        // a and b are date objects
+        var utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+        var utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
+        return Math.floor((utc2 - utc1) / msPerDay);
     },
 
     getDates = function(startDate, stopDate) {
@@ -44,139 +71,58 @@ var
         return dateArray;
     },
 	
+	getDayIndex = function(date) {
+		date = new Date(normalizeDateFromParse(date));
+		return date.getDay();
+	},
+	
 	sortParseResultsByStartTime = function(a, b) {
-		return Date.parse('01/01/2000 ' + a.get('start_time')) - Date.parse('01/01/2000 ' + b.get('start_time'));
+		var aDate = a.get('date') || a.get('reservationDate') || '01/01/2000',
+			bDate = b.get('date') || b.get('reservationDate') || '01/01/2000',
+			aStart = a.get('start_time') || a.get('slotId').get('start_time') || '',
+			bStart = b.get('start_time') || b.get('slotId').get('start_time') || '',
+			comparison = Date.parse(normalizeDateFromParse(aDate) + ' ' + aStart) - Date.parse(normalizeDateFromParse(bDate) + ' ' + bStart);
+			/*
+			if (comparison === 0 && a.get('name') && b.get('name')) {
+				var aName = a.get('name').toLowerCase(),
+					bName = b.get('name').toLowerCase();
+				if (aName < bName) return -1;
+				if (aName > bName) return 1;
+			}
+			*/
+			return comparison;
 	},
 	
 	filterParseResultsByStartTime = function(results, earliestTime) {
 		var filtered = [],
 			earliestDate = Date.parse('01/01/2000 ' + earliestTime);
 		for (var i = 0; i < results.length; i++) {
-			if (Date.parse('01/01/2000 ' + results[i].get('start_time')) >= earliestDate) {
+            var start_time = (results[i].get('equipment') ? results[i].get('slotId').get('start_time') : results[i].get('start_time'));
+			if (Date.parse('01/01/2000 ' + start_time) >= earliestDate) {
 				filtered.push(results[i]);
 			}
 		}
 		return filtered;
 	},
 
+	filterParseResultsByDateAndStartTime = function(results, earliestDateAndTime) {
+		var filtered = [],
+			earliestDate;
+		if (!earliestDateAndTime) {
+			earliestDateAndTime = new Date();
+		}
+		earliestDate = Date.parse(earliestDateAndTime);
+		for (var i = 0; i < results.length; i++) {
+			var date = results[i].get('date') || results[i].get('reservationDate'),
+				start_time = results[i].get('start_time') || results[i].get('slotId').get('start_time') || '';
+			if (Date.parse(normalizeDateFromParse(date) + ' ' + start_time) >= earliestDate) {
+				filtered.push(results[i]);
+			}
+		}
+		return filtered;
+	},
+	
     isToday = function(date) {
         var today = new Date();
         return (date.toDateString() === today.toDateString());
     };
-
-// Settings Page
-// TODO: drop this in its own file
-(function (window, document, $, Parse, api) {
-
-    var currentUser = api.getCurrentUser(),
-        currentNotifications,
-
-        initializeSettings = function() {
-            api.getProfileNotificationsByUser(currentUser).then(function(a) {
-                currentNotifications = a;
-                renderProfile();
-                if (currentNotifications) renderNotifications();
-            });
-        },
-
-        renderProfile = function() {
-            var $profileForm = $('#profilechange-form'),
-                profile = currentUser.attributes;
-
-            for (var k in profile) {
-                if (profile.hasOwnProperty(k)) {
-                    var $input = $profileForm.find('input[name=' + k + ']');
-                    if ($input.is(':radio')) {
-                        $input.filter('[value=' + profile[k] + ']').prop('checked', profile[k]).trigger('change');
-                    }
-                    else {
-                        $input.val(profile[k]);
-                    }
-                }
-            }
-        },
-
-        renderNotifications = function() {
-            var $notificationsForm = $('#notificationchange-form'),
-                notifications = currentNotifications.attributes;
-
-            for (var k in notifications) {
-                if (notifications.hasOwnProperty(k)) {
-                    var $input = $notificationsForm.find('input[name=' + k + ']');
-                    $input.prop('checked', notifications[k]).trigger('change');
-                }
-            }
-        };
-
-    $('#profilechange-form').on('submit', function(evt) {
-        evt.preventDefault();
-
-        var f = flattenFormArray($(this).serializeArray());
-
-        api.saveUserSettings(null, f).then(
-            function(user) {
-                console.log('settings saved');
-            },
-            function() {
-                console.error('save settings failed -- handle this in UI');
-            }
-        );
-    });
-
-    $('#passwordchange-form').on('submit', function(evt) {
-        evt.preventDefault();
-
-        var f = flattenFormArray($(this).serializeArray());
-
-        if (f.password !== f.retypepassword) {
-            console.error('retyped password does not match -- handle this in UI');
-            return;
-        }
-
-        // The only way to verify an old password with
-        // Parse is to log in again in the background.
-        api.login(api.getCurrentUser().getUsername(), f.oldpassword).then(
-            function(user) {
-                return api.saveUserPassword(user, f.password).then(
-                    function(user) {
-                        console.log('password saved');
-                    }
-                );
-            },
-            function() {
-                console.error('change password failed -- handle this in UI');
-            }
-        );
-    });
-
-    $('#notificationchange-form').on('submit', function(evt) {
-        evt.preventDefault();
-
-        var f = flattenFormArray($(this).serializeArray()),
-            notifications = {
-                'class_noti' : false,
-                'daily_exercise' : false,
-                'general_noti' : false,
-                'via_email' : false,
-                'via_text' : false
-            };
-
-        for (var k in f) {
-            if (f.hasOwnProperty(k) && f[k] === 'on') {
-                notifications[k] = true;
-            }
-        }
-
-        api.saveUserNotifications(null, notifications).then(
-            function(user) {
-                console.log('notifications saved');
-            },
-            function() {
-                console.error('save notifications failed -- handle this in UI');
-            }
-        );
-    });
-
-    initializeSettings();
-
-})(this, document, jQuery, Parse, api);
