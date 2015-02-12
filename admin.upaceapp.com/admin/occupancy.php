@@ -178,6 +178,15 @@
                                                                     </label>
                                                                 </section>
                                                         </fieldset>
+														
+														<fieldset>
+                                                               <section class="col col-6">
+                                                                    <label class="input state">
+                                                                        <input type="text"  class="form-control start_date" name="date" id="date" placeholder="Select Date" class="hasDatepicker"  />
+                                                                        <i></i> 
+                                                                    </label>
+                                                                </section>
+                                                        </fieldset>
 							<footer>
 								<button type="button" id="add_occupancy" class="btn btn-primary">
 									Submit
@@ -267,7 +276,10 @@
 					},
 								gym : {
 									required : true
-								}
+								},
+					date : {
+                                            required : true,
+					}
 				},
 	
 				// Messages for form validation
@@ -284,7 +296,10 @@
 					},
 								gym : {
 									required : true
-								}
+								},
+					date : {
+                              required : 'Please select Date.',
+					}
 				},
 	
 				// Do not change code below
@@ -325,6 +340,15 @@
 				var s = document.getElementsByTagName('script')[0];
 				s.parentNode.insertBefore(ga, s);
 			})();
+			
+			$('#date').datepicker({
+				dateFormat : 'mm/dd/yy',
+				prevText : '<i class="fa fa-chevron-left"></i>',
+				nextText : '<i class="fa fa-chevron-right"></i>',
+				onSelect : function(selectedDate) {
+					//$('#end_date').datepicker('option', 'minDate', selectedDate);
+				}
+			});
 
 		</script>
 

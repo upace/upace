@@ -1811,13 +1811,16 @@ function change_occupCheckin(eq_id)
  */
 function get_slots(equipId)
 {
+	var weekdays = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
     var current = Parse.User.current();
     var UG =  Parse.Object.extend("gym_equipment");
     var ug = new Parse.Query(UG);
     ug.equalTo("objectId", equipId);
     ug.first({
         success: function(equip)
-        {   var Slots = Parse.Object.extend('slots');
+        {  
+			$('.equiNameh1').html(equip.get('name'));
+			var Slots = Parse.Object.extend('slots');
             var eqpmnts = new Parse.Query(Slots);
             eqpmnts.equalTo('equipId',equip);
             //eqpmnts.include('roomId');
@@ -1831,6 +1834,7 @@ function get_slots(equipId)
                         var row='<tr>';
                         row += '<td>' + (c++) + '</td>';
                         //row += '<td>'+occup.get('name')+'</td>';
+						row += '<td>'+weekdays[occup.get('dayIndex')]+'</td>';
                         row += '<td>'+occup.get('start_time')+'</td>';
                         row += '<td>'+occup.get('end_time')+'</td>';
                         row += '<td>';
@@ -1965,7 +1969,7 @@ function get_class_reservation_table()
     ug.find({
         success: function(res)
         {   
-               c=1;
+               c=1;len=res.length;
 		     for(i in res){
 		         var reserve = res[i];
 		         var classes = reserve.get("class");
@@ -2108,7 +2112,8 @@ function getClassReserve(slot,classes,len,now)
 			if(res)
 			{
 			 c=1;
-			  var row ='<li onclick="show_acc(this)" id="'+slot.id+'main" class="accord '+slot.id+'"><h3>'+classes.get('name')+'</h3><span class="firstspan">| '+moment(classes.get('date'),'DD.MM.YYYY').format('DD/MM')+'&nbsp;&nbsp;&nbsp;'+slot.get('start_time')+'</span>';
+			 instruct = classes.get('instructor');
+			  var row ='<li onclick="show_acc(this)" id="'+slot.id+'main" class="accord '+slot.id+'"><h3>'+classes.get('name')+' (Instructor :- '+ instruct.get('firstname') +' ' + instruct.get('lastname') +')</h3><span class="firstspan">| '+moment(classes.get('date'),'DD.MM.YYYY').format('DD/MM')+'&nbsp;&nbsp;&nbsp;'+slot.get('start_time')+'</span>';
 		    // $('#shwAccord').append(row);
 			  row +='<ul id="'+slot.id+'"><li ><h4>Full Name</h3><span class="firstspan" >Check In</span><span class="firstspan" >Payment</span></li></ul></li>';
 		     $('#shwAccord').append(row);
@@ -2149,8 +2154,11 @@ function getReservationList(id)
     //console.log("Before " + aslnos);
     //var aclnos = get_acl_array();
     //console.log("After" + aslnos);
+	$('#shwAccord').hide();
 	var ids = id.split('*'); 
 	len=ids.length;
+	var classGroup=[]; 
+	var deletedId = [];
 	for (i in ids )
 	{
 		slotid = ids[i];
@@ -2160,6 +2168,7 @@ function getReservationList(id)
 		var ug = new Parse.Query(UG);
 		ug.equalTo("objectId", slotid);
 		ug.include("class");
+		ug.include("class.instructor");
 		//ug.limit(100);
 		ug.first({
 			success: function(res)
@@ -2169,14 +2178,59 @@ function getReservationList(id)
 					var slot = res;
 					var classes = slot.get('class');
 					//console.log(slot);console.log(classes);
-					getClassReserve(slot,classes,len,i);
+					//getClassReserve(slot,classes,len,i);
+					if((moment().format('MM/DD/YYYY') == moment(classes.get('date'),'DD.MM.YYYY').format('MM/DD/YYYY')) && (Date.parse(moment().format('MM/DD/YYYY h:m A')) < Date.parse(moment(classes.get('date')+' ' + slot.get('start_time'),'DD.MM.YYYY h:m A').format('MM/DD/YYYY h:m A'))))
+					{
+						//console.log(' first - ' + Date.parse(moment().format('MM/DD/YYYY h:m A')) + ' ==== last - ' + Date.parse(moment(classes.get('date')+' ' + slot.get('start_time'),'DD.MM.YYYY h:m A').format('DD/MM/YYYY h:m A')));
+						
+						var found = false;
+						
+						//classGroup[classes.get('classGroup')] = ['id' : classes.id, start_time : slot.get('start_time')];
+						for(key in classGroup)
+						{
+							if(key == classes.get('classGroup'))
+							{
+								found = true;
+							}
+						}
+						if(found)
+						{
+							if(Date.parse('01/01/2011 ' + classGroup[classes.get('classGroup')]['start_time']) > Date.parse('01/01/2011 '+slot.get('start_time')))
+							{
+								deletedId.push(classGroup[classes.get('classGroup')]['slot_id']);
+								//classGroup[classes.id] = slot.get('start_time');
+								getClassReserve(slot,classes,len,i);
+							}
+							/*if((Date.parse(moment(classes.get('date')+' ' + classGroup[classes.get('classGroup')]['start_time'],'DD.MM.YYYY h:m A').format('DD/MM/YYYY h:m A'))) > Date.parse(moment(classes.get('date')+' ' + slot.get('start_time'),'DD.MM.YYYY h:m A').format('DD/MM/YYYY h:m A')))
+							{
+								//console.log('Got it - ' + classes.get('name'));
+							}*/
+						}
+						else{
+							classGroup[classes.get('classGroup')] = [];
+							classGroup[classes.get('classGroup')]['id'] = classes.id;
+							classGroup[classes.get('classGroup')]['start_time'] = slot.get('start_time');
+							classGroup[classes.get('classGroup')]['slot_id'] = slot.id;
+							getClassReserve(slot,classes,len,i);
+						}
+					}
 				}
 				
 			}
 		});
 	}
 	
+	setTimeout(function(){
+		$('#shwAccord').show();
+		$.each(deletedId,function(i,tempid){
+			//console.log('hi' + tempid);
+			$('#' + tempid + "main").remove();
+		});
+	},5000);
+	
 }
+
+
 function get_class_reservation_list()
 {
 	var current = Parse.User.current();
@@ -2204,6 +2258,228 @@ function get_class_reservation_list()
 		}
 	});
 }
+
+function getEquipReserve(slot,classes,len,now,reserv)
+{
+	var UG =  Parse.Object.extend("equipment_occupancy");
+    var ug = new Parse.Query(UG);
+    ug.equalTo("slot", slot.id);
+	//console.log(slot.id);
+	//console.log(classes);
+	//ug.equalTo("isActive", true);
+	ug.include("userId");
+    ug.find({
+        success: function(res)
+        {
+			if(res)
+			{
+			 c=1;
+			 //console.log('Slot Id - ' + slot.id + " / tot - " + res.length);
+			 //instruct = classes.get('instructor');
+			// var row ='<li onclick="show_acc(this)" id="'+slot.id+'main" class="accord '+slot.id+'"><h3>'+classes.get('name')+'</h3><span class="firstspan">| '+moment(classes.get('date'),'DD.MM.YYYY').format('DD/MM')+'&nbsp;&nbsp;&nbsp;'+slot.get('start_time')+'</span><ul id="'+slot.id+'"></ul></li>';
+		    // $('#shwAccord').append(row);
+			var row ='<li onclick="show_acc(this)" id="'+slot.id+'main" class="accord '+slot.id+'"><h3>'+classes.get('name')+'</h3><span class="firstspan">| '+moment(reserv.get('reservationDate'),'MM/DD/YYYY').format('MM/DD')+'&nbsp;&nbsp;&nbsp;'+slot.get('start_time')+'</span>';
+		    // $('#shwAccord').append(row);
+			  row +='<ul id="'+slot.id+'"><li ><h4>Full Name</h3><span class="firstspan" >Check In</span><span class="firstspan" >Payment</span></li></ul></li>';
+		     $('#shwAccord').append(row);
+			 for(i in res){
+		         var reserve = res[i];
+		         var user = reserve.get("userId");
+		         if(user && classes && reserve)
+				 {
+					//comsole.log(reserve);
+					//if(reserve.get('date') == moment().format('DD.MM.YYYY'))
+					//{
+						//EquipReserveWithPaid(user,reserve,c,slot); 
+					//}		
+
+					var pay = Parse.Object.extend('user_payment');
+					var qPpay = new Parse.Query(pay);
+					qPpay.equalTo('user',user);
+					qPpay.first({
+						success: function(qPpayRes){
+						
+									if(qPpayRes && qPpayRes.get('isPaid'))
+									{
+										var paid=true;
+										var ispaid = 'Paid';
+									}
+									else
+									{
+										var paid=false;
+										var ispaid = 'Not Paid';
+										}
+									var row ='<li>';
+									row += '<h4>' + user.get('firstname') + ' ' + user.get('lastname') + '</h4>';
+									row +=      '<span class="onoffswitch ">';
+									row +=          '<input id="st'+slot.id+'" class="onoffswitch-checkbox" type="checkbox" onclick="change_occupCheckin(\''+ reserve.id +'\')"';
+									row +=          reserve.get('checkin')?'checked="checked"':'';
+									row +=          'name="start_interval">';
+									row +=          '<label class="onoffswitch-label" for="st'+(slot.id)+'">';
+									row +=              '<span class="onoffswitch-inner" data-swchoff-text="No" data-swchon-text="Yes"></span>'
+									row +=              '<span class="onoffswitch-switch"></span>';
+									row +=          '</label>';
+									row +=      '</span>';
+									row +=		'<span class="firstspan_n">';
+									row +=      ispaid;
+									row +=      '</span>';
+									row += '</li>';
+									/*row += '<td>';
+												if(aslnos.indexOf(17)!=-1)
+												{
+													row += '<a class="btn btn-primary" href="editClassReservation?rid='+ reserve.id +'"><i class="fa fa-pencil-square"></i>Edit</a>';
+													}
+													if(aslnos.indexOf(18)!=-1)
+													{
+														row += '<a class="btn btn-primary" href="javascript:void(0);" onclick="delete_reservation(\''+reserve.id+'\')"><i class="fa fa-crosshairs"></i>Delete</a>';
+													}
+													row += '</td>';*/
+										
+										
+										$('#'+slot.id+ ' li:first').after(row);
+							}
+						})
+				 }
+				 /*if(parseInt(res.length-1)==i)
+					{
+						var row ='<div><h3>Total Reserved : '+res.length+'</h3></div>';
+						row +='<div><h3>Available Walk Ins : '+classes.get('walkin_spots')+'</h3></div>';
+						$('#'+slot.id).append(row);
+					}*/
+					//console.log(res.length-1);
+					//console.log(i);
+		     }
+
+			
+			}
+			else{
+			var row='No reservation';
+			}
+
+			if(parseInt(len-1)==now)
+			{
+				//$('#shwAccord').append(row);
+			}
+			
+		}
+	});
+}
+
+
+function getEquipmentReservationList(id,reserva)
+{
+    //console.log("Before " + aslnos);
+    //var aclnos = get_acl_array();
+    //console.log("After" + aslnos);
+	var ids = id.split('*'); 
+	len=ids.length;
+	var classGroup=[];
+	var deletedId = [];
+	var j=0;
+	for (i in ids )
+	{
+		slotid = ids[i];
+		//reserv = reserva[i];
+		//console.log('============= Slot Id ==================');
+		//console.log(slotid.id);
+		//var current = Parse.User.current();
+		var UG =  Parse.Object.extend("slots");
+		var ug = new Parse.Query(UG);
+		ug.equalTo("objectId", slotid);
+		ug.include("equipId");
+		//ug.include("class.instructor");
+		//ug.limit(100);
+		ug.first({
+			success: function(res)
+			{
+				
+				reserv = reserva[j]; 
+				j++;
+				if(res)
+				{
+					var slot = res;
+					var classes = slot.get('equipId');
+					
+					//getEquipReserve(slot,classes,len,i,reserv);
+					//console.log(moment().format('MM/DD/YYYY') + " ---------- " + moment(reserv.get('reservationDate'),'MM/DD/YYYY').format('MM/DD/YYYY'))
+					if((moment().format('MM/DD/YYYY') == moment(reserv.get('reservationDate'),'MM/DD/YYYY').format('MM/DD/YYYY')) && (Date.parse(moment().format('MM/DD/YYYY h:m A')) < Date.parse(moment(reserv.get('reservationDate')+' ' + slot.get('start_time'),'MM/DD/YYYY h:m A').format('MM/DD/YYYY h:m A'))))
+					{
+						var found=false;
+						for(temp in classGroup)
+						{
+								if(temp == classes.id)
+									found=true;
+						}
+						if(found)
+						{
+							if(Date.parse('01/01/2011 ' + classGroup[classes.id]['time']) > Date.parse('01/01/2011 '+slot.get('start_time')))
+							{
+								deletedId.push(classGroup[classes.id]['slot_id']);
+								//classGroup[classes.id] = slot.get('start_time');
+								getEquipReserve(slot,classes,len,i,reserv);
+							}
+							
+						}
+						else{
+						classGroup[classes.id] =[];
+						classGroup[classes.id]['time'] = slot.get('start_time');
+						classGroup[classes.id]['slot_id'] = slot.id;
+						getEquipReserve(slot,classes,len,i,reserv);
+						}
+						
+						
+					}
+					
+				}
+				
+			}
+		});
+		
+	}
+	setTimeout(function(){
+		$('#shwAccord').show();
+		$.each(deletedId,function(i,tempid){
+			//console.log('hi' + tempid);
+			//$('#' + tempid + "main").remove();
+		});
+	},5000);
+	
+}
+
+function get_equipment_reservation_table()
+{
+	var current = Parse.User.current();
+    var UG =  Parse.Object.extend("equipment_occupancy");
+    var ug = new Parse.Query(UG);
+	var arr = new Array();
+	var reserv =[];
+    ug.equalTo("universityGymId", current.get('universityGymId'));
+	//console.log("=============" + current.get('universityGymId'));
+	//ug.equalTo('universityId',current.get('universityId'));
+	ug.limit(1000);
+    ug.find({
+		success: function(res)
+        {
+			for(i in res){
+				reserv[i] = res[i];
+				var slot = reserv[i].get('slot');
+				if(jQuery.inArray( slot, arr )==-1)
+				{
+					arr.push(slot);
+				}
+			}
+			if(parseInt(res.length-1)==i)
+			{
+				//console.log("=========== Array =================");
+				//console.log(arr);
+				
+				getEquipmentReservationList(arr.join("*"),reserv);
+			}
+		}
+	});
+}
+
+
 
 function delete_reservation(equi_id)
 {

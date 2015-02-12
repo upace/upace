@@ -6,7 +6,7 @@ function get_equipments()
     current_time = new Date();
     time_now= moment(current_time).format('01/01/2011 hh:mm A');
     day_no = moment().format('e') - 1;
-	//console.log(day_no);
+	console.log('time now -' + time_now);
     var current = Parse.User.current();
     var Slot = Parse.Object.extend("slots");
     var q = new Parse.Query(Slot);
@@ -160,11 +160,27 @@ function get_equipments()
 
 function get_equipmentsByDate(dt)
 {
-    current_time = new Date(dt);
-    time_now= moment(current_time).format(dt+' hh:mm A');
+	if(dt)
+	{
+		if(dt==moment().format('MM/DD/YYYY'))
+		{
+			current_time = new Date();
+			time_now= moment().format('MM/DD/YYYY hh:mm A');
+		}
+		else{
+		current_time = new Date(dt);
+		time_now= moment(current_time).format(dt+' hh:mm A');
+		}
+	}
+	else
+	{
+		dt = moment().format('MM/DD/YYYY');
+		current_time = new Date();
+		time_now= moment().format('MM/DD/YYYY hh:mm A');
+    }
     todays_date = moment(current_time).format('DD.MM.YYYY');
     day_no = moment(current_time).format('e') - 1;
-    //console.log(current_time);
+    console.log('time now -' + time_now);
     var current = Parse.User.current();
     var Slot = Parse.Object.extend("slots");
     var q = new Parse.Query(Slot);
@@ -182,29 +198,38 @@ function get_equipmentsByDate(dt)
         for(i in slots)
         {
             slot = slots[i];
-            gym = slot.get('gymId');
-            clsDate = gym.get('closeDate').split(',');
-            var chkCls=jQuery.inArray(dt,clsDate);
-            //console.log(chkCls);
-            equip = slot.get('equipId');
-            if(equip && chkCls=='-1')
-            {
-                
-                if(Date.parse(time_now) < Date.parse(dt + ' '+slot.get('start_time')))
-                {
-                    
-                    if(equipments[equip.id] && ((Date.parse(dt + ' ' + equipments[equip.id]) > Date.parse(dt + ' '+slot.get('start_time')))))
-                    {
-                        equipments[equip.id] = slot.get('start_time');
-                        //console.log(chkCls+'in1');
-                    }
-                    else if(!equipments[equip.id])
-                    {
-                        equipments[equip.id] = slot.get('start_time');
-                        //console.log(chkCls+'in2');
-                    }
-                }
-            }
+            gym = slot.get('gymId');	
+			if(gym)	
+			{		
+				if(gym.get('closeDate'))
+				{
+				clsDate = gym.get('closeDate').split(',');
+				}
+				else{
+				clsDate="";
+				}
+				var chkCls=jQuery.inArray(dt,clsDate);
+				//console.log(chkCls);
+				equip = slot.get('equipId');
+				if(equip && chkCls=='-1')
+				{
+					
+					if(Date.parse(time_now) < Date.parse(dt + ' '+slot.get('start_time')))
+					{
+						
+						if(equipments[equip.id] && ((Date.parse(dt + ' ' + equipments[equip.id]) > Date.parse(dt + ' '+slot.get('start_time')))))
+						{
+							equipments[equip.id] = slot.get('start_time');
+							//console.log(chkCls+'in1');
+						}
+						else if(!equipments[equip.id])
+						{
+							equipments[equip.id] = slot.get('start_time');
+							//console.log(chkCls+'in2');
+						}
+					}
+				}
+			}
         }
         //console.log(equipments);
         //console.log(jQuery.isEmptyObject( equipments ));
@@ -801,6 +826,7 @@ function get_occupancy_details(slotId)
     var temp=[]
     var c=1;
     q.equalTo("objectId",slotId);
+	
     q.include('gymId');
     q.include('equipId');
     q.include('roomId');
@@ -903,6 +929,7 @@ function get_occupancy_details(slotId)
             var otherSlot = Parse.Object.extend("slots");
             var os = new Parse.Query(otherSlot);
             os.equalTo('equipId',equip);
+			os.equalTo("dayIndex",moment(dt).format('e') - 1);
             os.notEqualTo('start_time',slots.get('start_time'));
             os.find({
                 success:function(others){
@@ -1628,7 +1655,7 @@ function show_hours(status)
  */
 function get_room_percentage()
 {
-    var current = Parse.User.current();
+    var current = Parse.User.current(); 
     var Slot =  Parse.Object.extend("room");
     var slot = new Parse.Query(Slot);
     slot.equalTo("universityGymId", current.get('universityGymId'));

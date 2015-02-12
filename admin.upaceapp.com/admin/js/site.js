@@ -12,7 +12,7 @@ function add_room(data)
     var getValue = function (valueName) {
         return values[valueName];
     };
-    
+     
     var gymId = getValue("gym");
     var roomname = getValue("roomname");
     var totalOccupancy = parseInt(getValue("totalOccupancy"));
@@ -1212,63 +1212,85 @@ function add_occupancy(data)
     var slotId = getValue("slot");
     var equipment = getValue("equipment");
     var universityGymId = getValue("gym");
+	  var reservationDate  =getValue("date");
     //console.log('Room Id ' + room);
     //console.log('Equipment Id ' + equipment);
-    var User = Parse.Object.extend("User");
-        var u = new Parse.Query(User);
-        var c=1;
-        u.equalTo("objectId", user);
-        //q.include('gymId');
-        u.first({
-          success: function(ud){
-                var UG =  Parse.Object.extend("gym_equipment");
-                var ug = new Parse.Query(UG);
-                ug.equalTo("objectId", equipment);
-                ug.first({
-                    success : function(result){
-                        var current = Parse.User.current();
-                        var Gym =  Parse.Object.extend("university_gym");
-                        var gm = new Parse.Query(Gym);
-                        gm.equalTo("objectId", universityGymId);
-                        gm.include("university");
-                        gm.first({
-                            success: function(gym)
-                            {
-                                var university = gym.get("university");
-                    		  var universityId = university.id;
-                    		  var universityGymId = gym.id;
-                                var Slot =  Parse.Object.extend("slots");
-                                var slot = new Parse.Query(Slot);
-                                slot.equalTo("objectId", slotId);
-                                slot.first({
-                                    success: function(slt)
-                                    {
-                                        var r1 = Parse.Object("equipment_occupancy");
-                                        r1.set("gymId", gym);
-                                        r1.set("userId", ud);
-                                        r1.set("slotId", slt);
-                                        r1.set("equipmentId",result);
-                                        r1.set("university", university);
-                        				r1.set("universityId", universityId);
-                        				r1.set("universityGymId", universityGymId);
-                                        r1.save(null,{
-                                            success:function(){
-                                                 showSuccess('Gym equipment added successfully.');
-                                                 window.location.href='viewOccupancy';
-                                            },
-                                            error:function(r1,error){
-                                                   showError(error.message);
-                                            }                             
-                                        })
-                                    }
-                            })
-                        }
-                        })
-                    }
-                
-                })
-            }
-        })
+	 var chkEquipment  = Parse.Object.extend("equipment_occupancy");
+    var qEqup = new Parse.Query(chkEquipment);
+    qEqup.equalTo("slot", slotId);
+    qEqup.equalTo("reservationDate", reservationDate);
+    qEqup.equalTo("equipment", equipment);
+    qEqup.first({
+    		success: function(found)
+          {
+          	if(found)
+          	{
+          		showError('Sorry Already Booked. Please try another Slot.');
+          	}
+          	else{
+	
+	
+					var User = Parse.Object.extend("User");
+					var u = new Parse.Query(User);
+					var c=1;
+					u.equalTo("objectId", user);
+					//q.include('gymId');
+					u.first({
+					  success: function(ud){
+							var UG =  Parse.Object.extend("gym_equipment");
+							var ug = new Parse.Query(UG);
+							ug.equalTo("objectId", equipment);
+							ug.first({
+								success : function(result){
+									var current = Parse.User.current();
+									var Gym =  Parse.Object.extend("university_gym");
+									var gm = new Parse.Query(Gym);
+									gm.equalTo("objectId", universityGymId);
+									gm.include("university");
+									gm.first({
+										success: function(gym)
+										{
+											var university = gym.get("university");
+										  var universityId = university.id;
+										  var universityGymId = gym.id;
+											var Slot =  Parse.Object.extend("slots");
+											var slot = new Parse.Query(Slot);
+											slot.equalTo("objectId", slotId);
+											slot.first({
+												success: function(slt)
+												{
+													var r1 = Parse.Object("equipment_occupancy");
+													r1.set("gymId", gym);
+													r1.set("userId", ud);
+													r1.set("slotId", slt);
+													r1.set("slot", slt.id);
+													r1.set("equipmentId",result);
+													r1.set("equipment",result.id);
+													r1.set("university", university);
+													r1.set("universityId", universityId);
+													r1.set("universityGymId", universityGymId);
+													r1.set("reservationDate", reservationDate);
+													r1.save(null,{
+														success:function(){
+															 showSuccess('Equiupment reserved successfully.');
+															 window.location.href='viewOccupancy';
+														},
+														error:function(r1,error){
+															   showError(error.message);
+														}                             
+													})
+												}
+										})
+									}
+									})
+								}
+							
+							})
+						}
+					})
+				}
+			}
+		})
 }
 
 /*
@@ -1300,33 +1322,36 @@ function get_occupancies()
                         var user = results[i].get('userId');
                         var equipment = results[i].get('equipmentId');
                         var slot = results[i].get('slotId');
-                        var row='<tr>';
-                        row += '<td>' + (c++) + '</td>';
-                        row += '<td>'+Gym.get('name')+'</td>';
-                        row += '<td>'+user.get('firstname')+" "+user.get('lastname')+'</td>';
-                        row += '<td>'+equipment.get('name')+'</td>';
-                        row += '<td>'+slot.get('start_time')+'</td>';
-                        row += '<td>'+slot.get('end_time')+'</td>';
-						row += '<td>'+moment(occup.get('reservationDate'),'MM/DD/YYYY').format('MM/DD/YYYY')+'</td>';
-						row += '<td>';
-						row +=      '<span class="onoffswitch">';
-						row +=          '<input id="st'+c+'" class="onoffswitch-checkbox" type="checkbox" onclick="change_occupCheckin(\''+ occup.id +'\')"';
-						row +=          occup.get('checkin')?'checked="checked"':'';
-						row +=          'name="start_interval">';
-						row +=          '<label class="onoffswitch-label" for="st'+(c)+'">';
-						row +=              '<span class="onoffswitch-inner" data-swchoff-text="No" data-swchon-text="Yes"></span>'
-						row +=              '<span class="onoffswitch-switch"></span>';
-						row +=          '</label>';
-						row +=      '</span>';
-						row += '</td>';
-                        row += '<td>';
-                        //row +=      '<a class="btn btn-primary" href="/calendar"><i class="fa fa-eye"></i>View Classes</a>';
-                        //row +=      '<a class="btn btn-primary" href="/viewEquipments"><i class="fa fa-eye"></i>View Equipment History</a>'
-                        //row +=      '<a class="btn btn-primary" href="editOccupancy?rid='+ occup.id +'"><i class="fa fa-pencil-square"></i>Edit</a>';
-                        row +=      '<a class="btn btn-primary" href="javascript:void(0);" onclick="delete_occupancy(\''+occup.id+'\')"><i class="fa fa-crosshairs"></i>Delete</a>';
-                        row += '</td>';
-                        row += '</tr>';
-                        $('table.equipments tbody').append(row);
+						if(occup && Gym && user && equipment && slot)
+						{
+							var row='<tr>';
+							row += '<td>' + (c++) + '</td>';
+							row += '<td>'+Gym.get('name')+'</td>';
+							row += '<td>'+user.get('firstname')+" "+user.get('lastname')+'</td>';
+							row += '<td>'+equipment.get('name')+'</td>';
+							row += '<td>'+slot.get('start_time')+'</td>';
+							row += '<td>'+slot.get('end_time')+'</td>';
+							row += '<td>'+moment(occup.get('reservationDate'),'MM/DD/YYYY').format('MM/DD/YYYY')+'</td>';
+							row += '<td>';
+							row +=      '<span class="onoffswitch">';
+							row +=          '<input id="st'+c+'" class="onoffswitch-checkbox" type="checkbox" onclick="change_occupCheckin(\''+ occup.id +'\')"';
+							row +=          occup.get('checkin')?'checked="checked"':'';
+							row +=          'name="start_interval">';
+							row +=          '<label class="onoffswitch-label" for="st'+(c)+'">';
+							row +=              '<span class="onoffswitch-inner" data-swchoff-text="No" data-swchon-text="Yes"></span>'
+							row +=              '<span class="onoffswitch-switch"></span>';
+							row +=          '</label>';
+							row +=      '</span>';
+							row += '</td>';
+							row += '<td>';
+							//row +=      '<a class="btn btn-primary" href="/calendar"><i class="fa fa-eye"></i>View Classes</a>';
+							//row +=      '<a class="btn btn-primary" href="/viewEquipments"><i class="fa fa-eye"></i>View Equipment History</a>'
+							//row +=      '<a class="btn btn-primary" href="editOccupancy?rid='+ occup.id +'"><i class="fa fa-pencil-square"></i>Edit</a>';
+							row +=      '<a class="btn btn-primary" href="javascript:void(0);" onclick="delete_occupancy(\''+occup.id+'\')"><i class="fa fa-crosshairs"></i>Delete</a>';
+							row += '</td>';
+							row += '</tr>';
+							$('table.equipments tbody').append(row);
+						}
                     }
                     
                     $('.projects-table').dataTable();
@@ -1383,18 +1408,20 @@ function change_occupCheckin(eq_id)
         var q = new Parse.Query(GE);
         q.get(equi_id, {
            success: function(q) { 
-            if(q.destroy({}))
-            { 
-                $('table.equipments tbody').empty();
+		   q.destroy({
+			success:function()
+			{
+				 $('table.equipments tbody').empty();
                 showSuccess('Equipment deleted successfully.');
                 //get_occupancies();
                
                 window.location.href="viewOccupancy";
-            }
-            else
-            {
-                showError('Equipment could not be deleted. Please try again.');
-            }
+			},
+			error:function(){
+			showError('Equipment could not be deleted. Please try again.');
+			}
+		   })
+           
            },
            error: function(q, error) {
               showError(error.message);
@@ -1457,14 +1484,17 @@ function change_occupCheckin(eq_id)
  * Get All Slots
  */
 function get_slots(equipId)
-{
+{	
+	var weekdays = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
     var current = Parse.User.current();
     var UG =  Parse.Object.extend("gym_equipment");
     var ug = new Parse.Query(UG);
     ug.equalTo("objectId", equipId);
     ug.first({
         success: function(equip)
-        {   var Slots = Parse.Object.extend('slots');
+        {  
+			$('.equiNameh1').html(equip.get('name'));
+			var Slots = Parse.Object.extend('slots');
             var eqpmnts = new Parse.Query(Slots);
             eqpmnts.equalTo('equipId',equip);
             //eqpmnts.include('roomId');
@@ -1478,6 +1508,7 @@ function get_slots(equipId)
                         var row='<tr>';
                         row += '<td>' + (c++) + '</td>';
                         //row += '<td>'+occup.get('name')+'</td>';
+						 row += '<td>'+weekdays[occup.get('dayIndex')]+'</td>';
                         row += '<td>'+occup.get('start_time')+'</td>';
                         row += '<td>'+occup.get('end_time')+'</td>';
                         row += '<td>';
@@ -1896,6 +1927,31 @@ function getAllGym(){
         }
     })
 }
+
+/*--All Gym with Check box--*/
+/*function getAllGymCheck(){
+    var universityId = currentUser.get('universityId');
+    var UG = Parse.Object.extend('university_gym');
+    var qug = new Parse.Query(UG);
+    qug.equalTo('universityId',universityId);
+    qug.notEqualTo('isDelete',1);
+    qug.equalTo('isActive',1);
+    qug.descending('createdAt');
+    //eqpmnts.include('roomId');
+    //eqpmnts.include('equipmentId');
+    qug.find({
+        success: function(results){
+            c=1;
+            for(i in results){
+				
+                gym=results[i];
+				chk = '<input type="checkbox" class="univ_chk" value="' + gym.id + '">&nbsp;&nbsp;<span>' + gym.get('name') + '</span>';
+				$('#gymSelLabel').append(chk);
+                //$('#gym').append(new Option(gym.get('name'), gym.id));
+            }
+        }
+    })
+}*/
 
 
 function change_occupStatus(occupId)
@@ -3626,18 +3682,24 @@ function get_class_reservation_list()
     var ug = new Parse.Query(UG);
     ug.equalTo("universityId", current.get('universityId'));
     ug.include("class");
+	ug.include("class.gym");
     ug.include("user");
     ug.include("gym");
     ug.find({
         success: function(res)
         {   
-               c=1;len=res.length;
+             c=1;len=res.length;
 		     for(i in res){
 		         var reserve = res[i];
 		         var classes = reserve.get("class");
 		         var user = reserve.get("user");
-		         var gym = reserve.get("gym");
-				 getReserveUserDetails(user, gym, classes, c++, len, i, reserve);
+		         
+				 if(classes && user)
+				 {
+					var gym = classes.get("gym");
+					if(gym)
+					getReserveUserDetails(user, gym, classes, c++, len, i, reserve);
+				}
 		     }
 		     //$('.projects-table').dataTable();
                 
@@ -3776,9 +3838,11 @@ function getClassReserve(slot,classes,len,now)
 			if(res)
 			{
 			 c=1;
+			 //console.log('Slot Id - ' + slot.id + " / tot - " + res.length);
+			 instruct = classes.get('instructor');
 			// var row ='<li onclick="show_acc(this)" id="'+slot.id+'main" class="accord '+slot.id+'"><h3>'+classes.get('name')+'</h3><span class="firstspan">| '+moment(classes.get('date'),'DD.MM.YYYY').format('DD/MM')+'&nbsp;&nbsp;&nbsp;'+slot.get('start_time')+'</span><ul id="'+slot.id+'"></ul></li>';
 		    // $('#shwAccord').append(row);
-			var row ='<li onclick="show_acc(this)" id="'+slot.id+'main" class="accord '+slot.id+'"><h3>'+classes.get('name')+'</h3><span class="firstspan">| '+moment(classes.get('date'),'DD.MM.YYYY').format('DD/MM')+'&nbsp;&nbsp;&nbsp;'+slot.get('start_time')+'</span>';
+			var row ='<li onclick="show_acc(this)" id="'+slot.id+'main" class="accord '+slot.id+'"><h3>'+classes.get('name')+' (Instructor :- '+ instruct.get('firstname') +' ' + instruct.get('lastname') +')</h3><span class="firstspan">| '+moment(classes.get('date'),'DD.MM.YYYY').format('MM/DD')+'&nbsp;&nbsp;&nbsp;'+slot.get('start_time')+'</span>';
 		    // $('#shwAccord').append(row);
 			  row +='<ul id="'+slot.id+'"><li ><h4>Full Name</h3><span class="firstspan" >Check In</span><span class="firstspan" >Payment</span></li></ul></li>';
 		     $('#shwAccord').append(row);
@@ -3788,9 +3852,10 @@ function getClassReserve(slot,classes,len,now)
 		         if(user && classes && reserve)
 				 {
 					//comsole.log(reserve);
-					ClassReserveWithPaid(user,reserve,c,slot);
-
-					
+					//if(reserve.get('date') == moment().format('DD.MM.YYYY'))
+					//{
+						ClassReserveWithPaid(user,reserve,c,slot); 
+					//}					
 				 }
 				 if(parseInt(res.length-1)==i)
 					{
@@ -3823,6 +3888,8 @@ function getReservationList(id)
     //console.log("After" + aslnos);
 	var ids = id.split('*'); 
 	len=ids.length;
+	var classGroup=[];
+	var deletedId = [];
 	for (i in ids )
 	{
 		slotid = ids[i];
@@ -3832,6 +3899,7 @@ function getReservationList(id)
 		var ug = new Parse.Query(UG);
 		ug.equalTo("objectId", slotid);
 		ug.include("class");
+		ug.include("class.instructor");
 		//ug.limit(100);
 		ug.first({
 			success: function(res)
@@ -3840,13 +3908,64 @@ function getReservationList(id)
 				{
 					var slot = res;
 					var classes = slot.get('class');
-					//console.log(slot);console.log(classes);
-					getClassReserve(slot,classes,len,i);
+					
+					if((moment().format('MM/DD/YYYY') == moment(classes.get('date'),'DD.MM.YYYY').format('MM/DD/YYYY')) && (Date.parse(moment().format('MM/DD/YYYY h:m A')) < Date.parse(moment(classes.get('date')+' ' + slot.get('start_time'),'DD.MM.YYYY h:m A').format('MM/DD/YYYY h:m A'))))
+					{
+						//console.log(' first - ' + Date.parse(moment().format('MM/DD/YYYY h:m A')) + ' ==== last - ' + Date.parse(moment(classes.get('date')+' ' + slot.get('start_time'),'DD.MM.YYYY h:m A').format('DD/MM/YYYY h:m A')));
+						
+						var found = false;
+						
+						//classGroup[classes.get('classGroup')] = ['id' : classes.id, start_time : slot.get('start_time')];
+						for(key in classGroup)
+						{
+							if(key == classes.get('classGroup'))
+							{
+								found = true;
+							}
+						}
+						if(found)
+						{
+							/*if((Date.parse(moment(classes.get('date')+' ' + classGroup[classes.get('classGroup')]['start_time'],'DD.MM.YYYY h:m A').format('DD/MM/YYYY h:m A'))) > Date.parse(moment(classes.get('date')+' ' + slot.get('start_time'),'DD.MM.YYYY h:m A').format('DD/MM/YYYY h:m A')))
+							{
+								//console.log('Got it - ' + classes.get('name'));
+							}*/
+							if(Date.parse('01/01/2011 ' + classGroup[classes.get('classGroup')]['time']) > Date.parse('01/01/2011 '+slot.get('start_time')))
+							{
+								deletedId.push(classGroup[classes.get('classGroup')]['slot_id']);
+								//classGroup[classes.id] = slot.get('start_time');
+								getClassReserve(slot,classes,len,i);
+							}
+						}
+						else{
+							classGroup[classes.get('classGroup')] = [];
+							classGroup[classes.get('classGroup')]['id'] = classes.id;
+							classGroup[classes.get('classGroup')]['start_time'] = slot.get('start_time');
+							classGroup[classes.get('classGroup')]['slot_id'] = slot.id;
+							getClassReserve(slot,classes,len,i);
+						}
+						//console.log("=================");
+						//console.log(classGroup);
+						/*if(classGroup.indexOf(classes.get('classGroup')))
+						{
+							if()
+						}
+						//console.log(slot);console.log(classes);
+						classGroup.push(classes.get('classGroup'));*/
+						
+						
+					}
 				}
 				
 			}
 		});
 	}
+	setTimeout(function(){
+		$('#shwAccord').show();
+		$.each(deletedId,function(i,tempid){
+			//console.log('hi' + tempid);
+			$('#' + tempid + "main").remove();
+		});
+	},5000);
 	
 }
 function get_class_reservation_table()
@@ -3861,6 +3980,7 @@ function get_class_reservation_table()
     ug.find({
 		success: function(res)
         {
+		i=0;
 			for(i in res){
 				var reserv = res[i];
 				var slot = reserv.get('slotId');
@@ -3878,6 +3998,225 @@ function get_class_reservation_table()
 	});
 }
 
+function getEquipReserve(slot,classes,len,now,reserv)
+{
+	var UG =  Parse.Object.extend("equipment_occupancy");
+    var ug = new Parse.Query(UG);
+    ug.equalTo("slot", slot.id);
+	//console.log(slot.id);
+	//console.log(classes);
+	//ug.equalTo("isActive", true);
+	ug.include("userId");
+    ug.find({
+        success: function(res)
+        {
+			if(res)
+			{
+			 c=1;
+			 //console.log('Slot Id - ' + slot.id + " / tot - " + res.length);
+			 //instruct = classes.get('instructor');
+			// var row ='<li onclick="show_acc(this)" id="'+slot.id+'main" class="accord '+slot.id+'"><h3>'+classes.get('name')+'</h3><span class="firstspan">| '+moment(classes.get('date'),'DD.MM.YYYY').format('DD/MM')+'&nbsp;&nbsp;&nbsp;'+slot.get('start_time')+'</span><ul id="'+slot.id+'"></ul></li>';
+		    // $('#shwAccord').append(row);
+			var row ='<li onclick="show_acc(this)" id="'+slot.id+'main" class="accord '+slot.id+'"><h3>'+classes.get('name')+'</h3><span class="firstspan">| '+moment(reserv.get('reservationDate'),'MM/DD/YYYY').format('MM/DD')+'&nbsp;&nbsp;&nbsp;'+slot.get('start_time')+'</span>';
+		    // $('#shwAccord').append(row);
+			  row +='<ul id="'+slot.id+'"><li ><h4>Full Name</h3><span class="firstspan" >Check In</span><span class="firstspan" >Payment</span></li></ul></li>';
+		     $('#shwAccord').append(row);
+			 for(i in res){
+		         var reserve = res[i];
+		         var user = reserve.get("userId");
+		         if(user && classes && reserve)
+				 {
+					//comsole.log(reserve);
+					//if(reserve.get('date') == moment().format('DD.MM.YYYY'))
+					//{
+						//EquipReserveWithPaid(user,reserve,c,slot); 
+					//}		
+
+					var pay = Parse.Object.extend('user_payment');
+					var qPpay = new Parse.Query(pay);
+					qPpay.equalTo('user',user);
+					qPpay.first({
+						success: function(qPpayRes){
+						
+									if(qPpayRes && qPpayRes.get('isPaid'))
+									{
+										var paid=true;
+										var ispaid = 'Paid';
+									}
+									else
+									{
+										var paid=false;
+										var ispaid = 'Not Paid';
+										}
+									var row ='<li>';
+									row += '<h4>' + user.get('firstname') + ' ' + user.get('lastname') + '</h4>';
+									row +=      '<span class="onoffswitch ">';
+									row +=          '<input id="st'+slot.id+'" class="onoffswitch-checkbox" type="checkbox" onclick="change_occupCheckin(\''+ reserve.id +'\')"';
+									row +=          reserve.get('checkin')?'checked="checked"':'';
+									row +=          'name="start_interval">';
+									row +=          '<label class="onoffswitch-label" for="st'+(slot.id)+'">';
+									row +=              '<span class="onoffswitch-inner" data-swchoff-text="No" data-swchon-text="Yes"></span>'
+									row +=              '<span class="onoffswitch-switch"></span>';
+									row +=          '</label>';
+									row +=      '</span>';
+									row +=		'<span class="firstspan_n">';
+									row +=      ispaid;
+									row +=      '</span>';
+									row += '</li>';
+									/*row += '<td>';
+												if(aslnos.indexOf(17)!=-1)
+												{
+													row += '<a class="btn btn-primary" href="editClassReservation?rid='+ reserve.id +'"><i class="fa fa-pencil-square"></i>Edit</a>';
+													}
+													if(aslnos.indexOf(18)!=-1)
+													{
+														row += '<a class="btn btn-primary" href="javascript:void(0);" onclick="delete_reservation(\''+reserve.id+'\')"><i class="fa fa-crosshairs"></i>Delete</a>';
+													}
+													row += '</td>';*/
+										
+										
+										$('#'+slot.id+ ' li:first').after(row);
+							}
+						})
+				 }
+				 /*if(parseInt(res.length-1)==i)
+					{
+						var row ='<div><h3>Total Reserved : '+res.length+'</h3></div>';
+						row +='<div><h3>Available Walk Ins : '+classes.get('walkin_spots')+'</h3></div>';
+						$('#'+slot.id).append(row);
+					}*/
+					//console.log(res.length-1);
+					//console.log(i);
+		     }
+
+			
+			}
+			else{
+			var row='No reservation';
+			}
+
+			if(parseInt(len-1)==now)
+			{
+				//$('#shwAccord').append(row);
+			}
+			
+		}
+	});
+}
+
+
+function getEquipmentReservationList(id,reserva)
+{
+    //console.log("Before " + aslnos);
+    //var aclnos = get_acl_array();
+    //console.log("After" + aslnos);
+	var ids = id.split('*'); 
+	len=ids.length;
+	var classGroup=[];
+	var deletedId = [];
+	j=0;
+	for (i in ids )
+	{
+		slotid = ids[i];
+	
+		//console.log('============= Slot Id ==================');
+		//console.log(slotid.id);
+		//var current = Parse.User.current();
+		var UG =  Parse.Object.extend("slots");
+		var ug = new Parse.Query(UG);
+		ug.equalTo("objectId", slotid);
+		ug.include("equipId");
+		//ug.include("class.instructor");
+		//ug.limit(100);
+		ug.first({
+			success: function(res)
+			{
+				
+				reserv = reserva[j];
+				j++; 
+				if(res) 
+				{
+					var slot = res;
+					var classes = slot.get('equipId');
+					//getEquipReserve(slot,classes,len,i,reserv);
+					//console.log(moment().format('MM/DD/YYYY') + " ---------- " + moment(reserv.get('reservationDate'),'MM/DD/YYYY').format('MM/DD/YYYY'))
+					if((moment().format('MM/DD/YYYY') == moment(reserv.get('reservationDate'),'MM/DD/YYYY').format('MM/DD/YYYY')) && (Date.parse(moment().format('MM/DD/YYYY h:m A')) < Date.parse(moment(reserv.get('reservationDate')+' ' + slot.get('start_time'),'MM/DD/YYYY h:m A').format('MM/DD/YYYY h:m A'))))
+					{
+						var found=false;
+						for(temp in classGroup)
+						{
+								if(temp == classes.id)
+									found=true;
+						}
+						if(found)
+						{
+							if(Date.parse('01/01/2011 ' + classGroup[classes.id]['time']) > Date.parse('01/01/2011 '+slot.get('start_time')))
+							{
+								deletedId.push(classGroup[classes.id]['slot_id']);
+								//classGroup[classes.id] = slot.get('start_time');
+								getEquipReserve(slot,classes,len,i,reserv);
+							}
+							
+						}
+						else{
+						classGroup[classes.id] =[];
+						classGroup[classes.id]['time'] = slot.get('start_time');
+						classGroup[classes.id]['slot_id'] = slot.id;
+						getEquipReserve(slot,classes,len,i,reserv);
+						}
+						
+						
+					}
+					
+				}
+				
+			}
+		});
+		
+	}
+	setTimeout(function(){
+		$('#shwAccord').show();
+		$.each(deletedId,function(i,tempid){
+			//console.log('hi' + tempid);
+			$('#' + tempid + "main").remove();
+		});
+	},5000);
+	
+}
+
+function get_equipment_reservation_table()
+{
+	var current = Parse.User.current();
+    var UG =  Parse.Object.extend("equipment_occupancy");
+    var ug = new Parse.Query(UG);
+	var arr = new Array();
+	var reserv =[];
+    //ug.equalTo("gymId", current.get('universityGymId'));
+	ug.equalTo('universityId',current.get('universityId'));
+	ug.limit(100);
+    ug.find({
+		success: function(res)
+        {
+			for(i in res){
+				
+				reserv[i] = res[i];
+				var slot = reserv[i].get('slot');
+				if(jQuery.inArray( slot, arr )==-1)
+				{
+					arr.push(slot);
+				}
+			}
+			if(parseInt(res.length-1)==i)
+			{
+				//console.log("=========== Array =================");
+				
+				
+				getEquipmentReservationList(arr.join("*"),reserv);
+			}
+		}
+	});
+}
+
 function delete_reservation(equi_id)
 {
 
@@ -3887,18 +4226,18 @@ function delete_reservation(equi_id)
 	   var q = new Parse.Query(GE);
 	   q.get(equi_id, {
 		 success: function(q) { 
-		  if(q.destroy({}))
-		  { 
-		      $('table.equipments tbody').empty();
+		  q.destroy({
+			success:function(){
+				 $('table.equipments tbody').empty();
 		      showSuccess('Class Reservation deleted successfully.');
 		      //get_occupancies();
 		     
 		      window.location.reload();
-		  }
-		  else
-		  {
-		      showError('Class Reservation could not be saved. Please try again.');
-		  }
+			},
+			error:function(){
+				showError('Class Reservation could not be saved. Please try again.');
+			}
+		  })		 
 		 },
 		 error: function(q, error) {
 		    showError(error.message);

@@ -74,7 +74,13 @@
 				 View Reservation 			</span>		</h1>
 	</div>
 </div>
-				
+				<section id="widget-grid1" class="" style="margin-bottom:40px;">
+					<div style="width:100%;">
+						<ul id="shwAccord" style="display:none;"></ul>
+						<div style="clear:both"></div>
+					</div>
+					<div style="clear:both"></div>
+				</section>	
 				<!-- widget grid -->
 				<section id="widget-grid" class="">
 
@@ -191,6 +197,7 @@
                     //----------- Get Equipments List
                     //get_equipments();
                     get_occupancies(); 
+					get_equipment_reservation_table(); 
                    
 		</script>
 
@@ -216,6 +223,71 @@
 			{
 				$(name).hide();
 			}
+			function show_acc(elem)
+			{
+				$('.accord ul').hide();
+				$(elem).find('ul').show();
+			}
 		</script>
+		<style>
+.accord {
+list-style-type: none;
+margin: 0px 10px 0px 10px;
+padding: 4px 27px;
+width: 93%;
+background: #fff;
+float: left;
+border:1px solid #cecece;
+border-bottom:0px solid #000;
+}
+.accord h3{
+margin: 0px;
+width: 50%;
+float: left;
+}
+.firstspan{
+	margin: 0px;
+	float: left;
+	color: #999;
+	font-weight: bold;
+	line-height:35px;border-right:1px solid #EEEEEE;width:20%;
+}
+.firstspan_n{
+	margin: 0px;
+	float: right;
+	color: #999;
+	line-height:35px;border-left:1px solid #EEEEEE;width:30%;
+}
+.accord ul{
+padding: 12px;float: left;width: 100%;
+display:none;
+}
+.accord ul li{
+list-style-type: none;
+border: 1px solid #eee;float: left;width: 100%;
+}
+.accord ul li h4{
+width: 50%;
+float: left;
+border-right: 1px solid #eee;
+padding: 7px 10px;
+font-size: 14px;
+font-weight: bold;
+color: #999;
+}
+.onoffswitch{
+line-height: 81px;
+margin-top: 7px !important;width:auto !important;float: left;
+}
+.accord:first-child{
+border-radius:8px 8px 0px 0px;
+/*margin: 0px 10px;*/
+}
+.accord:last-child{
+border-radius:0px 0px 8px 8px;
+border-bottom:1px solid #cecece;
+}
+
+</style>
 	</body>
 </html>

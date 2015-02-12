@@ -79,10 +79,12 @@
         </button>
     </a>-->
 </div>
-				<section id="widget-grid1" class="">
+				<section id="widget-grid1" class="" style="margin-bottom:40px;">
 					<div style="width:100%;">
-						<div id="shwAccord"></div>
+						<ul id="shwAccord"></ul>
+						<div style="clear:both"></div>
 					</div>
+					<div style="clear:both"></div>
 				</section>
 				<!-- widget grid -->
 				<section id="widget-grid" class="">

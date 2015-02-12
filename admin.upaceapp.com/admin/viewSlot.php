@@ -72,6 +72,9 @@
                             Slots
                     <span>>
                             View Slots			</span>		</h1>
+			<h1 class="page-title txt-color-blueDark equiNameh1">
+				Equipment Name
+			</h1>
     </div>
     <a href="addSlot.php?rid=<?php echo $_GET['rid']; ?>">
         <button type="button" class="btn btn-primary add_slot" style="float: right;margin-top: 20px; margin-right: 20px;">
@@ -126,8 +129,10 @@
 									        <thead>
 									            <tr roll="row">
 									                <th>#</th>
+													<th>Day</th>
 									                <th>Start Time</th>
 									                <th>End Time</th>
+													<th>Status</th>
 									                <th>Action</th>
 									            </tr>
 									        </thead>

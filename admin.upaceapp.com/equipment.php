@@ -164,7 +164,7 @@ if (currentUser) {
         		<?php 
         	}else{?>
         		//get_equipments();
-				get_equipmentsByDate(moment().format('MM/DD/YYYY'));
+				get_equipmentsByDate();
         <?php	}
         ?>
     </script>
