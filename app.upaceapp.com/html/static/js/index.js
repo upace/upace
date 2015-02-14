@@ -109,8 +109,8 @@
 
         initOnDeck = function() {
             Parse.Promise.when(
-                    api.getClassReservationsByUser(currentUser),
-                    api.getEquipmentReservationsByUser(currentUser)
+                    api.getClassReservations(),
+                    api.getEquipmentReservations()
                 ).then(function(a, b) {
                     if(a.length || b.length) {
                         reservedClasses = a;

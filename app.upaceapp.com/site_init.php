@@ -1,7 +1,7 @@
 <?php
 $SITE = array(
     "name" => "UPACE",
-    "base_url" => "http://app.upaceapp.com",
+    "base_url" => "http://upace.com",
 	"parse_app_id" => "nN7dcS3c3LNXlkOgMhmVxcu2L4b1zeUDuaSXIfzr",
 	"parse_js_key" => "thCEUZ2AV4ShhzGlQpxYucpLI0uwj7JNBizIrThe",
 	"parse_rest_api_key" => "rD5RqXmCez2ZbQ3T67Sag85borrt1m2G4pk1wmGf",

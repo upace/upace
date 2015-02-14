@@ -63,6 +63,12 @@
         evt.preventDefault();
 
         var f = flattenFormArray($(this).serializeArray());
+		
+		// TODO: improve validation process.
+		if (!f.username || !f.password) {
+			statusMessage($statusLogin, 'enter a username and password.', 'danger');
+			return;
+		}
 
         api.login(f.username, f.password).then(
             function(user) {
@@ -77,11 +83,27 @@
     $('#registration-form').on('submit', function(evt) {
         evt.preventDefault();
 
-        var f = flattenFormArray($(this).serializeArray());
+		// TODO: improve validation process.
+		var required = ['universityGymId', 'firstname', 'lastname', 'email', 'phone', 'sex', 'memberType', 'gymFrequency', 'username', 'password'],
+			f = flattenFormArray($(this).serializeArray()),
+			missingMsg = 'some of your information is missing:',
+			valid = true;
+		
+		for (var i = 0; i < required.length; i++) {
+			if (!f[required[i]]) {
+				missingMsg += '<br>- ' + required[i];
+				valid = false;
+			}
+		}
+		
+		if (!valid) {
+			statusMessage($statusSignup, missingMsg, 'danger');
+			return;
+		}
 
         api.registerNewUser(f).then(
             function(user) {
-                statusMessage($statusSignup, 'you\'ve been registered.  welcome!', 'success');
+                statusMessage($statusSignup, 'you\'ve been registered. welcome!', 'success');
                 window.setTimeout(function() {
                     window.location = '/';
                 }, 5000);

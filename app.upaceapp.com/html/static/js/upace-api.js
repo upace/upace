@@ -15,7 +15,7 @@ if (!window.api) {
             return Parse.User.logIn(username, password);
         },
 
-        logout = api.logout = function (user) {
+        logout = api.logout = function () {
             return Parse.User.logOut();
         },
 		
@@ -225,9 +225,8 @@ if (!window.api) {
             return Parse.User.current();
         },
 
-        getProfileNotificationsByUser = api.getProfileNotificationsByUser = function (user) {
-            if (!user)
-                user = getCurrentUser();
+        getProfileNotifications = api.getProfileNotifications = function () {
+            var user = getCurrentUser();
             var o = Parse.Object.extend('notifications');
             var q = new Parse.Query(o);
             q.equalTo('user', user);
@@ -239,6 +238,7 @@ if (!window.api) {
             var q = new Parse.Query(o);
             q.notEqualTo('is_deleted', true);
             q.equalTo('isActive', 1);
+			q.limit(1000);
             return q.find();
         },
 
@@ -252,6 +252,7 @@ if (!window.api) {
             q.equalTo('isActive', 1);
             q.equalTo('isDelete', 0);
             q.include('university');
+			q.limit(1000);
             return q.find();
         },
 		
@@ -294,6 +295,7 @@ if (!window.api) {
             var dbDate = dbFormattedDate(date);
             q.equalTo('universityId', universityId);
             q.equalTo('date', dbDate);
+			q.limit(1000);
             return q.find().then(function(results) {
                 return getClassSlotsByClasses(results);
             });
@@ -305,6 +307,7 @@ if (!window.api) {
             var dbDate = dbFormattedDate(date);
             q.equalTo('gymId', gymId);
             q.equalTo('date', dbDate);
+			q.limit(1000);
             return q.find().then(function(results) {
                 return getClassSlotsByClasses(results);
             });
@@ -314,6 +317,7 @@ if (!window.api) {
             var o = Parse.Object.extend('class_slot');
             var q = new Parse.Query(o);
             q.containedIn('class', classes);
+			q.limit(1000);
             q.include('gym');
             q.include('class');
             q.include('class.room');
@@ -335,6 +339,7 @@ if (!window.api) {
             q.equalTo('universityId', universityId);
             q.equalTo('date', date);
             q.equalTo('isActive', 1);
+			q.limit(1000);
             q.include('slot');
             q.include('gym');
             q.include('class');
@@ -342,15 +347,15 @@ if (!window.api) {
             return q.find();
         },
 
-        getClassReservationsByUser = api.getClassReservationsByUser = function (user, date) {
-            if (!user)
-                user = getCurrentUser();
+        getClassReservations = api.getClassReservations = function (date) {
+            var user = getCurrentUser();
             var o = Parse.Object.extend('class_reservation');
             var q = new Parse.Query(o);
             if (date) {
                 q.equalTo('date', dbFormattedDate(date));
             }
             q.equalTo('user', user);
+			q.limit(1000);
             q.include('slot');
             q.include('gym');
             q.include('class');
@@ -365,6 +370,7 @@ if (!window.api) {
 			if (typeof dayIndex === 'number') {
 				q.equalTo('dayIndex', dayIndex);
 			}
+			q.limit(1000);
             q.include('gymId');
             q.include('equipId');
             q.include('roomId');
@@ -376,6 +382,7 @@ if (!window.api) {
             var o = Parse.Object.extend('slots');
             var q = new Parse.Query(o);
             q.equalTo('gymId', gymId);
+			q.limit(1000);
             q.include('equipId');
             q.include('roomId');
             q.descending('equipId');
@@ -387,6 +394,7 @@ if (!window.api) {
             var q = new Parse.Query(o);
             q.equalTo('universityId', universityId);
             q.equalTo('reservationDate', date);
+			q.limit(1000);
             q.include('slotId');
             q.include('slotId.roomId');
             q.include('gymId');
@@ -394,15 +402,15 @@ if (!window.api) {
             return q.find();
         },
 
-        getEquipmentReservationsByUser = api.getEquipmentReservationsByUser = function (user, date) {
-            if (!user)
-                user = getCurrentUser();
+        getEquipmentReservations = api.getEquipmentReservations = function (date) {
+            var user = getCurrentUser();
             var o = Parse.Object.extend('equipment_occupancy');
             var q = new Parse.Query(o);
             if (date) {
                 q.equalTo('reservationDate', date);
             }
             q.equalTo('userId', user);
+			q.limit(1000);
             q.include('slotId');
             q.include('slotId.roomId');
             q.include('gymId');
@@ -432,9 +440,8 @@ if (!window.api) {
             return q.first();
         },
 
-        saveUserSettings = api.saveUserSettings = function (user, settings) {
-            if (!user)
-                user = getCurrentUser();
+        saveUserSettings = api.saveUserSettings = function (settings) {
+            var user = getCurrentUser();
             user.set('firstname', settings.firstname);
             user.set('lastname', settings.lastname);
             user.set('email', settings.email);
@@ -451,9 +458,8 @@ if (!window.api) {
 			);
         },
 
-        saveUserNotifications = api.saveUserNotifications = function (user, notifications) {
-            if (!user)
-                user = getCurrentUser();
+        saveUserNotifications = api.saveUserNotifications = function (notifications) {
+            var user = getCurrentUser();
             var o = Parse.Object.extend('notifications');
             var q = new Parse.Query(o);
             q.equalTo('user', user);
@@ -479,18 +485,15 @@ if (!window.api) {
             );
         },
 
-        saveUserPassword = api.saveUserPassword = function (user, password) {
-            if (!user)
-                user = getCurrentUser();
+        saveUserPassword = api.saveUserPassword = function (password) {
+            var user = getCurrentUser();
             user.set('password', password);
             return user.save();
         },
 
-        saveClassReservation = api.saveClassReservation = function (user, classId, slotId) {
-            if (!user)
-                user = getCurrentUser();
-
-            var promise = new Parse.Promise.as(),
+        saveClassReservation = api.saveClassReservation = function (classId, slotId) {
+            var user = getCurrentUser(),
+				promise = new Parse.Promise.as(),
 				resUniversity,
                 resGym,
                 resClass,
@@ -570,11 +573,9 @@ if (!window.api) {
 			return promise;
         },
 
-        saveEquipmentReservation = api.saveEquipmentReservation = function (user, equipmentId, slotId, date) {
-            if (!user)
-                user = getCurrentUser();
-
-            var promise = new Parse.Promise.as(),
+        saveEquipmentReservation = api.saveEquipmentReservation = function (equipmentId, slotId, date) {
+            var user = getCurrentUser(),
+				promise = new Parse.Promise.as(),
 				resUniversity,
                 resGym,
                 resEquipment,
@@ -645,9 +646,8 @@ if (!window.api) {
 			return promise;
         },
 
-        saveNotifyOfEquipmentAvailability = api.saveNotifyOfEquipmentAvailability = function(user, eoId) {
-            if (!user)
-                user = getCurrentUser();
+        saveNotifyOfEquipmentAvailability = api.saveNotifyOfEquipmentAvailability = function(eoId) {
+            var user = getCurrentUser();
             return getRowById(eoId, 'equipment_occupancy').then(
                 function (result) {
                     var o = Parse.Object('equipment_notification'),
@@ -664,9 +664,8 @@ if (!window.api) {
             );
         },
 
-        saveFeedback = api.saveFeedback = function (user, clazz, slot, params) {
-            if (!user)
-                user = getCurrentUser();
+        saveFeedback = api.saveFeedback = function (clazz, slot, params) {
+            var user = getCurrentUser();
             var staff = slot.get('instructor');
             var o = Parse.Object('feedback'),
 				acl = new Parse.ACL();

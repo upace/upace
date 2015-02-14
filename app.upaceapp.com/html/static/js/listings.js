@@ -73,7 +73,7 @@ if (!window.listings) {
                 slotId = $this.data('slot-id'),
                 equipId = $this.data('equipment-id');
             if(classId){
-                api.saveClassReservation(currentUser, classId, slotId).then(
+                api.saveClassReservation(classId, slotId).then(
 					function(r) {
 						$this.addClass(cssClasses.listingReserved).attr('data-reservation-id', r.id);
 						listings.listingData[slotId].myReservation = r.id;
@@ -84,7 +84,7 @@ if (!window.listings) {
 					}
 				);
             } else if(equipId) {
-				api.saveEquipmentReservation(currentUser, equipId, slotId, listings.selectedDate).then(
+				api.saveEquipmentReservation(equipId, slotId, listings.selectedDate).then(
 					function(r) {
 						$this.addClass(cssClasses.listingReserved).attr('data-reservation-id', r.id);
 						listings.listingData[slotId].myReservation = r.id;

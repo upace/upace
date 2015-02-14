@@ -24,7 +24,7 @@
             $classListings.html(listings.loadingSpinner);
             Parse.Promise.when(
                     api.getClassesByUniversityAndDate(currentUser.get('universityId'), parseDate),
-                    api.getClassReservationsByUser(currentUser, parseDate)
+                    api.getClassReservations(parseDate)
                 )
                 .then(function(a, b) {
                     if(a.length) {

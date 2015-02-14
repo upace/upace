@@ -26,8 +26,8 @@
             $classListings.html(listings.loadingSpinner);
             $equipmentListings.html(listings.loadingSpinner);
             Parse.Promise.when(
-                    api.getClassReservationsByUser(currentUser, parseDate),
-                    api.getEquipmentReservationsByUser(currentUser, parseDate)
+                    api.getClassReservations(parseDate),
+                    api.getEquipmentReservations(parseDate)
                 ).then(function(a, b) {
                     reservedClasses = a.sort(sortParseResultsByStartTime);
                     reservedEquipment = b.sort(sortParseResultsByStartTime);

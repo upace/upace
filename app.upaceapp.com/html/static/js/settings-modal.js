@@ -31,7 +31,7 @@
             Parse.Promise.when(
                 api.getUniversities(),
                 api.getGyms(),
-                api.getProfileNotificationsByUser(currentUser)
+                api.getProfileNotifications()
             ).then(function(a, b, c) {
                 for(var i = 0; i < a.length; i++) {
                     university = {
@@ -90,9 +90,25 @@
     $('#profilechange-form').on('submit', function(evt) {
         evt.preventDefault();
 
-        var f = flattenFormArray($(this).serializeArray());
+		// TODO: improve validation process.
+		var required = ['firstname', 'lastname', 'email', 'phone', 'memberType', 'universityGymId', 'sex'],
+			f = flattenFormArray($(this).serializeArray()),
+			missingMsg = 'some of your information is missing:',
+			valid = true;
+		
+		for (var i = 0; i < required.length; i++) {
+			if (!f[required[i]]) {
+				missingMsg += '<br>- ' + required[i];
+				valid = false;
+			}
+		}
+		
+		if (!valid) {
+			statusMessage($statusProfile, missingMsg, 'danger');
+			return;
+		}
 
-        api.saveUserSettings(null, f).then(
+        api.saveUserSettings(f).then(
             function(user) {
                 statusMessage($statusProfile, 'settings saved!', 'success');
             },
@@ -116,7 +132,7 @@
         // Parse is to log in again in the background.
         api.login(api.getCurrentUser().getUsername(), f.oldpassword).then(
             function(user) {
-                return api.saveUserPassword(user, f.password).then(
+                return api.saveUserPassword(f.password).then(
                     function(user) {
                         statusMessage($statusPassword, 'password saved.', 'success');
                     }
@@ -146,7 +162,7 @@
             }
         }
 
-        api.saveUserNotifications(null, notifications).then(
+        api.saveUserNotifications(notifications).then(
             function(user) {
                 statusMessage($statusNotifications, 'notifications saved.', 'success');
             },
